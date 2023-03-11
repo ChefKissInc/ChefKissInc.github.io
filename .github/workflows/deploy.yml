@@ -45,8 +45,6 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Setup Pages
         uses: actions/configure-pages@v3
-        with:
-          static_site_generator: nuxt
       - name: Restore cache
         uses: actions/cache@v3
         with:
