@@ -14,6 +14,9 @@ export default defineAppConfig({
       owner: "NootInc",
       repo: "NootInc.github.io",
       branch: "master",
+      root: "content",
+      edit: true,
+      contributors: true
     }
     // header: {
     //   logo: true
