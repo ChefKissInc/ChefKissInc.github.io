@@ -16,5 +16,8 @@
     "nuxt": "^3.3.2",
     "postcss": "^8.4.21",
     "vue": "^3.2.47"
+  },
+  "dependencies": {
+    "medium-zoom": "^1.0.8"
   }
 }
