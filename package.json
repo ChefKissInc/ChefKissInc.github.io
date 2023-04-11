@@ -12,8 +12,8 @@
   "devDependencies": {
     "@nuxt-themes/docus": "^1.10.1",
     "@nuxt/eslint-config": "^0.1.1",
-    "eslint": "^8.37.0",
-    "nuxt": "^3.3.3",
+    "eslint": "^8.38.0",
+    "nuxt": "^3.4.0",
     "postcss": "^8.4.21",
     "vue": "^3.2.47"
   },
