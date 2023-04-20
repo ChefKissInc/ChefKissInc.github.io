@@ -23,12 +23,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "19"
+          node-version: "20"
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
