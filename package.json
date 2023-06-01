@@ -10,12 +10,12 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@nuxt-themes/docus": "^1.11.1",
+    "@nuxt-themes/docus": "^1.12.0",
     "@nuxt/eslint-config": "^0.1.1",
-    "eslint": "^8.40.0",
-    "nuxt": "^3.4.3",
+    "eslint": "^8.41.0",
+    "nuxt": "^3.5.1",
     "postcss": "^8.4.23",
-    "vue": "^3.3.2"
+    "vue": "^3.3.4"
   },
   "dependencies": {
     "medium-zoom": "^1.0.8"
