@@ -13,8 +13,8 @@
     "@nuxt-themes/docus": "^1.12.0",
     "@nuxt/eslint-config": "^0.1.1",
     "eslint": "^8.41.0",
-    "nuxt": "^3.5.1",
-    "postcss": "^8.4.23",
+    "nuxt": "^3.5.2",
+    "postcss": "^8.4.24",
     "vue": "^3.3.4"
   },
   "dependencies": {
