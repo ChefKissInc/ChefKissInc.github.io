@@ -6,3 +6,9 @@ updates:
       - "Enhancement"
     schedule:
       interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/"
+    labels:
+      - "Enhancement"
+    schedule:
+      interval: "daily"
