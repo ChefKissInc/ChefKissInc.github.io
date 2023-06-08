@@ -11,7 +11,7 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@babel/core": "^7.22.1",
+    "@babel/core": "^7.22.5",
     "@nuxt-themes/docus": "^1.12.3",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxt/kit": "^3.5.3",
