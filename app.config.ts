@@ -47,5 +47,39 @@ export default defineAppConfig({
       ]
     },
     titleTemplate: "%s | Noot",
-  }
+  },
+  prose: {
+    copyButton: {
+      iconCopied: "clarity:copy-solid",
+      iconCopy: "clarity:copy-line",
+    },
+    headings: {
+      icon: "ph:anchor",
+    },
+    h1: {
+      icon: "ph:anchor",
+    },
+    h2: {
+      icon: "ph:anchor",
+    },
+    h3: {
+      icon: "ph:anchor",
+    },
+    h4: {
+      icon: "ph:anchor",
+    },
+    h5: {
+      icon: "ph:anchor",
+    },
+    h6: {
+      icon: "ph:anchor",
+    },
+  },
+  nuxtIcon: {
+    aliases: {
+      "IconInfo": "clarity:info-standard-solid",
+      "IconWarning": "clarity:warning-standard-solid",
+      "IconError": "clarity:error-standard-solid",
+    },
+  },
 })
