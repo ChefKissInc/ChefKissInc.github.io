@@ -17,11 +17,9 @@
     "@nuxt/kit": "^3.6.1",
     "@types/node": "^20.3.3",
     "eslint": "^8.44.0",
+    "medium-zoom": "^1.0.8",
     "nuxt": "^3.6.1",
     "postcss": "^8.4.24",
     "vue": "^3.3.4"
-  },
-  "dependencies": {
-    "medium-zoom": "^1.0.8"
   }
 }

@@ -37,3 +37,4 @@ Temporary Items
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+.env
