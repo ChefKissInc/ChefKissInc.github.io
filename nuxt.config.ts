@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   alias: {},
   extends: "@nuxt-themes/docus",
   css: [
+    resolve('./assets/css/AlgoliaSearch.css'),
     resolve('./assets/css/medium-zoom.css'),
   ],
   colorMode: {
@@ -15,6 +16,16 @@ export default defineNuxtConfig({
       // @ts-ignore
       documentDriven: {
         host: 'https://nootinc.github.io',
+      },
+    },
+    public: {
+      algolia: {
+        applicationId: '',
+        apiKey: '',
+        langAttribute: 'lang',
+        docSearch: {
+          indexName: 'nootincio',
+        },
       },
     },
   },

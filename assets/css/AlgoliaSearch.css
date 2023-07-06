@@ -1,0 +1,42 @@
+:root {
+  --docsearch-modal-background: var(--elements-backdrop-background) !important;
+  --docsearch-footer-background: var(--elements-card-background) !important;
+  --docsearch-muted-color: var(--elements-muted-color) !important;
+  --docsearch-hit-active-color: var(--elements-text-color) !important;
+  --docsearch-searchbox-shadow: none !important;
+}
+
+.DocSearch-Hit[aria-selected=true] a {
+  background: linear-gradient(var(--elements-backdrop-background), var(--elements-backdrop-background)) padding-box, repeating-linear-gradient(to right, var(--docus-loadingBar-gradientColorStop1) 0, var(--docus-loadingBar-gradientColorStop2) 50%, var(--docus-loadingBar-gradientColorStop3) 100%) border-box !important;
+  border: 1px solid transparent !important;
+}
+
+.DocSearch-Hit-source {
+  background: transparent !important;
+}
+
+.DocSearch-MagnifierLabel {
+  color: var(--elements-muted-color) !important;
+}
+
+.DocSearch-Form {
+  border-radius: var(--radii-md) !important;
+  border: 1px solid var(--elements-border-primary-static) !important;
+}
+
+.DocSearch-Modal {
+  -webkit-backdrop-filter: var(--elements-backdrop-filter) !important;
+  backdrop-filter: var(--elements-backdrop-filter) !important;
+  box-shadow: none !important;
+}
+
+.DocSearch-Modal {
+  border-radius: var(--radii-xl) !important;
+  border: 1px solid var(--elements-border-primary-static) !important;
+}
+
+.DocSearch-Footer {
+  box-shadow: none !important;
+  border-top: 1px solid var(--elements-border-primary-static) !important;
+  background: transparent !important;
+}
