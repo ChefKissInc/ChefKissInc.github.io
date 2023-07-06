@@ -44,7 +44,7 @@ export default defineAppConfig({
           text: "Be honest. Copyright © 2023 ChefKiss Inc, Noot Inc subdivision. All rights reserved.",
           href: "https://github.com/ChefKissInc",
         },
-      ]
+      ],
     },
     titleTemplate: "%s | Noot",
   },
@@ -82,4 +82,4 @@ export default defineAppConfig({
       "IconError": "clarity:error-standard-solid",
     },
   },
-})
+});

@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   alias: {},
   extends: "@nuxt-themes/docus",
   css: [
-    resolve('./assets/css/medium-zoom.css')
+    resolve('./assets/css/medium-zoom.css'),
   ],
   colorMode: {
     preference: 'dark',
@@ -16,6 +16,11 @@ export default defineNuxtConfig({
       documentDriven: {
         host: 'https://nootinc.github.io',
       },
+    },
+  },
+  nitro: {
+    prerender: {
+      ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json'],
     },
   },
 });
