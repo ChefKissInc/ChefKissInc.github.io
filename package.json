@@ -14,11 +14,11 @@
     "@babel/core": "^7.22.6",
     "@nuxt-themes/docus": "^1.13.0",
     "@nuxt/eslint-config": "^0.1.1",
-    "@nuxt/kit": "^3.6.1",
-    "@types/node": "^20.3.3",
+    "@nuxt/kit": "^3.6.2",
+    "@types/node": "^20.4.0",
     "eslint": "^8.44.0",
     "medium-zoom": "^1.0.8",
-    "nuxt": "^3.6.1",
+    "nuxt": "^3.6.2",
     "postcss": "^8.4.24",
     "vue": "^3.3.4"
   }
