@@ -80,6 +80,8 @@ export default defineAppConfig({
       "IconInfo": "clarity:info-standard-solid",
       "IconWarning": "clarity:warning-standard-solid",
       "IconError": "clarity:error-standard-solid",
+      "IconExternal": "clarity:pop-out-line",
+      "IconDocs": "clarity:file-group-line",
     },
   },
 });
