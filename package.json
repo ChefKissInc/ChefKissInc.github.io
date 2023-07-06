@@ -12,7 +12,7 @@
   "devDependencies": {
     "@babel/core": "^7.22.8",
     "@docsearch/js": "^3.5.1",
-    "@nuxt-themes/docus": "^1.13.0",
+    "@nuxt-themes/docus": "^1.13.1",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxt/kit": "^3.6.2",
     "@types/node": "^20.4.0",
