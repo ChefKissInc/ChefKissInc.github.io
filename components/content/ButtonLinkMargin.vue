@@ -35,7 +35,7 @@ css({
     transitionDelay: "0s",
     transitionProperty: "all",
     "&.primary": {
-      background: "linear-gradient(var(--elements-backdrop-background), var(--elements-backdrop-background)) padding-box, repeating-linear-gradient(to right, var(--docus-loadingBar-gradientColorStop1) 0, var(--docus-loadingBar-gradientColorStop2) 50%, var(--docus-loadingBar-gradientColorStop3) 100%) border-box",
+      background: "linear-gradient(var(--elements-backdrop-background), var(--elements-backdrop-background)) padding-box, linear-gradient(to right, var(--docus-loadingBar-gradientColorStop1) 0, var(--docus-loadingBar-gradientColorStop2) 50%, var(--docus-loadingBar-gradientColorStop3) 100%) border-box",
       border: "1px solid transparent",
     },
     "&:hover": {
