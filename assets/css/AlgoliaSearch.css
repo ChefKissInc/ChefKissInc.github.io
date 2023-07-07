@@ -6,9 +6,33 @@
   --docsearch-searchbox-shadow: none !important;
 }
 
+@keyframes DocSearchShow {
+  from {
+    transform: scale(0.95);
+  }
+
+  to {
+    transform: scale(1.0);
+  }
+}
+
+
+.DocSearch-Hit a {
+  transition-property: box-shadow, background-color, transform;
+  -webkit-transition-property: box-shadow, background-color, transform;
+  -o-transition-property: box-shadow, background-color, transform;
+  transition-duration: .2s;
+  -webkit-transition-duration: .2s;
+  -o-transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+}
+
 .DocSearch-Hit[aria-selected=true] a {
   background: linear-gradient(var(--elements-backdrop-background), var(--elements-backdrop-background)) padding-box, linear-gradient(to right, var(--docus-loadingBar-gradientColorStop1) 0, var(--docus-loadingBar-gradientColorStop2) 50%, var(--docus-loadingBar-gradientColorStop3) 100%) border-box !important;
   border: 1px solid transparent !important;
+  transform: scale(1.025);
 }
 
 .DocSearch-Hit-source {
@@ -25,6 +49,10 @@
 }
 
 .DocSearch-Modal {
+  animation-name: DocSearchShow;
+  animation-duration: .2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
   -webkit-backdrop-filter: var(--elements-backdrop-filter) !important;
   backdrop-filter: var(--elements-backdrop-filter) !important;
   box-shadow: none !important;

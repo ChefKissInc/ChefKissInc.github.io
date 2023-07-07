@@ -29,11 +29,9 @@ css({
     cursor: "pointer",
     background: "var(--elements-backdrop-background)",
     backdropFilter: "var(--elements-backdrop-filter)",
-    transition: "box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out, transform 0.2s ease-in-out",
+    transitionProperty: "box-shadow, background-color, transform",
     transitionDuration: "0.2s",
-    transitionTimingFunction: "ease",
-    transitionDelay: "0s",
-    transitionProperty: "all",
+    transitionTimingFunction: "ease-in-out",
     "&.primary": {
       background: "linear-gradient(var(--elements-backdrop-background), var(--elements-backdrop-background)) padding-box, linear-gradient(to right, var(--docus-loadingBar-gradientColorStop1) 0, var(--docus-loadingBar-gradientColorStop2) 50%, var(--docus-loadingBar-gradientColorStop3) 100%) border-box",
       border: "1px solid transparent",
