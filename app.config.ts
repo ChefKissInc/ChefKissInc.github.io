@@ -3,6 +3,7 @@ export default defineAppConfig({
   docus: {
     title: "Noot",
     description: "Hackintosh tools that nobody bothered making",
+    layout: "default",
     // image: "https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png",
     socials: {
       telegram: {
@@ -20,13 +21,13 @@ export default defineAppConfig({
       repo: "NootInc.github.io",
       branch: "master",
       root: "content",
-      edit: true,
+      edit: false,
       contributors: true,
     },
     header: {
       showLinkIcon: true,
       fluid: true,
-      //   logo: true,
+      // logo: true,
     },
     main: {
       fluid: true,
@@ -41,8 +42,9 @@ export default defineAppConfig({
       },
       textLinks: [
         {
-          text: "Be honest. Copyright © 2023 ChefKiss Inc, Noot Inc subdivision. All rights reserved.",
-          href: "https://github.com/ChefKissInc",
+          text: "Copyright © 2023 ChefKiss Inc. Licensed under the Thou Shalt Not Profit License version 1.0. Click to see LICENSE for more details.",
+          href: "https://github.com/NootInc/NootInc.github.io/blob/master/LICENSE",
+          target: "_blank",
         },
       ],
     },
