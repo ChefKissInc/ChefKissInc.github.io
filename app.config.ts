@@ -1,5 +1,5 @@
 export default defineAppConfig({
-  plugins: ['~/plugins/medium-zoom'],
+  plugins: ['~/plugins/MediumZoom'],
   docus: {
     title: "Noot",
     description: "Hackintosh tools that nobody bothered making",
