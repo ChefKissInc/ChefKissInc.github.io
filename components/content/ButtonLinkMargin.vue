@@ -39,7 +39,7 @@ css({
     "&:hover": {
       backgroundColor: "transparent",
       transform: "scale(1.05)",
-      boxShadow: "0px 0px 6px 1px var(--docus-loadingBar-gradientColorStop1)",
+      boxShadow: "0px 0px 6px 0px var(--docus-loadingBar-gradientColorStop3)",
     },
   },
 });
