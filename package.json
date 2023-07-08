@@ -15,7 +15,7 @@
     "@nuxt-themes/docus": "^1.13.1",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxt/kit": "^3.6.2",
-    "@types/node": "^20.4.0",
+    "@types/node": "^20.4.1",
     "eslint": "^8.44.0",
     "medium-zoom": "^1.0.8",
     "nuxt": "^3.6.2",
