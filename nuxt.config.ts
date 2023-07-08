@@ -6,7 +6,8 @@ export default defineNuxtConfig({
   extends: "@nuxt-themes/docus",
   css: [
     resolve('./assets/css/AlgoliaSearch.css'),
-    resolve('./assets/css/medium-zoom.css'),
+    resolve('./assets/css/Fixup.css'),
+    resolve('./assets/css/MediumZoom.css'),
   ],
   colorMode: {
     preference: 'dark',

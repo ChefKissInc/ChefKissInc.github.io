@@ -1,0 +1,3 @@
+.card-grid, .block-hero {
+    padding: var(--space-6) 0 !important;
+}
