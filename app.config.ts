@@ -35,11 +35,6 @@ export default defineAppConfig({
     },
     footer: {
       fluid: true,
-      credits: {
-        icon: "",
-        text: "Noot Inc and ChefKiss Inc have no affiliation with Dortania, Acidanthera and Apple. macOS is a registered trademark of Apple, Inc.",
-        href: "",
-      },
       textLinks: [
         {
           text: "Copyright © 2023 ChefKiss Inc. Licensed under the Thou Shalt Not Profit License version 1.0. Click to see LICENSE for more details.",
