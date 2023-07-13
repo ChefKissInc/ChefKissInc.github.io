@@ -56,9 +56,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Static HTML export with Nuxt
-        env:
-          NUXT_PUBLIC_ALGOLIA_APPLICATION_ID: '${{ secrets.NUXT_PUBLIC_ALGOLIA_APPLICATION_ID }}'
-          NUXT_PUBLIC_ALGOLIA_API_KEY: '${{ secrets.NUXT_PUBLIC_ALGOLIA_API_KEY }}'
         run: pnpm run generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
