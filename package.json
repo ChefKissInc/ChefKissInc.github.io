@@ -13,12 +13,12 @@
     "@babel/core": "^7.22.9",
     "@nuxt-themes/docus": "^1.14.3",
     "@nuxt/eslint-config": "^0.1.1",
-    "@nuxt/kit": "^3.6.2",
+    "@nuxt/kit": "^3.6.3",
     "@types/node": "^20.4.2",
-    "eslint": "^8.44.0",
+    "eslint": "^8.45.0",
     "medium-zoom": "^1.0.8",
-    "nuxt": "^3.6.2",
-    "postcss": "^8.4.25",
+    "nuxt": "^3.6.3",
+    "postcss": "^8.4.26",
     "vue": "^3.3.4"
   }
 }
