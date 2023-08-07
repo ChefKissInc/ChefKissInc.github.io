@@ -11,10 +11,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
-    "@nuxt-themes/docus": "^1.14.4",
+    "@nuxt-themes/docus": "^1.14.6",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxt/kit": "^3.6.5",
-    "@types/node": "^20.4.5",
+    "@types/node": "^20.4.8",
     "eslint": "^8.46.0",
     "medium-zoom": "^1.0.8",
     "nuxt": "^3.6.5",
