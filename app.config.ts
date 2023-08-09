@@ -8,7 +8,7 @@ export default defineAppConfig({
     socials: {
       telegram: {
         icon: "mdi:telegram",
-        href: "https://t.me/NootInc",
+        href: "https://t.me/+Bx3MO9Hq8whhNzk9",
         label: "Telegram Supergroup",
       },
       github: "NootInc",
