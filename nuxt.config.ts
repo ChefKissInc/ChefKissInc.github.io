@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     content: {
       // @ts-ignore
       documentDriven: {
-        host: 'https://nootinc.github.io',
+        host: 'https://chefkissinc.github.io',
       },
     },
   },
