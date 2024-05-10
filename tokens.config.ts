@@ -25,4 +25,9 @@ export default defineTheme({
       },
     },
   },
+  prose: {
+    hr: {
+      color: '{elements.border.primary.static}',
+    },
+  },
 });
