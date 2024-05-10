@@ -1,7 +1,7 @@
 export default defineAppConfig({
   plugins: ['~/plugins/MediumZoom'],
   docus: {
-    title: "Noot",
+    title: "ChefKiss",
     description: "Hackintosh tools that nobody bothered making",
     layout: "default",
     // image: "https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png",
@@ -11,14 +11,14 @@ export default defineAppConfig({
         href: "https://t.me/+Bx3MO9Hq8whhNzk9",
         label: "Telegram Supergroup",
       },
-      github: "NootInc",
+      github: "ChefKissInc",
     },
     aside: {
       level: 1,
     },
     github: {
-      owner: "NootInc",
-      repo: "NootInc.github.io",
+      owner: "ChefKissInc",
+      repo: "ChefKissInc.github.io",
       branch: "master",
       root: "content",
       edit: false,
@@ -37,13 +37,13 @@ export default defineAppConfig({
       fluid: true,
       textLinks: [
         {
-          text: "Copyright © 2023 ChefKiss Inc. Licensed under the Thou Shalt Not Profit License version 1.0. Click to see LICENSE for more details.",
-          href: "https://github.com/NootInc/NootInc.github.io/blob/master/LICENSE",
+          text: "Copyright © 2023-2024 ChefKiss Inc. Licensed under the Thou Shalt Not Profit License version 1.5. Click to see LICENSE for more details.",
+          href: "https://github.com/ChefKissInc/ChefKissInc.github.io/blob/master/LICENSE",
           target: "_blank",
         },
       ],
     },
-    titleTemplate: "%s | Noot",
+    titleTemplate: "%s | ChefKiss",
   },
   prose: {
     copyButton: {
