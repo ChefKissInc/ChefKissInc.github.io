@@ -1119,8 +1119,8 @@ packages:
     resolution: {integrity: sha512-JzBqdVIyqm2FRQCulY6nbQzMpJJpSiJ8XXWMhtOX9eKgaXXpfNOF53lzQEjIydlStnd/eFtuC1dW4VYdD93oRg==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
-  '@sigstore/protobuf-specs@0.3.1':
-    resolution: {integrity: sha512-aIL8Z9NsMr3C64jyQzE0XlkEyBLpgEJJFDHLVVStkFV5Q3Il/r/YtY6NJWKQ4cy4AE7spP1IX5Jq7VCAxHHMfQ==}
+  '@sigstore/protobuf-specs@0.3.2':
+    resolution: {integrity: sha512-c6B0ehIWxMI8wiS/bj6rHMPqeFvngFV7cDU/MY+B16P9Z3Mp9k8L93eYZ7BYzSickzuqAQqAq0V956b3Ju6mLw==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
   '@sigstore/sign@2.3.1':
@@ -2257,8 +2257,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.4.762:
-    resolution: {integrity: sha512-rrFvGweLxPwwSwJOjIopy3Vr+J3cIPtZzuc74bmlvmBIgQO3VYJDvVrlj94iKZ3ukXUH64Ex31hSfRTLqvjYJQ==}
+  electron-to-chromium@1.4.763:
+    resolution: {integrity: sha512-k4J8NrtJ9QrvHLRo8Q18OncqBCB7tIUyqxRcJnlonQ0ioHKYB988GcDFF3ZePmnb8eHEopDs/wPHR/iGAFgoUQ==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -6733,17 +6733,17 @@ snapshots:
 
   '@sigstore/bundle@2.3.1':
     dependencies:
-      '@sigstore/protobuf-specs': 0.3.1
+      '@sigstore/protobuf-specs': 0.3.2
 
   '@sigstore/core@1.1.0': {}
 
-  '@sigstore/protobuf-specs@0.3.1': {}
+  '@sigstore/protobuf-specs@0.3.2': {}
 
   '@sigstore/sign@2.3.1':
     dependencies:
       '@sigstore/bundle': 2.3.1
       '@sigstore/core': 1.1.0
-      '@sigstore/protobuf-specs': 0.3.1
+      '@sigstore/protobuf-specs': 0.3.2
       make-fetch-happen: 13.0.1
       proc-log: 4.2.0
       promise-retry: 2.0.1
@@ -6752,7 +6752,7 @@ snapshots:
 
   '@sigstore/tuf@2.3.3':
     dependencies:
-      '@sigstore/protobuf-specs': 0.3.1
+      '@sigstore/protobuf-specs': 0.3.2
       tuf-js: 2.2.1
     transitivePeerDependencies:
       - supports-color
@@ -6761,7 +6761,7 @@ snapshots:
     dependencies:
       '@sigstore/bundle': 2.3.1
       '@sigstore/core': 1.1.0
-      '@sigstore/protobuf-specs': 0.3.1
+      '@sigstore/protobuf-specs': 0.3.2
 
   '@sindresorhus/is@4.6.0': {}
 
@@ -7667,7 +7667,7 @@ snapshots:
   browserslist@4.23.0:
     dependencies:
       caniuse-lite: 1.0.30001617
-      electron-to-chromium: 1.4.762
+      electron-to-chromium: 1.4.763
       node-releases: 2.0.14
       update-browserslist-db: 1.0.15(browserslist@4.23.0)
 
@@ -8162,7 +8162,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.4.762: {}
+  electron-to-chromium@1.4.763: {}
 
   emoji-regex@8.0.0: {}
 
@@ -11065,7 +11065,7 @@ snapshots:
     dependencies:
       '@sigstore/bundle': 2.3.1
       '@sigstore/core': 1.1.0
-      '@sigstore/protobuf-specs': 0.3.1
+      '@sigstore/protobuf-specs': 0.3.2
       '@sigstore/sign': 2.3.1
       '@sigstore/tuf': 2.3.3
       '@sigstore/verify': 1.2.0
