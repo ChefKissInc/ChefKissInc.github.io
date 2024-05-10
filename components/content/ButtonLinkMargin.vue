@@ -1,18 +1,27 @@
 <script setup lang="ts">
-withDefaults(defineProps<{
-  icon?: string,
-  href: string,
-  blank?: boolean,
-  primary?: boolean,
-}>(), {
-  icon: undefined,
-  blank: false,
-  primary: false,
-});
+withDefaults(
+  defineProps<{
+    icon?: string;
+    href: string;
+    blank?: boolean;
+    primary?: boolean;
+  }>(),
+  {
+    icon: undefined,
+    blank: false,
+    primary: false,
+  },
+);
 </script>
 
 <template>
-  <ButtonLink :icon="icon" style="margin-right: 0.5rem" :class="{ primary }" :href="href" :blank="blank">
+  <ButtonLink
+    :icon="icon"
+    style="margin-right: 0.5rem"
+    :class="{ primary }"
+    :href="href"
+    :blank="blank"
+  >
     <slot />
   </ButtonLink>
 </template>
@@ -33,7 +42,8 @@ css({
     transitionDuration: "0.2s",
     transitionTimingFunction: "ease-in-out",
     "&.primary": {
-      background: "linear-gradient(var(--elements-backdrop-background), var(--elements-backdrop-background)) padding-box, linear-gradient(to right, var(--docus-loadingBar-gradientColorStop1) 0, var(--docus-loadingBar-gradientColorStop2) 50%, var(--docus-loadingBar-gradientColorStop3) 100%) border-box",
+      background:
+        "linear-gradient(var(--elements-backdrop-background), var(--elements-backdrop-background)) padding-box, linear-gradient(to right, var(--docus-loadingBar-gradientColorStop1) 0, var(--docus-loadingBar-gradientColorStop2) 50%, var(--docus-loadingBar-gradientColorStop3) 100%) border-box",
       border: "1px solid transparent",
     },
     "&:hover": {
