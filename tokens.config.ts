@@ -25,7 +25,7 @@ export default defineTheme({
       primary: {
         static: {
           initial: '{color.gray.100}',
-          dark: 'rgba(149, 149, 154, 0.7)',
+          dark: '#424245',
         },
       },
     },
