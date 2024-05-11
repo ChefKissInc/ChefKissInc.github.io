@@ -8,6 +8,11 @@ export default defineTheme({
     header: {
       height: '48px',
     },
+    loadingBar: {
+      gradientColorStop1: 'rgb(255, 91, 102)',
+      gradientColorStop2: 'rgb(117, 147, 175)',
+      gradientColorStop3: 'rgb(27, 154, 204)',
+    }
   },
   elements: {
     backdrop: {
