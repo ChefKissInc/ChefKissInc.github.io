@@ -26,8 +26,7 @@ export default defineAppConfig({
     },
     header: {
       showLinkIcon: true,
-      fluid: true,
-      // logo: true,
+      logo: "ChefKissLogo",
     },
     main: {
       fluid: true,
