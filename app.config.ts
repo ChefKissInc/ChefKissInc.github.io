@@ -77,8 +77,8 @@ export default defineAppConfig({
       "IconInfo": "ph:info-duotone",
       "IconWarning": "ph:warning-duotone",
       "IconError": "ph:warning-circle-duotone",
-      "IconExternal": "ph:warning-duotone",
-      "IconDocs": "ph:warning-duotone",
+      "IconExternal": "ph:arrow-square-out-duotone",
+      "IconDocs": "ph:files-duotone",
     },
   },
 });
