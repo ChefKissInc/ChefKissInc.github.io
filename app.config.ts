@@ -7,7 +7,7 @@ export default defineAppConfig({
     // image: "https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png",
     socials: {
       telegram: {
-        icon: "mdi:telegram",
+        icon: "ph:telegram-logo-duotone",
         href: "https://t.me/+Bx3MO9Hq8whhNzk9",
         label: "Telegram Supergroup",
       },
@@ -47,38 +47,38 @@ export default defineAppConfig({
   },
   prose: {
     copyButton: {
-      iconCopied: "clarity:copy-solid",
-      iconCopy: "clarity:copy-line",
+      iconCopied: "ph:copy-fill",
+      iconCopy: "ph:copy-duotone",
     },
     headings: {
-      icon: "ph:anchor",
+      icon: "ph:anchor-duotone",
     },
     h1: {
-      icon: "ph:anchor",
+      icon: "ph:anchor-duotone",
     },
     h2: {
-      icon: "ph:anchor",
+      icon: "ph:anchor-duotone",
     },
     h3: {
-      icon: "ph:anchor",
+      icon: "ph:anchor-duotone",
     },
     h4: {
-      icon: "ph:anchor",
+      icon: "ph:anchor-duotone",
     },
     h5: {
-      icon: "ph:anchor",
+      icon: "ph:anchor-duotone",
     },
     h6: {
-      icon: "ph:anchor",
+      icon: "ph:anchor-duotone",
     },
   },
   nuxtIcon: {
     aliases: {
-      "IconInfo": "clarity:info-standard-solid",
-      "IconWarning": "clarity:warning-standard-solid",
-      "IconError": "clarity:error-standard-solid",
-      "IconExternal": "clarity:pop-out-line",
-      "IconDocs": "clarity:file-group-line",
+      "IconInfo": "ph:info-duotone",
+      "IconWarning": "ph:warning-duotone",
+      "IconError": "ph:warning-circle-duotone",
+      "IconExternal": "ph:warning-duotone",
+      "IconDocs": "ph:warning-duotone",
     },
   },
 });
