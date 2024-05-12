@@ -3,7 +3,7 @@
     padding: var(--space-6) 0 !important;
 }
 
-button .content {
+.section.right button .content {
     border-width: 0 !important;
 
     & span:nth-of-type(1),
