@@ -13,10 +13,10 @@
   "devDependencies": {
     "@babel/core": "^7.24.5",
     "@nuxt-themes/docus": "^1.15.0",
-    "@nuxt/eslint-config": "^0.3.12",
+    "@nuxt/eslint-config": "^0.3.13",
     "@nuxt/kit": "^3.11.2",
     "@types/node": "^20.12.12",
-    "eslint": "^9.2.0",
+    "eslint": "^9.3.0",
     "medium-zoom": "^1.1.0",
     "nuxt": "^3.11.2",
     "postcss": "^8.4.38",
