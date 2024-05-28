@@ -50,34 +50,36 @@ export default defineAppConfig({
       iconCopy: "ph:copy-duotone",
     },
     headings: {
-      icon: "ph:anchor-duotone",
+      icon: "Anchor",
     },
     h1: {
-      icon: "ph:anchor-duotone",
+      icon: "Anchor",
     },
     h2: {
-      icon: "ph:anchor-duotone",
+      icon: "Anchor",
     },
     h3: {
-      icon: "ph:anchor-duotone",
+      icon: "Anchor",
     },
     h4: {
-      icon: "ph:anchor-duotone",
+      icon: "Anchor",
     },
     h5: {
-      icon: "ph:anchor-duotone",
+      icon: "Anchor",
     },
     h6: {
-      icon: "ph:anchor-duotone",
+      icon: "Anchor",
     },
   },
   nuxtIcon: {
     aliases: {
-      "IconInfo": "ph:info-duotone",
-      "IconWarning": "ph:warning-duotone",
-      "IconError": "ph:warning-circle-duotone",
-      "IconExternal": "ph:arrow-square-out-duotone",
-      "IconDocs": "ph:files-duotone",
+      "Anchor": "ph:anchor-duotone",
+      "Info": "ph:info-duotone",
+      "Warning": "ph:warning-duotone",
+      "Danger": "ph:warning-circle-duotone",
+      "External": "ph:arrow-square-out-duotone",
+      "Docs": "ph:files-duotone",
+      "GraphicsCard": "ph:graphics-card-duotone",
     },
   },
 });
