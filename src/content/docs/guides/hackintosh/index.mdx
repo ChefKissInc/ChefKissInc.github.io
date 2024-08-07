@@ -1,0 +1,48 @@
+---
+title: Getting started
+description: The ChefKiss Hackintosh guide.
+prev:
+  link: /guides
+  label: Guides
+next:
+  link: /guides/hackintosh/compatibility
+  label: Compatibility
+---
+
+import { CardGrid } from '@astrojs/starlight/components';
+import Card from '~/components/Card.astro';
+import Aside from '~/components/Aside.astro';
+
+Welcome to the ChefKiss Hackintosh Guide.
+
+This guide will accompany you through the process of installing macOS on your PC.
+
+<Aside type="tip">
+A Hackintosh is a computer running macOS on a non-Apple system. Wowza!
+</Aside>
+
+## Prerequisites
+
+<CardGrid>
+    <Card icon="ph:clock-clockwise-duotone" title="Time and patience">
+    Creating a Hackintosh is a relatively lengthy process. No steps can be skipped. Don't start working on this if you have other things to do. Hackintoshes generally are __not__ something you should be relying on as a work machine.
+    </Card>
+    <Card icon="ph:plugs-connected-duotone" title="A compatible system">
+    Your CPU, GPU, motherboard, Ethernet card, Wi-Fi card, and others are important for whether your machine can run macOS: Unlike Windows and Linux, macOS isn't compatible with every x86 PC; There's still a significant amount of unsupported hardware, albeit several efforts.
+    </Card>
+    <Card icon="ph:terminal-window-duotone" title="Basic command line knowledge">
+    Essential for going through the steps of the guide. Can't help you with how to change working directory in cmd.
+    </Card>
+    <Card icon="ph:usb-duotone" title="A large enough USB drive">
+    You need a minimum of 16GiB to create an offline recovery USB drive (macOS only), and 2GiB if you're making an online recovery USB drive (cross-platform).
+    </Card>
+    <Card icon="ph:network-duotone" title="A compatible networking card">
+    If you're using online recovery. Like mentioned before, macOS is not compatible with all hardware, so you can't just have any networking card.
+    </Card>
+    <Card icon="ph:computer-tower-duotone" title="A working computer">
+    You need something to run all the scripts and tools in order to make the USB drive with all required files.
+    </Card>
+    <Card icon="ph:seal-check-duotone" title="Up-to-date firmware">
+    MacOS is very nitpicky; if your hardware has any significant "non-standard" or "unexpected" behaviour or bug, it will not work.
+    </Card>
+</CardGrid>

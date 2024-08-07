@@ -1,0 +1,108 @@
+---
+title: NootedRed
+template: splash
+description: The AMD iGPU kernel extension.
+hero:
+  tagline: The AMD iGPU kernel extension.
+  actions:
+    - text: GitHub Releases
+      link: https://github.com/ChefKissInc/NootedRed/releases
+      icon: github
+      variant: primary
+banner:
+  content: |
+    Due to a Lilu bug, NootedRed cannot be used in recovery or during upgrades due to a misdetection causing a stall at the last stage.
+    For now, have it enabled only after completing install or update.
+next: false
+prev:
+  link: /applehax
+  label: AppleHax
+---
+
+import Aside from '~/components/Aside.astro';
+
+## iGPU compatibility
+
+The entire Vega Raven ASIC family (`Ryzen 1xxx (Athlon Silver/Gold)` to `5xxx`, and `7x30` series).
+
+## macOS compatibility
+
+NootedRed is compatible with `macOS 10.15` up to `macOS 14`.
+
+It's not possible to go below `macOS 10.15` as the iGPU logic and `rDNA` code (used for `DCN` and `VCN`) were introduced in that version.
+
+## Prerequisites
+
+- An OpenCore EFI configured according to our guide.
+- Your system must not have a `GCN 5` or `rDNA` AMD dGPU.
+  - They can be disabled using the `-wegnoegpu` boot arg or the `disable-gpu` device property.
+- Increase VRAM size.
+  - `512MiB` minimum, `1GiB+` for proper functionality.
+- Disable Legacy Boot, also known as CSM and Boot Mode.
+  - Otherwise you will meet kernel panics like `Failed to get VBIOS from VRAM`.
+- Remove `WhateverGreen.kext` or `NootRX.kext`.
+  - This kext conflicts with them.
+- Use `MacBookPro16,3`, `iMac20,1` or `iMacPro1,1` SMBIOS.
+  - `MacPro7,1` might result in a black screen.
+- Do your macOS updates (the minor ones, not necessary to go from e.g. `macOS 11` to `macOS 12`).
+
+## Backlight functionality
+
+Usually only works on laptops.
+
+- [`SSDT-PNLF.aml`](/Extras/SSDTs/SSDT-PNLF.aml)
+- [`SSDT-ALS0.aml`](/Extras/SSDTs/SSDT-ALS0.aml) if you have no Ambient Light Sensor
+- [`SMCLightSensor.kext`](https://github.com/Acidanthera/VirtualSMC)
+- [`BrightnessKeys.kext`](https://github.com/Acidanthera/BrightnessKeys) for keyboard brightness control (some vendors might require custom SMC kexts)
+
+## Frequently asked questions
+
+<Aside type="danger">
+This list is not exhaustive, for more information you should check the [issues](https://github.com/ChefKissInc/NootedRed/issues), potentially also the discussions.
+</Aside>
+
+### What happened to the commit history? Weren't there like a thousand commits before, spanning across several years?
+
+A "controversy" with two ex-team-members. They didn't contribute much to the project and it was deemed that they should not gain publicity from it.
+
+### I get stuck on a black screen or restart after black screen on Catalina
+
+Update the kext. If still getting a black screen right before the Setup Assistant, force restart and it should fix itself.
+
+### My brightness control is not working properly
+
+On Raven-based chips (1xxx-3xxx series) a bug was introduced after new backlight logic, it has no fix for now. Just be patient, this is a hobby project.
+
+### My external display's audio appears, but no audio comes out of it
+
+Known issue. We don't know the problem yet; it works on most systems. You'll have to be patient for now (again).
+
+### My HDR-enabled display boots to a black screen with flashing backlight
+
+Disable HDR either from the BIOS, a tool like `Smokeless-UMAF` or by connecting to the computer remotely and doing it from macOS' settings.
+
+### My OLED display cannot have its brightness adjusted
+
+Update the kext, some code has been added to support this. If still not working, please contact us on Telegram.
+
+### I cannot adjust my brightness on Catalina
+
+Update the kext; brightness control logic was added for Catalina.
+
+### Chrome, Chromium-based browsers and apps like Sublime Text cause graphical artefacts amongst other problems
+
+Known issue, unknown cause.
+
+For the browsers you can disable `GPU Rasterisation` inside `chrome://flags` as a workaround or just use Safari.
+
+Anything else will likely require disabling GPU/Hardware acceleration.
+
+If you can't even open the (chromium-based) browser because of the issue, you can launch it like in the following terminal command
+
+```sh
+open -a Google\ Chrome --args --disable-gpu
+```
+
+### Constant freezes and crashes on Sonoma
+
+Cause of the compute dysfunctionality remains unknown. Latest commit should have minimal issues, as long as you have a static image as your background and no Memoji as the account avatar.

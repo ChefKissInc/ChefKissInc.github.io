@@ -1,0 +1,24 @@
+---
+title: ChefKiss
+description: Empowering the people through well made software.
+template: splash
+hero:
+  tagline: Empowering the people through well made software.
+  image:
+    alt: A penguin with a chef hat doing the chef's kiss gesture.
+    file: ~/assets/Logo.svg
+next: false
+prev: false
+banner:
+  content: |
+    Welcome to the new ChefKiss website experience, <a href="/newsroom/website-rewritten">read more</a>.
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="Guides" description="Hackintosh, etc guides." href="/guides" />
+  <LinkCard title="AppleHax" description="Our Apple-related projects." href="/applehax" />
+  <LinkCard title="Tooling" description="Our tools." href="/tooling" />
+  <LinkCard title="Newsroom" description="Announcements, updates and more." href="/newsroom" />
+</CardGrid>

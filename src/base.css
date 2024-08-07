@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sl-color-bg-sidebar: theme("colors.gray.900");
+  --sl-color-hairline: theme("colors.gray.700");
+  --sl-color-hairline-shade: theme("colors.gray.700");
+  --ec-brdRad: 0.5rem;
+}
+
+.right-sidebar {
+  @apply dark:border-s-[var(--sl-color-hairline)] !important;
+}
+
+header.header {
+  @apply backdrop-blur-md dark:bg-neutral-800/90 bg-neutral-100/80 !important;
+}
+
+dialog {
+  @apply border-solid border rounded-lg dark:border-gray-700 dark:bg-gray-900 !important;
+}
+
+aside.starlight-aside {
+  @apply border border-[var(--sl-color-asides-border)] rounded-lg !important;
+}
+
+starlight-file-tree,
+code,
+.expressive-code .frame:not(.is-terminal) pre {
+  @apply rounded-lg !important;
+}
+
+.expressive-code .frame.is-terminal .header {
+  @apply rounded-t-lg !important;
+}
+
+.expressive-code .frame.is-terminal pre {
+  @apply rounded-b-lg !important;
+}
+
+.sl-markdown-content:has(.posts) {
+  @apply m-0 !important;
+}
+
+.posts {
+  @apply gap-2 !important;
+}
+
+article.preview {
+  @apply border-solid border rounded-lg dark:border-gray-700 dark:bg-gray-900 dark:bg-neutral-800/90 bg-neutral-100/80 p-4 !important;
+}
+
+.link-preview {
+  --link-preview-corners: 0.5em;
+  --link-preview-padding-inline: 0.75rem;
+  @apply border-solid border dark:border-gray-700 dark:bg-gray-900 dark:bg-neutral-800/90 bg-neutral-100/80 !important;
+  box-shadow: var(--sl-shadow-sm);
+}
+
+.link-preview a {
+  @apply font-bold no-underline !important;
+}

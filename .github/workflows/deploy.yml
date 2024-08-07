@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
       - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
@@ -55,8 +55,8 @@ jobs:
             ${{ runner.os }}-nuxt-build-
       - name: Install dependencies
         run: pnpm install
-      - name: Static HTML export with Nuxt
-        run: pnpm run generate
+      - name: Static HTML export with Astro
+        run: pnpm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

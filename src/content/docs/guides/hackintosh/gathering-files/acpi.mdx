@@ -1,0 +1,195 @@
+---
+title: ACPI
+description: SSDTs to add to your Hackintosh EFI.
+---
+
+import Aside from '~/components/Aside.astro';
+
+<Aside type="tip">
+`Advanced Configuration and Power Interface` (ACPI) is an open standard that operating systems can use to discover and configure computer hardware components, perform power management (e.g. powering off a USB controller), auto configuration (e.g. Plug and Play, hot swapping) and status monitoring.
+
+Manufacturers can make Operating System checks, which is usually done to disable some devices and other functionality on OSes they don't intend to support.
+
+The main ACPI table is the `DSDT` (Differentiated System Description Table), defining most of the devices. Then there's the `SSDT`s (Secondary System Description Tables), adding extra properties (e.g. the `_PRW` (Power Resources for Wake) method), extra devices, disabling some devices based on a condition, etc.
+
+Most firmware define the devices in the `DSDT` and use some `SSDT`s to adjust values depending on the installed hardware and/or BIOS settings. If you're interested in ACPI, you can read the ACPI Specification listed in the [UEFI Forum specifications](https://uefi.org/specifications).
+
+</Aside>
+
+## Downloading SSDTTime
+
+<Aside type="note" title="Did you know?">
+In the past these SSDTs had to be written manually but now there are automated tools for this process. [`SSDTTime`](https://github.com/corpnewt/SSDTTime) will be used by this guide.
+</Aside>
+
+Since `SSDTTime` does not have any releases and it's a Python project, download the source code instead by clicking on `Code` then `Download ZIP`.
+
+![SSDTTime download page](~/assets/SSDTTimeDownload.png)
+
+## Running SSDTTime
+
+After extracting the archive, Windows users should run `SSDTTime.bat`.
+
+Linux users will have to open their terminal inside the extracted `SSDTTime`/`SSDTTime-master` directory then run `python3 SSDTTime.py`. **Make sure you have Python 3 installed.**
+
+macOS users should run `SSDTTime.command`.
+
+Upon launching the tool, it will automatically download `iASL`, which (de)compiles ACPI tables. You should then be greeted with the following screen.
+
+![SSDTTime console](~/assets/SSDTTimeConsole.png)
+
+### Specifying the target system's ACPI
+
+Select option `P` on the target system to dump the ACPI tables needed for `SSDTTime`'s operations.
+
+If you're not running `SSDTTime` on the target system, select `D` instead to pick the folder with the ACPI tables dumped from that target machine.
+
+The software should now show the loaded ACPI tables at the top like in the screenshot below.
+
+![SSDTTime](~/assets/SSDTTimeConsole_ACPILoaded.png)
+
+### Generating the SSDTs
+
+<Aside type="note">
+Most of these patches will only apply on macOS and should not cause any side-effects on other operating systems
+</Aside>
+
+<details>
+<summary>Info about the options</summary>
+
+At the time of writing, there are 12 options available
+
+- `FixHPET`
+
+  Fixes `IRQ` (Interrupt Request) conflicts in the ACPI tables. These conflicts can cause some hardware like sound to not work properly.
+
+  <Aside type="danger">
+  Do not use this option on AMD, as it may cause more harm than good (trackpad not working, etc).
+  </Aside>
+
+- `FakeEC`
+
+  Creates a fake Embedded Controller device for macOS to work properly **and** disables the original EC.
+
+- `FakeEC Laptop`
+
+  Creates a fake Embedded Controller device for macOS to work properly, but **does not** disable the original EC, because laptops need it for battery status, FN keys, etc.
+
+- `USBX`
+
+  Creates an USBX device which contains USB power properties necessary for proper functionality. This also requires a valid EC device.
+
+- `PluginType`
+
+  Sets the `plugin-type` property to `1` on the first CPU core, enabling `X86PlatformPlugin`, which allows for CPU and GPU power management (support varies).
+  It also redefines the processors with `Processor` objects instead of `Device` objects if required, since macOS doesn't support the newer standard.
+
+- `PMC`
+
+  Defines the `PMCR` device on systems that don't have it to allow native `NVRAM` support.
+
+- `RTCAWAC`
+
+  Disables the new `AWAC` (Alarm Wake ACPI Clock) and enables the `RTC` (Real-Time Clock) instead.
+
+- `USB Reset`
+
+  Disables the `RHUB` devices in ACPI for all USB controllers to allow macOS to enumerate USB ports properly on borked ACPI systems.
+
+- `PCI Bridge`
+
+  Defines the PCI bridges for a device path specified as some devices might not have their PCI bridges defined which will make OpenCore unable to inject properties using the `DeviceProperties` key in the configuration.
+
+- `PNLF`
+
+  Creates a fake `PNLF` device with an user-selectable `_UID` (basically the profile it uses) to allow for native brightness control on laptops.
+
+  <Aside type="danger">
+  At a first glance it may appear as if it supports AMD laptops, but it is not the same as the one in the [NootedRed](/applehax/nootedred) page.
+  Use the one in the aforementioned page instead.
+  </Aside>
+
+- `XOSI`
+
+  Spoofs the operating system to Windows, allowing any peripherals locked behind non-macOS to be active on macOS.
+
+- `Fix DMAR`
+
+  Removes Reserved Memory Regions from the `DMAR` table. It is required to get some devices like Intel I225-based ethernet controllers on Intel systems.
+
+  <Aside type="danger">
+  If you are already using macOS 12.2.1 and below and an Intel I225-based ethernet controller, you will need to remove `e1000=0` or `dk.e1000=0` from your boot args after doing this.
+  </Aside>
+
+</details>
+
+**_All_** systems must choose the below
+
+- `USBX`,
+
+  Choose the **default** option (`B` key).
+
+- `RTCAWAC`,
+
+  If it says you don't need it, skip this SSDT.
+
+- `PluginType`,
+- and `USB Reset`.
+
+AMD **_desktops_** must **also** choose the following
+
+- `FakeEC`.
+
+AMD **_laptops_** must **also** choose the following
+
+- `FakeEC Laptop`,
+- `XOSI`,
+
+  Choose **default** (`A` key)
+
+- and any backlight-related SSDTs required in the [NootedRed](/applehax/nootedred) page.
+
+<details>
+<summary>Example procedure</summary>
+Based on an ASRock B550m Phantom.
+
+![SSDTTime FakeEC Result](~/assets/SSDTTime_FakeEC_Result.png)
+![SSDTTime USBX Prompt](~/assets/SSDTTime_USBX_Prompt.png)
+![SSDTTime USBX Result](~/assets/SSDTTime_USBX_Result.png)
+![SSDTTime PluginType Result](~/assets/SSDTTime_PluginType_Result.png)
+![SSDTTime RTCAWAC Result](~/assets/SSDTTime_RTCAWAC_Result.png)
+![SSDTTime USB Reset Result](~/assets/SSDTTime_USBReset_Result.png)
+![SSDTTime XOSI Prompt](~/assets/SSDTTime_XOSI_Prompt.png)
+![SSDTTime XOSI Result](~/assets/SSDTTime_XOSI_Result.png)
+
+</details>
+
+## Copying the AML files from the Results folder
+
+The `Results` folder will look similar to the below after you're done.
+
+![SSDTTime Results](~/assets/SSDTTimeResults.png)
+
+Now, copy all the files that start with `SSDT` and end in `.aml` inside of the root of the `Results` folder to `Drive/EFI/OC/ACPI`.
+
+### Merging the OC patches using PatchMerge
+
+Finally, merge `patches_OC.plist` by using the `PatchMerge` script included with `SSDTTime`. Run it the same way as `SSDTTime`.
+
+![PatchMerge](~/assets/PatchMerge.png)
+
+Press `1` to select the `Config.plist` created in an earlier step, then drag and drop your `Config.plist` onto the window, and press enter.
+
+![PatchMerge after selecting the `Config.plist`](~/assets/PatchMerge_AfterSelect.png)
+
+Afterwards, press `2` to start the merging process.
+
+![PatchMerge after running the merge process](~/assets/PatchMerge_Result.png)
+
+The modified `Config.plist` with the patches merged in will appear in the `Results` folder.
+
+Check that it's okay, then replace your original `Config.plist` with the newly generated one.
+
+<video autoplay loop width="100%">
+  <source src="/PatchMerge_ReplaceConfig.mp4" type="video/mp4" />
+</video>
