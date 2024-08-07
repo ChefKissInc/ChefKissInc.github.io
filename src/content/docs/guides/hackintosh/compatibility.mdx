@@ -5,22 +5,22 @@ description: Hackintosh system compatibility.
 
 import Aside from '~/components/Aside.astro';
 
-macOS hardware support is limited to what hardware Apple supports and community-created patches.
+macOS hardware support is limited to what Apple supports and community-created patches.
 
 ## CPU support
 
 `AMD Bulldozer (15h)` and newer CPUs are supported with the [AMD Vanilla](https://github.com/AMD-OSX/AMD_Vanilla) patches.
 
 <Aside type="caution">
-The patches support only `macOS 10.13` and newer, older versions require a custom Kernel. This is unsupported by this guide.
+The patches support only `macOS 10.13` and newer, older versions require a custom kernel, which is unsupported by this guide.
 </Aside>
 
 <Aside type="tip">
-AMD Laptop CPUs are the same as AMD Desktop CPUs
+AMD Laptop CPUs are the same as AMD Desktop CPUs.
 </Aside>
 
 <Aside type="danger">
-A few things in macOS don't work properly with an AMD CPU, see [below](#amd-cpu-incompatibilities)
+A few things in macOS don't work properly with an AMD CPU, see [below](#amd-cpu-incompatibilities).
 </Aside>
 
 ### CPU requirements
@@ -38,46 +38,54 @@ A few things in macOS don't work properly with an AMD CPU, see [below](#amd-cpu-
 
 ### AMD CPU incompatibilities
 
-Unfortunately some things in macOS are broken on AMD systems.
+Unfortunately, some things in macOS are broken on AMD systems.
 
 #### Virtual Machines that utilise AppleHV
 
-Examples include:
+Known broken
 
-- `VirtualBox` version >`6`
-- `VMWare` version >`10`
-- `Parallels` version >`13.1`
-- `Docker`
-- `Android Studio`
+- VirtualBox newer than 6
+- VMWare newer than 10
+- Parallels newer than 13.1
+- Docker
+- Android Studio
+- QEMU's hvf accelerator backend
 
-<Aside type="tip">
-Older `VirtualBox`, `VMware`, and `Parallels` versions than the ones mentioned do use their own hypervisor and will therefore work.
-However, outdated virtualisation software is a large security threat along with potentially other issues.
+<Aside type="danger">
+Outdated virtualisation software is a large security threat.
 </Aside>
 
-#### Compatibility issues with some apps
+#### Compatibility issues with apps using Intel MKL
 
-Apps utilising Intel MKL will require a patch with a tool such as `AMDFriend`.
+Apps utilising Intel MKL will require a patch from a tool such as [`AMDHelper`](https://github.com/alvindimas05/AMDHelper).
 
-Some examples include:
+Intel seems to be sabotaging AMD CPUs by making MKL not work on them.
+
+Known apps utilising Intel MKL
 
 - Krisp
 - Logic Pro Waves Plug-In
 - Adobe software
+- Discord
 
-In addition, the `AMD Vanilla` patches don't support 32-bit apps running in `WINE`, including `CrossOver`. However, it somehow works on Threadripper (TRX40).
+#### 32-bit apps
+
+The `AMD Vanilla` patches don't support 32-bit apps, even in `WINE`/`CrossOver`. However, it somehow works on Threadripper (TRX40).
 
 ## GPU support
 
-GPU support is highly complicated due to the amount of graphics cards.
+GPU support is complicated.
 
 ### AMD GPUs
 
 - [GCN](https://en.wikipedia.org/wiki/Graphics_Core_Next) and [RDNA](<https://en.wikipedia.org/wiki/RDNA_(microarchitecture)>) GPUs are supported in the latest versions of macOS.
 - RDNA 3 GPUs are unsupported, Navi 24 is also not supported (yet). Navi 22 is supported by [`NootRX`](/applehax/nootrx)
-- [Raven-based](https://www.techpowerup.com/gpu-specs/amd-raven.g816) (Ryzen 3000 series and older, GCN 5, aka Vega10) and [Renoir-based](https://www.techpowerup.com/gpu-specs/amd-renoir.g1058) (Ryzen 4000 series and newer, GCN 5.1, aka Vega20) AMD APUs are supported with [**NootedRed**](/applehax/nootedred); see [Gathering Files > Kexts](/guides/hackintosh/gathering-files/kexts). **Works from `macOS 10.15` up to `macOS 14`.**
+- [Raven](https://www.techpowerup.com/gpu-specs/amd-raven.g816) and [Renoir](https://www.techpowerup.com/gpu-specs/amd-renoir.g1058) AMD iGPUs are supported via [`NootedRed`](/applehax/nootedred).
 - Other iGPU generations (GCN \<5, RDNA) are **not** supported at all (yet).
-- [Lexa-based](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) AMD dGPUs (GCN 4, aka Polaris) are supported with a **device ID spoof**.
+- [Baffin](https://www.techpowerup.com/gpu-specs/amd-baffin.g796) AMD dGPUs are supported in the latest version of macOS.
+- [Ellesmere](https://www.techpowerup.com/gpu-specs/amd-ellesmere.g795) AMD dGPUs are supported in the latest version of macOS.
+- [Lexa](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) AMD dGPUs are supported via device ID spoof to the respective Baffin variant.
+- Polaris 20 AMD dGPUs are not supported (yet).
 
 <Aside type="danger">
 **MSI Navi** users: [Installer not working with 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901), **resolved since `macOS 11`**.
