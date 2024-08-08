@@ -3,14 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --sl-color-bg-sidebar: theme("colors.gray.900");
-  --sl-color-hairline: theme("colors.gray.700");
-  --sl-color-hairline-shade: theme("colors.gray.700");
   --ec-brdRad: 0.5rem;
 }
 
-.right-sidebar {
-  @apply dark:border-s-[var(--sl-color-hairline)] !important;
+body,
+.sidebar > .sidebar-pane {
+  @apply dark:bg-[#000000] !important;
+}
+
+.sidebar > .sidebar-pane {
+  @apply border-e-[var(--sl-color-gray-6)] !important;
 }
 
 header.header {
