@@ -35,6 +35,7 @@ export default defineConfig({
       title: "ChefKiss",
       logo: {
         src: "~/assets/Logo.svg",
+        replacesTitle: true,
       },
       tableOfContents: {
         minHeadingLevel: 2,

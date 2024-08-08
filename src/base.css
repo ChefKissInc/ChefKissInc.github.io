@@ -3,7 +3,16 @@
 @tailwind utilities;
 
 :root {
+  --sl-nav-height: 3rem;
   --ec-brdRad: 0.5rem;
+}
+
+button[data-open-modal] {
+  @apply h-8 !important;
+}
+
+body {
+  @apply subpixel-antialiased !important;
 }
 
 body,
@@ -20,7 +29,19 @@ header.header {
 }
 
 dialog {
-  @apply border-solid border rounded-lg dark:border-gray-700 dark:bg-gray-900 !important;
+  @apply transition-all opacity-0 translate-y-2 flex border-solid border rounded-lg dark:border-gray-700 dark:bg-gray-900 !important;
+}
+
+dialog[open] {
+  @apply opacity-100 translate-y-0 !important;
+}
+
+dialog::backdrop {
+  @apply transition-opacity opacity-0 !important;
+}
+
+dialog[open]::backdrop {
+  @apply opacity-100 !important;
 }
 
 aside.starlight-aside {
