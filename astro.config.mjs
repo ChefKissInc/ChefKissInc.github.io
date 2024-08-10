@@ -97,6 +97,7 @@ export default defineConfig({
           items: [],
         },
       ],
+      lastUpdated: true,
     }),
     tailwind({
       applyBaseStyles: false,
