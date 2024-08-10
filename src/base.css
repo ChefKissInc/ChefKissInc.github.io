@@ -5,6 +5,9 @@
 :root {
   --sl-nav-height: 3rem;
   --ec-brdRad: 0.5rem;
+  --sl-color-text-accent: theme("colors.emerald.500");
+  --sl-color-bg-accent: theme("colors.emerald.500");
+  --sl-color-text-invert: #000000;
 }
 
 button[data-open-modal] {
@@ -17,7 +20,7 @@ body {
 
 body,
 .sidebar > .sidebar-pane {
-  @apply dark:bg-[#000000] !important;
+  @apply bg-[#000000] !important;
 }
 
 .sidebar > .sidebar-pane {
@@ -25,11 +28,11 @@ body,
 }
 
 header.header {
-  @apply backdrop-blur-md dark:bg-neutral-800/90 bg-neutral-100/80 !important;
+  @apply backdrop-blur-md bg-neutral-900/90 border-b-[var(--sl-color-gray-6)] !important;
 }
 
 dialog {
-  @apply transition-all opacity-0 translate-y-2 flex border-solid border rounded-lg dark:border-gray-700 dark:bg-gray-900 !important;
+  @apply transition-all opacity-0 translate-y-2 flex border-solid border rounded-lg border-gray-700 bg-gray-900 !important;
 }
 
 dialog[open] {
@@ -71,13 +74,13 @@ code,
 }
 
 article.preview {
-  @apply border-solid border rounded-lg dark:border-gray-700 dark:bg-gray-900 dark:bg-neutral-800/90 bg-neutral-100/80 p-4 !important;
+  @apply border-solid border rounded-lg border-gray-800 bg-neutral-900/90 p-4 !important;
 }
 
 .link-preview {
   --link-preview-corners: 0.5em;
   --link-preview-padding-inline: 0.75rem;
-  @apply border-solid border dark:border-gray-700 dark:bg-gray-900 dark:bg-neutral-800/90 bg-neutral-100/80 !important;
+  @apply border-solid border border-gray-700 bg-gray-900 bg-neutral-800/90 !important;
   box-shadow: var(--sl-shadow-sm);
 }
 
