@@ -16,6 +16,10 @@ export default defineConfig({
       },
     }),
     starlight({
+      defaultLocale: "en",
+      locales: {
+        en: { label: "English" },
+      },
       plugins: [
         starlightImageZoom(),
         starlightBlog({
