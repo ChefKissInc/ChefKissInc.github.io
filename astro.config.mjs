@@ -45,6 +45,8 @@ export default defineConfig({
       components: {
         Head: "~/components/starlight/Head.astro",
         MarkdownContent: "~/components/starlight/MarkdownContent.astro",
+        ThemeProvider: "~/components/starlight/ThemeProvider.astro",
+        ThemeSelect: "~/components/starlight/ThemeSelect.astro",
       },
       social: {
         github: "https://github.com/ChefKissInc",
