@@ -7,12 +7,14 @@ import Aside from '~/components/Aside.astro';
 
 macOS kernel drivers. OpenCore can inject or block drivers. You put them in `EFI/OC/Kexts`, but they also have to be specified in the `Config.plist`. We will take care of the latter at a later step.
 
-<Aside type="tip">
+<Aside type="tip" title="Did you know?">
 Kext stands for Kernel EXTension. Wowie!
 </Aside>
 
-<Aside type="tip">
-Kexts are bundles (aka just folders) that end with the `.kext` extension. Only macOS treats them differently. If a folder does not end with `.kext`, it's likely not a kext (duh).
+<Aside type="note">
+On macOS, kexts appear as a special file type with a bleach-white lego piece as the icon.
+
+On other operating systems, kexts appear as plain folders that end in `.kext`.
 </Aside>
 
 ## Necessities
