@@ -98,6 +98,10 @@ export default defineConfig({
         },
       ],
       lastUpdated: true,
+      editLink: {
+        baseUrl:
+          "https://github.com/ChefKissInc/ChefKissInc.github.io/edit/master/",
+      },
     }),
     tailwind({
       applyBaseStyles: false,
