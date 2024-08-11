@@ -1,0 +1,24 @@
+---
+title: ChefKiss
+description: Ενδυνάμωση των ανθρώπων μέσω καλοφτιαγμένου λογισμικού.
+template: splash
+hero:
+  tagline: Ενδυνάμωση των ανθρώπων μέσω καλοφτιαγμένου λογισμικού.
+  image:
+    alt: Ένας πιγκουίνος με καπέλο σεφ που κάνει τη χειρονομία του φιλιού του σεφ.
+    file: ~/assets/Logo.svg
+next: false
+prev: false
+banner:
+  content: |
+    Καλώς ήρθατε στη νέα εμπειρία της ιστοσελίδας ChefKiss, <a href="/gr/newsroom/website-rewritten">διαβάστε περισσότερα</a>.
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="Guides" description="Ανακοινώσεις, ενημερώσεις και άλλα." href="/gr/guides" />
+  <LinkCard title="AppleHax" description="Τα έργα μας που σχετίζονται με την Apple." href="/gr/applehax" />
+  <LinkCard title="Εργαλεία" description="Τα εργαλεία μας." href="/gr/tooling" />
+  <LinkCard title="Αίθουσα τύπου" description="Ανακοινώσεις, ενημερώσεις και άλλα." href="/gr/newsroom" />
+</CardGrid>

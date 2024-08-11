@@ -19,21 +19,30 @@ export default defineConfig({
       defaultLocale: "en",
       locales: {
         en: { label: "English" },
+        gr: { label: "Ελληνικά" },
+        ru: { label: "Русский" },
+        pl: { label: "Polski" },
+        ar: { label: "عربي", direction: "rtl" },
+        uk: { label: "Українська" },
+        lt: { label: "Lietuvių kalba" },
+        ro: { label: "română" },
+        it: { label: "Italiano" },
+        es: { label: "Español" },
       },
       plugins: [
         starlightImageZoom(),
-        starlightBlog({
-          title: "Newsroom",
-          prefix: "newsroom",
-          authors: {
-            visual: {
-              name: "Visual Ehrmanntraut",
-              title: "CEO",
-              picture: "/Avatars/Visual.png",
-              url: "https://github.com/VisualEhrmanntraut",
-            },
-          },
-        }),
+        // starlightBlog({
+        //   title: "Newsroom",
+        //   prefix: "newsroom",
+        //   authors: {
+        //     visual: {
+        //       name: "Visual Ehrmanntraut",
+        //       title: "CEO",
+        //       picture: "/Avatars/Visual.png",
+        //       url: "https://github.com/VisualEhrmanntraut",
+        //     },
+        //   },
+        // }),
         starlightLinksValidator(),
       ],
       title: "ChefKiss",
@@ -48,7 +57,7 @@ export default defineConfig({
       customCss: ["~/base.css"],
       components: {
         Head: "~/components/starlight/Head.astro",
-        MarkdownContent: "~/components/starlight/MarkdownContent.astro",
+        // MarkdownContent: "~/components/starlight/MarkdownContent.astro",
         ThemeProvider: "~/components/starlight/ThemeProvider.astro",
         ThemeSelect: "~/components/starlight/ThemeSelect.astro",
         SocialIcons: "~/components/starlight/SocialIcons.astro",
@@ -60,16 +69,25 @@ export default defineConfig({
       sidebar: [
         {
           label: "Installation",
+          translations: {
+            gr: "Εγκατάσταση",
+          },
           items: [
             "guides/hackintosh",
             "guides/hackintosh/compatibility",
             {
               label: "Gathering Files",
+              translations: {
+                gr: "Συγκέντρωση αρχείων",
+              },
               items: [
                 "guides/hackintosh/gathering-files",
                 "guides/hackintosh/gathering-files/opencore",
                 {
                   label: "Installer",
+                  translations: {
+                    gr: "Εγκαταστάτης",
+                  },
                   items: [
                     "guides/hackintosh/gathering-files/installer",
                     "guides/hackintosh/gathering-files/installer/online",
@@ -81,10 +99,16 @@ export default defineConfig({
             },
             {
               label: "Configuration",
+              translations: {
+                gr: "Διαμόρφωση παραμέτρων",
+              },
               badge: "TODO",
               items: [
                 {
                   label: "Dortania guide (temporary)",
+                  translations: {
+                    gr: "Οδηγός Dortania (προσωρινό)",
+                  },
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
                 },
               ],
@@ -93,6 +117,9 @@ export default defineConfig({
         },
         {
           label: "Troubleshooting",
+          translations: {
+            gr: "Αντιμετώπηση προβλημάτων",
+          },
           badge: "TODO",
           collapsed: true,
           items: [],
