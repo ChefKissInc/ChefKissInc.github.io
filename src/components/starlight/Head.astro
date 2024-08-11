@@ -7,7 +7,11 @@ import PageOrder from "astro-vtbot/components/starlight/PageOrder.astro";
 import ProgressBar from "astro-vtbot/components/ProgressBar.astro";
 import AutoNameSelected from "astro-vtbot/components/AutoNameSelected.astro";
 
-const ogImageUrl = new URL(`/og/${Astro.props.slug || "index"}.png`, Astro.site);
+let imagePath = `${Astro.props.slug || "index"}.png`;
+if (Astro.props.isFallback) {
+	imagePath = 'en' + imagePath.slice(imagePath.indexOf('/'));
+}
+const ogImageUrl = `/og/${imagePath}`;
 ---
 
 <VtbotStarlight {...Astro.props} transition:animate="fade" replaceSidebarContent>
