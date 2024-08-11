@@ -94,6 +94,7 @@ export default defineConfig({
         {
           label: "Troubleshooting",
           badge: "TODO",
+          collapsed: true,
           items: [],
         },
       ],
