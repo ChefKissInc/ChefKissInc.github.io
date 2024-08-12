@@ -22,18 +22,18 @@ export default defineConfig({
       },
       plugins: [
         starlightImageZoom(),
-        starlightBlog({
-          title: "Newsroom",
-          prefix: "newsroom",
-          authors: {
-            visual: {
-              name: "Visual Ehrmanntraut",
-              title: "CEO",
-              picture: "/Avatars/Visual.png",
-              url: "https://github.com/VisualEhrmanntraut",
-            },
-          },
-        }),
+        // starlightBlog({
+        //   title: "Newsroom",
+        //   prefix: "newsroom",
+        //   authors: {
+        //     visual: {
+        //       name: "Visual Ehrmanntraut",
+        //       title: "CEO",
+        //       picture: "/Avatars/Visual.png",
+        //       url: "https://github.com/VisualEhrmanntraut",
+        //     },
+        //   },
+        // }),
         starlightLinksValidator(),
       ],
       title: "ChefKiss",
@@ -48,7 +48,7 @@ export default defineConfig({
       customCss: ["~/base.css"],
       components: {
         Head: "~/components/starlight/Head.astro",
-        MarkdownContent: "~/components/starlight/MarkdownContent.astro",
+        // MarkdownContent: "~/components/starlight/MarkdownContent.astro",
         ThemeProvider: "~/components/starlight/ThemeProvider.astro",
         ThemeSelect: "~/components/starlight/ThemeSelect.astro",
         SocialIcons: "~/components/starlight/SocialIcons.astro",
