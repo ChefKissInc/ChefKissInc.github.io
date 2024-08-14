@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import embeds from "astro-embed/integration";
 import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
-import starlightBlog from "starlight-blog";
+// import starlightBlog from "starlight-blog";
 import starlightLinksValidator from "starlight-links-validator";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
