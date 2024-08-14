@@ -6,9 +6,11 @@ on:
 
 jobs:
   run:
-    if: github.actor != 'dependabot[bot]'
+    if: github.actor != 'dependabot[bot]' && github.actor != 'VisualEhrmanntraut'
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-    - uses: superbrothers/close-pull-request@v3
-      with:
-        comment: "We do not accept PRs. If you'd like to propose a change, please contact us at our Telegram supergroup."
+      - uses: superbrothers/close-pull-request@v3
+        with:
+          comment: "We do not accept PRs. If you'd like to propose a change, please contact us at our Telegram supergroup."
