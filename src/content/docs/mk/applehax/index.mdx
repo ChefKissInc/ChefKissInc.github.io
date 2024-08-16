@@ -1,0 +1,21 @@
+---
+title: AppleHax
+description: Нашите Apple-поврзани проекти.
+template: splash
+hero:
+  tagline: Нашите Apple-поврзани проекти.
+next: false
+prev:
+  link: /
+  label: Home
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="QEMU Apple Silicon" description="Apple Silicon емулатор базиран на QEMU." href="/mk/applehax/qemu-as" />
+  <LinkCard title="NootedRed" description="Kext-от за AMD интегрирани графички." href="/mk/applehax/nootedred" />
+  <LinkCard title="NootRX" description="AMD rDNA 2 dGPU kext за поддршка." href="/mk/applehax/nootrx" />
+  <LinkCard title="SMCRadeonSensors" description="Plug-in за читање на температури на AMD графички картички." href="/mk/applehax/smcrs" />
+  <LinkCard title="ForgedInvariant" description="Intel & AMD Процесори за синхронизирање TSC kext." href="/mk/applehax/forgedinvariant" />
+</CardGrid>
