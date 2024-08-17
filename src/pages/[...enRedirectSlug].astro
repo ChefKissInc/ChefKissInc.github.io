@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { englishPages } from '~/content';
+
+export const stripLangFromSlug = (slug: CollectionEntry<'docs'>['slug']) => {
+    let index = slug.indexOf("/");
+	if (index == -1) {
+	    return slug;
+	} else {
+	    return slug.slice(index + 1);
+	}
+};
+
+export async function getStaticPaths() {
+	return englishPages.map((page) => {
+		return {
+			params: {
+				enRedirectSlug: stripLangFromSlug(page.slug),
+			},
+			props: {
+				englishSlug: page.slug,
+			},
+		};
+	});
+}
+---
+
+<meta http-equiv="refresh" content={`0;url=/${Astro.props.englishSlug}`} />
