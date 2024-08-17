@@ -28,7 +28,7 @@ export default defineConfig({
         ro: { label: "română" },
         it: { label: "Italiano" },
         es: { label: "Español" },
-		mk: { label: "Македонски" },
+	mk: { label: "Македонски" },
       },
       plugins: [
         starlightImageZoom(),
@@ -72,7 +72,7 @@ export default defineConfig({
           label: "Installation",
           translations: {
             gr: "Εγκατάσταση",
-			mk: "Инсталација",
+	    mk: "Инсталација",
           },
           items: [
             "guides/hackintosh",
@@ -81,7 +81,7 @@ export default defineConfig({
               label: "Gathering Files",
               translations: {
                 gr: "Συγκέντρωση αρχείων",
-				mk: "Собирање на Фајлови",
+		mk: "Собирање на Фајлови",
               },
               items: [
                 "guides/hackintosh/gathering-files",
@@ -90,7 +90,7 @@ export default defineConfig({
                   label: "Installer",
                   translations: {
                     gr: "Εγκαταστάτης",
-					mk: "Инсталер",
+		    mk: "Инсталер",
                   },
                   items: [
                     "guides/hackintosh/gathering-files/installer",
@@ -105,7 +105,7 @@ export default defineConfig({
               label: "Configuration",
               translations: {
                 gr: "Διαμόρφωση παραμέτρων",
-				mk: "Конфигурација",
+		mk: "Конфигурација",
               },
               badge: "TODO",
               items: [
@@ -113,7 +113,7 @@ export default defineConfig({
                   label: "Dortania guide (temporary)",
                   translations: {
                     gr: "Οδηγός Dortania (προσωρινό)",
-					mk: "Водство Dortania (привремено)",
+		    mk: "Водство Dortania (привремено)",
                   },
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
                 },
@@ -125,7 +125,7 @@ export default defineConfig({
           label: "Troubleshooting",
           translations: {
             gr: "Αντιμετώπηση προβλημάτων",
-			mk: "Поправање на проблем",
+	    mk: "Поправање на проблем",
           },
           badge: "TODO",
           collapsed: true,
