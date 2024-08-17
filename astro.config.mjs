@@ -2,13 +2,14 @@ import { defineConfig } from "astro/config";
 import embeds from "astro-embed/integration";
 import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
-// import starlightBlog from "starlight-blog";
+import starlightBlog from "starlight-blog";
 import starlightLinksValidator from "starlight-links-validator";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 
 export default defineConfig({
   site: "https://chefkissinc.github.io",
+  trailingSlash: "always",
   integrations: [
     embeds({
       services: {
@@ -16,25 +17,28 @@ export default defineConfig({
       },
     }),
     starlight({
-      defaultLocale: "en",
+      defaultLocale: "root",
       locales: {
-        en: { label: "English" },
+        root: { label: "English", lang: "en" },
       },
       plugins: [
         starlightImageZoom(),
-        // starlightBlog({
-        //   title: "Newsroom",
-        //   prefix: "newsroom",
-        //   authors: {
-        //     visual: {
-        //       name: "Visual Ehrmanntraut",
-        //       title: "CEO",
-        //       picture: "/Avatars/Visual.png",
-        //       url: "https://github.com/VisualEhrmanntraut",
-        //     },
-        //   },
-        // }),
-        starlightLinksValidator(),
+        starlightBlog({
+          title: "Newsroom",
+          prefix: "newsroom",
+          authors: {
+            visual: {
+              name: "Visual Ehrmanntraut",
+              title: "CEO",
+              picture: "/Avatars/Visual.png",
+              url: "https://github.com/VisualEhrmanntraut",
+            },
+          },
+        }),
+        starlightLinksValidator({
+          errorOnFallbackPages: false,
+          errorOnInconsistentLocale: true,
+        }),
       ],
       title: "ChefKiss",
       logo: {
@@ -48,7 +52,7 @@ export default defineConfig({
       customCss: ["~/base.css"],
       components: {
         Head: "~/components/starlight/Head.astro",
-        // MarkdownContent: "~/components/starlight/MarkdownContent.astro",
+        MarkdownContent: "~/components/starlight/MarkdownContent.astro",
         ThemeProvider: "~/components/starlight/ThemeProvider.astro",
         ThemeSelect: "~/components/starlight/ThemeSelect.astro",
         SocialIcons: "~/components/starlight/SocialIcons.astro",
