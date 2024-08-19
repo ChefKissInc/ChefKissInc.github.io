@@ -77,6 +77,7 @@ export default defineConfig({
           translations: {
             gr: "Εγκατάσταση",
             mk: "Инсталација",
+            ar: "التثبيت",
           },
           items: [
             "guides/hackintosh",
@@ -86,6 +87,7 @@ export default defineConfig({
               translations: {
                 gr: "Συγκέντρωση αρχείων",
                 mk: "Собирање на Фајлови",
+                ar: "جمع الملفات",
               },
               items: [
                 "guides/hackintosh/gathering-files",
@@ -95,6 +97,7 @@ export default defineConfig({
                   translations: {
                     gr: "Εγκαταστάτης",
                     mk: "Инсталер",
+                    ar: "المثبت",
                   },
                   items: [
                     "guides/hackintosh/gathering-files/installer",
@@ -110,6 +113,7 @@ export default defineConfig({
               translations: {
                 gr: "Διαμόρφωση παραμέτρων",
                 mk: "Конфигурација",
+                ar: "التكوين",
               },
               badge: "TODO",
               items: [
@@ -118,6 +122,7 @@ export default defineConfig({
                   translations: {
                     gr: "Οδηγός Dortania (προσωρινό)",
                     mk: "Водство Dortania (привремено)",
+                    ar: "دليل Dortania (مؤقت)",
                   },
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
                 },
@@ -130,6 +135,7 @@ export default defineConfig({
           translations: {
             gr: "Αντιμετώπηση προβλημάτων",
             mk: "Поправање на проблем",
+            ar: "اكتشاف الأخطاء وإصلاحها",
           },
           badge: "TODO",
           collapsed: true,
