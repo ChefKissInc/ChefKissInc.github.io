@@ -20,7 +20,7 @@ import Aside from '~/components/Aside.astro';
 </Aside>
 
 <Aside type="danger">
-هناك بعض الأشياء في نظام macOS لا تعمل بشكل صحيح مع وحدة المعالجة المركزية AMD, انظر [أدناه](#amd-cpu-incompatibilities).
+هناك بعض الأشياء في نظام macOS لا تعمل بشكل صحيح مع وحدة المعالجة المركزية AMD, انظر [أدناه](#عدم-توافقات-وحدة-المعالجة-المركزية-amd).
 </Aside>
 
 ### متطلبات وحدة المعالجة المركزية
@@ -34,7 +34,7 @@ import Aside from '~/components/Aside.astro';
 - `SSE3` مطلوب لجميع إصدارات Intel من macOS
 - `SSSE3` مطلوب لجميع إصدارات 64 بت من macOS
 - `SSE4` مطلوب لـ `macOS 10.12` حتى، لا يشمل، `macOS 10.14`
-- `SSE4.2` مطلوب لـ `macOS 10.14`+ وأحدث برامج تشغيل AMD GPU. تجنب `SSE4.1` - وحدات المعالجة المركزية فقط إن أمكن. قد يعمل مع بعض الاختراقات؛ انظر [جمع الملفات > Kexts](/guides/hackintosh/gathering-files/kexts/)
+- `SSE4.2` مطلوب لـ `macOS 10.14`+ وأحدث برامج تشغيل AMD GPU. تجنب `SSE4.1` - وحدات المعالجة المركزية فقط إن أمكن. قد يعمل مع بعض الاختراقات؛ انظر [جمع الملفات > Kexts](/ar/guides/hackintosh/gathering-files/kexts/)
 
 ### عدم توافقات وحدة المعالجة المركزية AMD
 
@@ -79,8 +79,8 @@ import Aside from '~/components/Aside.astro';
 ### وحدات معالجة الرسوميات AMD
 
 - وحدات معالجة الرسوميات [GCN](https://en.wikipedia.org/wiki/Graphics_Core_Next) و [RDNA](<https://en.wikipedia.org/wiki/RDNA_(microarchitecture)>) مدعومة في أحدث إصدارات macOS.
-- لا يتم دعم وحدات معالجة الرسوميات RDNA 3، كما لا يتم دعم Navi 24 (حتى الآن). Navi 22 مدعوم بواسطة [`NootRX`](/applehax/nootrx/)
-- [Raven](https://www.techpowerup.com/gpu-specs/amd-raven.g816) و [Renoir](https://www.techpowerup.com/gpu-specs/amd-renoir.g1058) AMD iGPUs مدعومة عبر [`NootedRed`](/applehax/nootedred/).
+- لا يتم دعم وحدات معالجة الرسوميات RDNA 3، كما لا يتم دعم Navi 24 (حتى الآن). Navi 22 مدعوم بواسطة [`NootRX`](/ar/applehax/nootrx/)
+- [Raven](https://www.techpowerup.com/gpu-specs/amd-raven.g816) و [Renoir](https://www.techpowerup.com/gpu-specs/amd-renoir.g1058) AMD iGPUs مدعومة عبر [`NootedRed`](/ar/applehax/nootedred/).
 - أجيال iGPU الأخرى (GCN \<5، RDNA) **غير** مدعومة على الإطلاق (حتى الآن).
 - [Baffin](https://www.techpowerup.com/gpu-specs/amd-baffin.g796) يتم دعم وحدات معالجة الرسومات AMD في أحدث إصدار من macOS.
 - [Ellesmere](https://www.techpowerup.com/gpu-specs/amd-ellesmere.g795) يتم دعم وحدات معالجة الرسومات AMD في أحدث إصدار من macOS.
