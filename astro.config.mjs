@@ -25,7 +25,6 @@ export default defineConfig({
         pl: { label: "Polski" },
         ar: { label: "عربي", direction: "rtl" },
         uk: { label: "Українська" },
-        lt: { label: "Lietuvių kalba" },
         ro: { label: "română" },
         it: { label: "Italiano" },
         es: { label: "Español" },
