@@ -20,6 +20,15 @@ export default defineConfig({
       defaultLocale: "root",
       locales: {
         root: { label: "English", lang: "en" },
+        gr: { label: "Ελληνικά" },
+        ru: { label: "Русский" },
+        pl: { label: "Polski" },
+        ar: { label: "عربي", direction: "rtl" },
+        uk: { label: "Українська" },
+        ro: { label: "română" },
+        it: { label: "Italiano" },
+        es: { label: "Español" },
+        mk: { label: "Македонски" },
       },
       plugins: [
         starlightImageZoom(),
@@ -65,16 +74,31 @@ export default defineConfig({
       sidebar: [
         {
           label: "Installation",
+          translations: {
+            gr: "Εγκατάσταση",
+            mk: "Инсталација",
+            ar: "التثبيت",
+          },
           items: [
             "guides/hackintosh",
             "guides/hackintosh/compatibility",
             {
               label: "Gathering Files",
+              translations: {
+                gr: "Συγκέντρωση αρχείων",
+                mk: "Собирање на Фајлови",
+                ar: "جمع الملفات",
+              },
               items: [
                 "guides/hackintosh/gathering-files",
                 "guides/hackintosh/gathering-files/opencore",
                 {
                   label: "Installer",
+                  translations: {
+                    gr: "Εγκαταστάτης",
+                    mk: "Инсталер",
+                    ar: "المثبت",
+                  },
                   items: [
                     "guides/hackintosh/gathering-files/installer",
                     "guides/hackintosh/gathering-files/installer/online",
@@ -86,10 +110,20 @@ export default defineConfig({
             },
             {
               label: "Configuration",
+              translations: {
+                gr: "Διαμόρφωση παραμέτρων",
+                mk: "Конфигурација",
+                ar: "التكوين",
+              },
               badge: "TODO",
               items: [
                 {
                   label: "Dortania guide (temporary)",
+                  translations: {
+                    gr: "Οδηγός Dortania (προσωρινό)",
+                    mk: "Водство Dortania (привремено)",
+                    ar: "دليل Dortania (مؤقت)",
+                  },
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
                 },
               ],
@@ -98,6 +132,11 @@ export default defineConfig({
         },
         {
           label: "Troubleshooting",
+          translations: {
+            gr: "Αντιμετώπηση προβλημάτων",
+            mk: "Поправање на проблем",
+            ar: "اكتشاف الأخطاء وإصلاحها",
+          },
           badge: "TODO",
           collapsed: true,
           items: [],

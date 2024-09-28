@@ -1,0 +1,75 @@
+---
+title: Εντός σύνδεσης
+description: Κατεβάστε το επίσημο ελάχιστο περιβάλλον recoveryOS.
+next:
+  link: /gr/guides/hackintosh/gathering-files/acpi/
+  label: ACPI
+---
+
+import Aside from '~/components/Aside.astro';
+
+<Aside type="caution">
+Αυτή η ενότητα απαιτεί την εγκατάσταση του [Python](https://www.python.org/downloads/).
+</Aside>
+
+<Aside type="caution">
+Οι χρήστες των Windows θα πρέπει να έχουν προσθέσει την Python στο PATH, καθώς και να έχουν απενεργοποιήσει τον περιορισμό μήκους του PATH. Ελέγξτε την επιλογή `Add python.exe to PATH` στον εγκαταστάτη στο κάτω μέρος, και στο τέλος της εγκατάστασης κάντε κλικ στο `Disable path length limit` (απαιτούνται δικαιώματα διαχειριστή).
+</Aside>
+
+Θα χρησιμοποιήσουμε το βοηθητικό πρόγραμμα `macrecovery.py` που περιλαμβάνεται στο OpenCore.
+
+## Εύρεση της εντολής που θα εκτελέσετε
+
+Ο παρακάτω πίνακας βασίζεται στο αρχείο `recovery_urls.txt` από το `macrecovery`
+
+| Έκδοση macOS              | Εντολή                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------ |
+| OS X Lion (10.7)          | `python3 macrecovery.py -b Mac-2E6FAB96566FE58C -m 00000000000F25Y00 download` |
+| OS X Mountain Lion (10.8) | `python3 macrecovery.py -b Mac-7DF2A3B5E5D671ED -m 00000000000F65100 download` |
+| OS X Mavericks (10.9)     | `python3 macrecovery.py -b Mac-F60DEB81FF30ACF6 -m 00000000000FNN100 download` |
+| OS X Yosemite (10.10)     | `python3 macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000GDVW00 download` |
+| OS X El Capitan (10.11)   | `python3 macrecovery.py -b Mac-FFE5EF870D7BA81A -m 00000000000GQRX00 download` |
+| macOS Sierra (10.12)      | `python3 macrecovery.py -b Mac-77F17D7DA9285301 -m 00000000000J0DX00 download` |
+| macOS High Sierra (10.13) | `python3 macrecovery.py -b Mac-7BA5B2D9E42DDD94 -m 00000000000J80300 download` |
+| macOS Mojave (10.14)      | `python3 macrecovery.py -b Mac-7BA5B2DFE22DDD8C -m 00000000000KXPG00 download` |
+| macOS Catalina (10.15)    | `python3 macrecovery.py -b Mac-CFF7D910A743CAAF -m 00000000000PHCD00 download` |
+| macOS Big Sur (11)        | `python3 macrecovery.py -b Mac-2BD1B31983FE1663 -m 00000000000000000 download` |
+| macOS Monterey (12)       | `python3 macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download` |
+| macOS Ventura (13)        | `python3 macrecovery.py -b Mac-B4831CEBD52A0C4C -m 00000000000000000 download` |
+| macOS Sonoma (14)         | `python3 macrecovery.py -b Mac-937A206F2EE63C01 -m 00000000000000000 download` |
+
+## Εκτέλεση της εντολής
+
+Ανοίξτε ένα τερματικό (`cmd` στα Windows) και αλλάξτε τον κατάλογο σε `OpenCorePkg/Utilities/macrecovery`.
+
+```bash
+cd ~/Downloads/OCStuff
+cd OpenCorePkg/Utilities/macrecovery
+```
+
+Τώρα, εκτελέστε την εντολή που αντιστοιχεί στην έκδοση του macOS που θέλετε να εγκαταστήσετε.
+
+Αντιγράψτε και επικολλήστε την εντολή στην γραμμή εντολών που ανοίξατε προηγουμένως.
+
+Για παράδειγμα, αν θέλετε να κατεβάσετε το macOS Ventura (13).
+
+```bash
+cd ~/Downloads/OCStuff
+cd OpenCorePkg/Utilities/macrecovery
+python3 macrecovery.py -b Mac-B4831CEBD52A0C4C -m 00000000000000000 download
+```
+
+<Aside type="caution">
+Οι χρήστες των Windows μπορεί να χρειαστεί να χρησιμοποιήσουν `py -3` ή `python` αντί για `python3`.
+</Aside>
+
+## Έλεγχος των αρχείων
+
+Μετά την ολοκλήρωση της εκτέλεσης του script, θα υπάρχει ένας νέος φάκελος με το όνομα `com.apple.recovery.boot` μέσα στον τρέχοντα κατάλογο του τερματικού (σε αυτή την περίπτωση, ο φάκελος `macrecovery`).
+
+Μέσα σε αυτόν, θα πρέπει να υπάρχουν είτε:
+
+- `BaseSystem.dmg` και `BaseSystem.chunklist`, ή
+- `RecoveryImage.dmg` και `RecoveryImage.chunklist`.
+
+Αν και τα δύο αρχεία σε οποιαδήποτε από τις δύο ομάδες είναι παρόντα, είμαστε εντάξει. Αντιγράψτε τον φάκελο `com.apple.recovery.boot` στον φάκελο `Drive` ή παρόμοια ονομασμένο
