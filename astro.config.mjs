@@ -47,6 +47,7 @@ export default defineConfig({
         starlightLinksValidator({
           errorOnFallbackPages: false,
           errorOnInconsistentLocale: true,
+          exclude: ["(/*)?/newsroom/"], // TODO: Remove this once Newsroom v2 lands!!
         }),
       ],
       title: "ChefKiss",
