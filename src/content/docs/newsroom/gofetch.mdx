@@ -1,0 +1,22 @@
+---
+title: |
+  GoFetch: A side-channel attack on Apple Silicon
+date: 2024-03-23
+lastUpdated: 2024-09-05
+author: visual
+tags: [Public hazard, Vulnerability, Apple Silicon]
+excerpt: An attack that exploits the memory-dependent prefetchers to extract cryptographic keys.
+description: An attack that exploits the memory-dependent prefetchers to extract cryptographic keys.
+---
+
+
+import { LinkPreview } from "astro-embed";
+import Aside from '~/components/Aside.astro';
+
+<Aside type="caution">
+**UPDATE:** It was discovered that the CPU has a chicken bit to disable DMPs. So it is fixable.
+</Aside>
+
+This is not fixable via software update.
+
+<LinkPreview id="https://gofetch.fail"/>
