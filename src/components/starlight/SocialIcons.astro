@@ -9,10 +9,6 @@ type SocialConfig = NonNullable<NonNullable<typeof config.social>[Platform]>;
 const links = Object.entries(config.social || {}) as [Platform, SocialConfig][];
 ---
 
-<a href="/newsroom/" rel="me" class="sl-flex">
-	<span class="sr-only">Newsroom</span>
-	<Icon name={"ph:newspaper-duotone"} />
-</a>
 {
 	links.length > 0 && (
 		<>

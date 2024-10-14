@@ -20,7 +20,7 @@ body {
 
 body,
 .sidebar > .sidebar-pane {
-  @apply bg-[#000000] !important;
+  @apply dark:bg-[#000000] !important;
 }
 
 .sidebar > .sidebar-pane {
@@ -28,11 +28,11 @@ body,
 }
 
 header.header {
-  @apply backdrop-blur-md bg-neutral-900/90 border-b-[var(--sl-color-gray-6)] !important;
+  @apply backdrop-blur-md dark:bg-neutral-900/90 border-b-[var(--sl-color-gray-6)] !important;
 }
 
 dialog {
-  @apply transition-all opacity-0 translate-y-2 flex pointer-events-none border-solid border rounded-lg border-gray-700 bg-gray-900 !important;
+  @apply transition-all opacity-0 translate-y-2 flex pointer-events-none border-solid border rounded-lg border-gray-700 dark:bg-gray-900 !important;
 }
 
 dialog[open] {
@@ -74,14 +74,15 @@ code,
 }
 
 article.preview {
-  @apply border-solid border rounded-lg border-gray-800 bg-neutral-900/90 p-4 !important;
+  @apply border-solid border rounded-lg border-gray-300 dark:border-gray-800 bg-neutral-100/90 dark:bg-neutral-900/90 p-4 !important;
+  box-shadow: var(--sl-shadow-sm) !important;
 }
 
 .link-preview {
   --link-preview-corners: 0.5em;
   --link-preview-padding-inline: 0.75rem;
-  @apply border-solid border border-gray-700 bg-gray-900 bg-neutral-800/90 !important;
-  box-shadow: var(--sl-shadow-sm);
+  @apply border-solid border border-gray-300 dark:border-gray-800 bg-neutral-100/90 dark:bg-neutral-900/90 !important;
+  box-shadow: var(--sl-shadow-sm) !important;
 }
 
 .link-preview a {
