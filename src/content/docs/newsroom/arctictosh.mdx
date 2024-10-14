@@ -1,0 +1,84 @@
+---
+title: Announcing Arctictosh
+date: 2024-09-28
+author: visual
+tags: [ChefKiss, macOS, Arctictosh, Update]
+excerpt: It's time to rethink the Hackintosh experience.
+description: It's time to rethink the Hackintosh experience.
+---
+
+I think that it's time to rethink the Hackintosh experience.
+
+Why are we all going through all this pain of following long and boring guides, configuring and troubleshooting configurations, SSDTs, kexts, etc?
+
+Just to feel like we've accomplished something? Or because we've just been told this is just how things must be?
+
+I want to change this fact. I want to make it so you can have the same magic feeling from a real Mac, where you boot macOS and it just works.
+
+That is why I'm going to pause work on all other Hackintosh projects, and focus on this new Hackintosh game changer.
+
+I am calling this new experience Arctictosh.
+
+## Project description
+
+A real Mac-like experience on standard PCs. Just download the project, the installer from Apple, shove them to a USB, and it works. A experience truly close to real Macs. No modifications required to the OS and no manual labour required by the user.
+
+Everything will be written in the Rust programming language, even the kexts. Using powerful and lightning fast bindings to Apple's kernel APIs. And the boot-loader well-built, stable, modern and lightning-fast as well.
+
+With powerful patching capabilities:
+- Inject kexts to any load stage: boot (prelinkedkernel & co.), system (/S/L/E) and auxiliary (/L/E). No more disabling SIP to add kexts that can't be injected early!
+- Inject personalities from patcher kexts.
+- Global file directory for use to provide firmware without storing all blobs for all possible combinations of hardware supported by a kext.
+- Patch the kernel and any kext using safe and modern APIs. Sanity checks everywhere, no silent failures.
+- Inject and patch anything in user-space with no caveats. Insert or patch arbitrary code in order to extend macOS' functionality. Patches will not be done with find/replace on the files like Lilu plug-ins are currently doing, which causes issues on e.g. updates.
+
+## Included software overview
+
+### `Iceberg`
+
+The Arctictosh boot-loader. This boot-loader will launch macOS on its own without relying on boot.efi. Essentially will be a replacement of boot.efi but for standard x86 PCs.
+
+Required changes to ACPI will be made automatically upon internal detection. Same for kernel patches. Also planned support for old macOS versions on AMD systems and potentially replacing the reliance to the TSC with more stable time-tracking methods like ACPI Timer, APIC Timer, etc.
+
+Configuration of assets used by the boot-loader (e.g. kexts) will be automatic by the boot-loader or via specifically-designed GUI/TUI application. Iceberg will include prompts on changes made to the assets to prevent malicious attacks, allowing you to reject booting an unintentionally/externally modified EFI.
+
+### `PenguinWizardry`
+
+The Arctictosh macOS patcher kext. The features of it were already mentioned in the main post.
+
+### `PenguinAirlines`
+
+Unofficial official drivers for non-natively supported Wi-Fi chips.
+
+Individual kext names:
+
+- `RealtekAir` (for Realtek PCI and USB chips).
+- `IntelWings` (for Intel PCI chips).
+- `AtherosJet` (for Atheros 10k chips (aka Qualcomm Atheros & related), maybe 9k in the future)
+- `MediatekTransports` (for Mediatek PCI chips).
+
+(no particular implementation order)
+
+### `SnowyVega`
+
+prev. NootedRed.
+
+### `FrozenRDNA2`
+
+prev. NootRX.
+
+### `RedPlatformSupport`
+
+IOPlatformPlugin, SMC temperature, wattage reading, etc. implementation for AMD platforms. Correctly done power management on AMD systems running macOS.
+
+### `ForgedSMC`
+
+A fast and stable emulation of the SMC required to run macOS. With better APIs and more features than ever before: e.g. adaptive SMC key naming depending on selected SMBIOS.
+
+...and many others, crafted with love and dedication!
+
+--------
+
+Some of these features will also be ported in the future to ARM macOS and iOS, to be used inside of my Apple Silicon emulation software for example!
+
+**There is no established ETA, just be patient for now. Make some hot cocoa, sit down, relax and wait!**

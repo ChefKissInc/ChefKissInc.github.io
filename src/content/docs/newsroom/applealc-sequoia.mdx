@@ -1,0 +1,29 @@
+---
+title: Fixed AppleALC on macOS Sequoia for AMD
+date: 2024-09-06
+lastUpdated: 2024-09-29
+author: visual
+tags: [macOS, macOS Sequoia, Audio, Update]
+excerpt: Temporary workaround.
+description: Temporary workaround.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+I've noticed a lot of users complaining that AppleALC is not working on an AMD system using macOS Sequoia.
+
+I took a look at the patches and noticed that they don't apply anymore.
+
+Unfortunately, a proper fix for those specific patches is not possible because the compiler was updated and there is no space for one of them.
+
+So, with this build, any controller vendor ID is now valid. This may cause unintended side-effects.
+
+It should be enough until it's either properly fixed or IntergalacticAudio is released.
+
+Don't ask me for the source code, I don't have it anymore; I just went in, searched for the patches in Binary Ninja, fixed what I could, made a build, then deleted the code.
+
+I hope it helps you.
+
+<LinkButton href="/Extras/Kexts/AppleALC-1.9.2-RELEASE.zip">
+Download
+</LinkButton>
