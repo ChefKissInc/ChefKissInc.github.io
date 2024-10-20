@@ -38,5 +38,22 @@
   "pagefind.one_result": "[COUNT] αποτέλεσμα για [SEARCH_TERM]",
   "pagefind.alt_search": "Δεν υπάρχουν αποτελέσματα για [SEARCH_TERM]. Εμφάνιση αποτελεσμάτων για [DIFFERENT_TERM]",
   "pagefind.search_suggestion": "Δεν υπάρχουν αποτελέσματα για [SEARCH_TERM]. Δοκιμάστε μία από τις ακόλουθες αναζητήσεις:",
-  "pagefind.searching": "Αναζήτηση για [SEARCH_TERM]..."
+  "pagefind.searching": "Αναζήτηση για [SEARCH_TERM]...",
+  "starlightBlog.authors.count_one": "{{count}} αναρτήση από τον {{author}}",
+  "starlightBlog.authors.count_other": "{{count}} αναρτήσεις από τον {{author}}",
+  "starlightBlog.pagination.prev": "Νεότερες αναρτήσεις",
+  "starlightBlog.pagination.next": "Παλαιότερες αναρτήσεις",
+  "starlightBlog.post.lastUpdate": " - Τελευταία ενημέρωση: {{date}}",
+  "starlightBlog.post.draft": "Προσχέδιο",
+  "starlightBlog.post.featured": "Προβεβλημένη",
+  "starlightBlog.post.tags": "Ετικέτες:",
+  "starlightBlog.rss.imageFallback": "Η πρωτότυπη εικόνα είναι διαθέσιμη στην ανάρτηση ιστολογίου.",
+  "starlightBlog.sidebar.all": "Όλες οι αναρτήσεις",
+  "starlightBlog.sidebar.featured": "Προβεβλημένες αναρτήσεις",
+  "starlightBlog.sidebar.recent": "Πρόσφατες αναρτήσεις",
+  "starlightBlog.sidebar.tags": "Ετικέτες",
+  "starlightBlog.sidebar.authors": "Συγγραφείς",
+  "starlightBlog.sidebar.rss": "RSS",
+  "starlightBlog.tags.count_one": "{{count}} ανάρτηση με την ετικέτα “{{tag}}”",
+  "starlightBlog.tags.count_other": "{{count}} αναρτήσεις με την ετικέτα “{{tag}}”"
 }
