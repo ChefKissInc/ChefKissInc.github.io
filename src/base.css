@@ -5,8 +5,8 @@
 :root {
   --sl-nav-height: 3rem;
   --ec-brdRad: 0.5rem;
-  --sl-color-text-accent: theme("colors.emerald.500");
-  --sl-color-bg-accent: theme("colors.emerald.500");
+  --sl-color-text-accent: theme("colors.sky.500");
+  --sl-color-bg-accent: theme("colors.sky.500");
   --sl-color-text-invert: #000000;
 }
 
