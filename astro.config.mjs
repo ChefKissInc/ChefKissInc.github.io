@@ -43,7 +43,7 @@ export default defineConfig({
       ],
       title: "ChefKiss",
       logo: {
-        src: "~/assets/Logo.svg",
+        src: "~/assets/CKPenguin.svg",
         replacesTitle: true,
       },
       tableOfContents: {
