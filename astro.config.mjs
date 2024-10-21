@@ -58,7 +58,7 @@ export default defineConfig({
       },
       social: {
         github: "https://github.com/ChefKissInc",
-        telegram: "https://t.me/ChefKissInc",
+        telegram: "https://t.me/+Bx3MO9Hq8whhNzk9",
       },
       sidebar: [
         {
