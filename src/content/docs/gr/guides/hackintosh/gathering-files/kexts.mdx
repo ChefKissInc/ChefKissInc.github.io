@@ -1,0 +1,240 @@
+---
+title: Kexts
+description: Η επιλογή των επεκτάσεων πυρήνα macOS για Hackintoshes.
+---
+
+import Aside from '~/components/Aside.astro';
+
+Οδηγοί πυρήνα macOS. Το OpenCore μπορεί να εισαγάγει ή να αποκλείσει προγράμματα οδήγησης. Τα τοποθετείτε στο `EFI/OC/Kexts`, αλλά πρέπει επίσης να καθοριστούν στο `Config.plist`. Θα φροντίσουμε για το τελευταίο σε ένα μεταγενέστερο βήμα.
+
+<Aside type="tip" title="Το ήξερες;">
+Το Kext σημαίνει Kernel EXTension (Επέκταση Πυρήνα). Γουάου!
+</Aside>
+
+<Aside type="note">
+Στο macOS, τα kext εμφανίζονται ως ειδικός τύπος αρχείου με ένα λευκό κομμάτι Lego ως εικονίδιο.
+
+Σε άλλα λειτουργικά συστήματα, τα kext εμφανίζονται ως απλοί φάκελοι που τελειώνουν σε `.kext`.
+</Aside>
+
+## Απαραίτητα
+
+<Aside type="danger">
+Δεν μπορείτε να εκκινήσετε καθόλου χωρίς αυτά.
+</Aside>
+
+- [`Lilu`](https://github.com/acidanthera/Lilu) (10.4+)
+
+  Κάνει αυθαίρετο patching kext, βιβλιοθήκης και προγράμματος μέσα στο macOS.
+
+- [`VirtualSMC`](https://github.com/acidanthera/VirtualSMC) (10.4+)
+
+  Εξομοιώνει το SMC της Apple.
+
+## Πρόσθετα VirtualSMC
+
+- `SMCProcessor` (10.7+)
+
+  Παρακολουθεί τις θερμοκρασίες της CPU σε Intel. Συμπεριλαμβάνεται με το VirtualSMC.
+
+- [`SMCProcessorAMD`](https://github.com/Lorys89/SMCProcessorAMD) (10.13+)
+
+  Παρακολουθεί τις θερμοκρασίες της CPU σε AMD.
+
+- [`SMCRadeonSensors`](https://github.com/ChefKissInc/SMCRadeonSensors) (10.15+)
+
+  Παρακολουθεί τις θερμοκρασίες GPU της AMD. Υποστηρίζει τις ενσωματωμένες κάρτες γραφικών (iGPU) της AMD.
+
+- `SMCSuperIO` (10.6, μόνο 64-bit)
+
+  Παρακολουθεί τις ταχύτητες του ανεμιστήρα. Συμπεριλαμβάνεται με το VirtualSMC. **Μην** το χρησιμοποιείτε σε AMD.
+
+- `SMCBatteryManager` (10.4)
+
+  Παρακολουθεί την κατάσταση της μπαταρίας του φορητού υπολογιστή. Συμπεριλαμβάνεται με το VirtualSMC. **Μην** το χρησιμοποιείτε σε επιτραπέζια συστήματα.
+
+- `SMCLightSensor` (10.6, μόνο 64-bit)
+
+  Προσθέτει υποστήριξη για τον αισθητήρα φωτός περιβάλλοντος ACPI. Συμπεριλαμβάνεται με το VirtualSMC. **Μην** το χρησιμοποιείτε σε επιτραπέζια συστήματα.
+
+- `SMCDellSensors` (10.7+)
+
+  Παρακολουθεί τις ταχύτητες του ανεμιστήρα σε συστήματα Dell που υποστηρίζουν την System Management Mode (SMM). Συμπεριλαμβάνεται με το VirtualSMC.
+
+## Γραφικά
+
+<Aside type="danger">
+Μπορείτε να χρησιμοποιήσετε μόνο ένα από τα παρακάτω kext. Συγκρούονται μεταξύ τους.
+</Aside>
+
+- [`NootRX`](https://github.com/ChefKissInc/NootRX) (11.0+)
+
+  Παρέχει διορθώσεις για κάρτες AMD Navi 2x, προσθέτει υποστήριξη για κάρτες Navi 22.
+
+- [`NootedRed`](https://github.com/ChefKissInc/NootedRed) (10.15+)
+
+  Παρέχει γραφική επιτάχυνση για τις ενσωματωμένες κάρτες γραφικών AMD Vega.
+
+- [`WhateverGreen`](https://github.com/acidanthera/WhateverGreen) (10.6+, μόνο για 64-bit)
+
+  Παρέχει διορθώσεις για Intel iGPU και για κάρτες γραφικών AMD και NVIDIA dGPU για να επιτρέψει την επιτάχυνση γραφικών, την επιδιόρθωση του framebuffer, τον έλεγχο του οπίσθιου φωτισμού κ.λπ.
+  Μην το συνδυάσετε με τα άλλα προαναφερθέντα kexts γραφικών.
+
+## Audio
+
+- [`AppleALC`](https://github.com/acidanthera/AppleALC) (10.4+)
+
+  Επιδιορθώνει την στοίβα ήχου της Apple (`AppleHDA`/`AppleGFXHDA`) για να επιτρέψει μη υποστηριζόμενους κωδικοποιητές ήχου και ήχο HDMI.
+
+## Ethernet
+
+- [`LucyRTL8125Ethernet`](https://github.com/Mieze/LucyRTL8125Ethernet) (10.14+)
+
+  Πρόγραμμα οδήγησης RTL8125 (2.5GBe Realtek), μεταφερμένο από Linux.
+
+- [`RealtekRTL8111`](https://github.com/Mieze/RTL8111_driver_for_OS_X) (10.14+)
+
+  Πρόγραμμα οδήγησης RTL8111 (1GBe Realtek), μεταφερμένο από Linux.
+
+- [`RealtekRTL8100`](https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/) (10.14+)
+
+  Πρόγραμμα οδήγησης RTL8100 (10/100MBe Realtek), μεταφερμένο από Linux.
+
+- [`AppleIGC`](https://github.com/SongXiaoXi/AppleIGC) (10.15+)
+
+  Πρόγραμμα οδήγησης Ethernet I225-V/I226-V, μεταφερμένο από Linux.
+
+- [`AppleIGB`](https://www.macos86.it/topic/6029-appleigb-and-intelmausi-integration/) (10.9+)
+
+  Διακλάδωση του `IntelMausi` για κάρτες δικτύου Intel I210 και I211.
+
+- [`IntelMausi`](https://github.com/acidanthera/IntelMausi) (10.9+, 10.6-10.8 with `IntelSnowMausi`)
+
+  Πρόγραμμα οδήγησης για τις περισσότερες κάρτες δικτύου Intel.
+
+- [`AtherosE2200Ethernet`](https://github.com/Mieze/AtherosE2200Ethernet) (10.12+)
+
+  Πρόγραμμα οδήγησης για τις περισσότερες κάρτες δικτύου Atheros.
+
+<Aside type="caution">
+Οι κάρτες Aquantia σε AMD χρειάζονται [τις διορθώσεις του CaseySJ](https://github.com/CaseySJ/Aquantia-macOS-Patches/blob/main/CaseySJ-Aquantia-Patch-Sets-1-and-2.plist).
+</Aside>
+
+## Wi-Fi/Bluetooth
+
+- [`Itlwm`](https://github.com/OpenIntelWireless/itlwm) (10.13+)
+
+  Υποστηρίζει τις περισσότερες κάρτες Wi-Fi Intel. Το `AirportItlwm` χρησιμοποιεί τη στοίβα Wi-Fi της macOS και το `Itlwm` χρησιμοποιεί το [`Heliport`](https://github.com/OpenIntelWireless/HeliPort) για σύνδεση σε δίκτυα.
+
+- [`IntelBluetoothFirmware`](https://github.com/OpenIntelWireless/IntelBluetoothFirmware)
+
+  Υποστηρίζει τις περισσότερες κάρτες Wi-Fi Intel. Στο macOS 11 και χαμηλότερα, πρέπει να χρησιμοποιήσετε και τα 3 παρεχόμενα kexts.
+
+  <Aside type="note">
+  Στο macOS 12+, πρέπει να χρησιμοποιήσετε `IntelBluetoothFirmware` και `IntelBTPatcher` από τα προαναφερθέντα, και `BlueToolFixup` από [`BrcmPatchRAM`](https://github.com/acidanthera/BrcmPatchRAM).
+  </Aside>
+
+- [`AirportBrcmFixup`](https://github.com/acidanthera/AirportBrcmFixup)
+
+  Επιδιορθώνει τα kexts AirPort για να επιτρέψει σε μη-εγγενείς κάρτες Broadcom να χρησιμοποιήσουν την ενσωματωμένη στοίβα Wi-Fi.
+
+- [`BrcmPatchRAM`](https://github.com/acidanthera/BrcmPatchRAM)
+
+  Επιδιορθώνει την στοίβα Bluetooth για να επιτρέψει σε μη-εγγενείς κάρτες Broadcom (και όλες τις άλλες στο macOS 12+ με `BlueToolFixup`) να χρησιμοποιήσουν την ενσωματωμένη στοίβα Bluetooth.
+
+<Aside type="tip">
+Εάν η κάρτα Wi-Fi δεν υποστηρίζεται και δεν έχετε Καλώδιο Δικτύου, μπορείτε να χρησιμοποιήσετε το `HoRNDIS` για να ενεργοποιήσετε την σύνδεση USB μέσω Android. Η σύνδεση USB μέσω iPhone δεν λειτουργεί στα `recoveryOS`.
+</Aside>
+
+## USB
+
+- [`XLNCUSBFix`](/Extras/Kexts/XLNCUSBFix.zip) (10.13+)
+
+  Διόρθωση USB **_μόνο_** για επεξεργαστές AMD FX.
+
+- [`GenericUSBXHCI (USB fix hack)`](https://github.com/RattletraPM/GUX-RyzenXHCIFix)
+
+  Μια τροποποιημένη έκδοση του `GenericUSBXHCI`, αποκλειστικά για την αντιμετώπιση ενός προβλήματος USB που εμφανίζεται κοντά στο "PCI Configuration End" όταν χρησιμοποιείτε φορητό υπολογιστή AMD. Μην το χρησιμοποιείτε αν δεν έχετε αυτό το πρόβλημα, δείτε το README για περισσότερες πληροφορίες.
+
+- [`USBToolBox`](https://github.com/USBToolBox/tool)
+
+  Εργαλείο χαρτογράφησης USB. Λειτουργεί καλύτερα στα Windows.
+
+  <Aside type="note">
+  Ενεργοποιήστε την επιλογή "Use Native Classes" στις ρυθμίσεις και μην χρησιμοποιείτε το `USBToolBox` kext.
+  Θα σας ζητήσει το επιλεγμένο SMBIOS κατά την κατασκευή, οπότε αποθηκεύστε αυτό ως το τελευταίο βήμα.
+  </Aside>
+
+- [`USBMap`](https://github.com/CorpNewt/USBMap)
+
+  Εργαλείο χαρτογράφησης USB. Λειτουργεί μόνο σε macOS.
+
+## Είσοδος
+
+- [`VoodooPS2`](https://github.com/acidanthera/VoodooPS2) (10.11+)
+
+  Οδηγός για περιφερειακά PS/2. Χρησιμοποιείται για πληκτρολόγια φορητών υπολογιστών ή ποντίκια/πληκτρολόγια PS/2 σε επιτραπέζιους υπολογιστές.
+
+- [`VoodooI2C`](/Extras/Kexts/VoodooI2C.zip) (10.13+)
+
+  Οδηγός για συσκευές εισόδου I2C. Ο σύνδεσμος οδηγεί σε μια προ-έκδοση με πρόσθετη υποστήριξη για ελεγκτές AMD I2C.
+
+  <details>
+  <summary>Δορυφόροι</summary>
+
+  <Aside type="danger">
+  Δεν μπορείτε να καταλάβετε τον τύπο της συσκευής μόνο από την επωνυμία ή το όνομα εμφάνισης.
+  </Aside>
+  <Aside type="danger">
+  Θα πρέπει να χρησιμοποιείτε μόνο έναν δορυφόρο, μην τους βάζετε όλους μαζί· μπορεί να συγκρουστούν.
+  </Aside>
+
+  | Τύπος συσκευής            | Δορυφόρος                                                                          |
+  | ------------------------- | ---------------------------------------------------------------------------------- |
+  | HID                       | `VoodooI2CHID`                                                                     |
+  | ELAN                      | `VoodooI2CELAN`                                                                    |
+  | FTE                       | `VoodooI2CFTE`                                                                     |
+  | Πρωτόκολλο Πολυαφής Atmel | `VoodooI2CAtmelMXT`                                                                |
+  | Synaptics                 | [`VoodooRMI`](https://github.com/VoodooSMBus/VoodooRMI) (υποστηρίζει επίσης SMBus) |
+  | Alps                      | [`AlpsHID`](https://github.com/blankmac/AlpsHID)                                   |
+
+  <Aside type="tip">
+  Το HID είναι ένας πολύ κοινός τύπος συσκευής. Αν έχετε φορητό υπολογιστή AMD, είναι πολύ πιθανό ότι το touchpad σας είναι συνδεδεμένο μέσω αυτού. Παρόλα αυτά, ελέγξτε διπλά.
+  </Aside>
+  </details>
+
+- [`VoodooSMBus`](https://github.com/VoodooSMBus/VoodooSMBus) (10.14+)
+
+  Για συσκευές εισόδου που είναι συνδεδεμένες μέσω του ελεγκτή SMBus (I2C-i801) και επίσης για ορισμένες ιδιόμορφες συσκευές εισόδου ELAN SMBus.
+
+## Αποθήκευση
+
+- [`NVMeFix`](https://github.com/acidanthera/NVMeFix) (10.14+)
+
+  Διορθώνει την στοίβα NVMe (IONVMeFamily) για να υποστηρίζει την Αυτόνομη Μετάβαση Κατάστασης Ισχύος (APST) και να διορθώνει πανικούς χρονικού ορίου σε ορισμένους ελεγκτές NVMe.
+
+- [`EmeraldSDHC`](https://github.com/acidanthera/EmeraldSDHC) (10.13+)
+
+  Οδηγός για συσκευές αποθήκευσης eMMC.
+
+## Πρόσθετα/Διάφορα
+
+- [`AppleMCEReporterDisabler`](/Extras/Kexts/AppleMCEReporterDisabler.zip) (12.3+)
+
+  Απενεργοποιεί το `AppleIntelMCEReporter` που προκαλεί πανικούς σε συστήματα AMD και ακόμη και σε ορισμένα συστήματα Intel.
+
+- [`ForgedInvariant`](https://github.com/ChefKissInc/ForgedInvariant) (10.11+)
+
+  Συγχρονίζει τον Μετρητή Χρονικής Σήμανσης (TSC). Απαραίτητο για φορητούς υπολογιστές, ίσως και για επιτραπέζιους υπολογιστές APU.
+
+- [`RestrictEvents`](https://github.com/acidanthera/RestrictEvents) (10.13+)
+
+  Διορθώνει το όνομα της CPU στο `Πληροφορίες για αυτό το Mac` και τις προειδοποιήσεις μνήμης και PCI στο SMBIOS `MacPro7,1`. Επίσης, επιτρέπει την αναγκαστική χρήση VMM για την επιδιόρθωση ενημερώσεων OTA σε SMBIOS T2 σε macOS Sonoma+, μεταξύ άλλων χαρακτηριστικών.
+
+- [`ECEnabler`](https://github.com/1Revenger1/ECEnabler) (10.7+)
+
+  Επιτρέπει στο macOS να διαβάζει πεδία EC μεγαλύτερα από 8 bit, αφαιρώντας την ανάγκη να τα διαχωρίζετε χειροκίνητα. Μην το χρησιμοποιείτε σε επιτραπέζιους υπολογιστές. Απαραίτητο για την σωστή λειτουργία της κατάστασης μπαταρίας σε φορητούς υπολογιστές.
+
+- [`BrightnessKeys`](https://github.com/acidanthera/BrightnessKeys) (10.11+)
+
+  Παρέχει υποστήριξη για ειδοποιήσεις αλλαγής φωτεινότητας ACPI (που συνήθως προέρχονται από τα πλήκτρα λειτουργίας (FN) του πληκτρολογίου σας).
