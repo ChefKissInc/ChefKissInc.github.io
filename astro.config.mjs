@@ -32,7 +32,10 @@ export default defineConfig({
       plugins: [
         starlightImageZoom(),
         starlightBlog({
-          title: "Newsroom",
+          title: {
+            en: "Newsroom",
+            gr: "Αίθουσα τύπου",
+          },
           prefix: "newsroom",
           authors: {
             visual: {
