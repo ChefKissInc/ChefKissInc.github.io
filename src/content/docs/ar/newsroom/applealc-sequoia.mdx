@@ -1,0 +1,29 @@
+---
+title: ‫اصلاح اضافة AppleALC على macOS Sequoia لمنصات AMD‬
+date: 2024-09-06
+lastUpdated: 2024-09-29
+author: visual
+tags: [macOS, macOS Sequoia, Audio, Update]
+excerpt: ‫اصلاح مؤقت.‬
+description: ‫اصلاح مؤقت.‬
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+‫لقد لاحظت شكاوي عدد كبير من المستخدمين على ان اضافة AppleALC لم تعد تعمل على منصات AMD على نظام macOS Sequoia.‬
+
+‫القيت نظرة على الاصلاحات ولاحظت ان بعضها لا يتم تطبيقه.‬
+
+‫للاسف, حل جيد لهذه المشكله غير ممكن بسبب الـCompiler الذي  تم تحديثه سابقًا ولا يوجد مساحة لاضافة اي من الاصلاحات.‬
+
+‫لذا, مع هذه النسخه, اي معرف لمتحكم المصنع(Controller Vendor ID) اصبح صحيحًا. قد يسبب هذا بعض الاعراض الجانبية.‬
+
+‫لابد ان يكون هذا كافيًا حتى يتم حل المشكله بشكل صحيح وتام او ان نصدر اضافة IntergalacticAudio.‬
+
+‫ارجو ان لا يتم سؤالي عن الاكواد البرمجية الاصليه, انا لا املكها الان, لقد بحثت بنفسي عن اصلاحات في Binary Ninja, واصلحت ما امكن اصلاحه, ثم حئفت الاكواد.‬
+
+‫اتمنى ان يساعدكم هذا.‬
+
+<LinkButton href="/Extras/Kexts/AppleALC-1.9.2-RELEASE.zip">
+‫تحميل‬
+</LinkButton>
