@@ -119,11 +119,19 @@ export default defineConfig({
               },
               items: [
                 {
-                  label: "Dortania guide (temporary)",
+                  label: "Dortania guide",
+                  badge: {
+                    text: {
+                      en: "Temporary",
+                      gr: "Προσωρινό",
+                      mk: "Привремено",
+                      ar: "مؤقت",
+                    },
+                  },
                   translations: {
-                    gr: "Οδηγός Dortania (προσωρινό)",
-                    mk: "Водство Dortania (привремено)",
-                    ar: "دليل Dortania (مؤقت)",
+                    gr: "Οδηγός Dortania",
+                    mk: "Водство Dortania",
+                    ar: "دليل Dortania",
                   },
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
                 },
