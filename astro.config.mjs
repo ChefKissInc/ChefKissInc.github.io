@@ -114,7 +114,9 @@ export default defineConfig({
                 mk: "Конфигурација",
                 ar: "التكوين",
               },
-              badge: "TODO",
+              badge: {
+                text: { en: "TODO", gr: "Υπό κατασκευή" },
+              },
               items: [
                 {
                   label: "Dortania guide (temporary)",
@@ -136,7 +138,7 @@ export default defineConfig({
             mk: "Поправање на проблем",
             ar: "اكتشاف الأخطاء وإصلاحها",
           },
-          badge: "TODO",
+          badge: { text: { en: "TODO", gr: "Υπό κατασκευή" } },
           collapsed: true,
           items: [],
         },
