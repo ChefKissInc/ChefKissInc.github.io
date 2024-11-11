@@ -87,7 +87,8 @@ export default defineConfig({
               badge: "TODO",
               items: [
                 {
-                  label: "Dortania guide (temporary)",
+                  label: "Dortania guide",
+                  badge: "Temporary",
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
                 },
               ],
