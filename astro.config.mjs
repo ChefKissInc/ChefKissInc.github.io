@@ -34,6 +34,7 @@ export default defineConfig({
           title: {
             en: "Newsroom",
             gr: "Αίθουσα τύπου",
+            ar: "غرفة الأخبار",
           },
           prefix: "newsroom",
           authors: {
