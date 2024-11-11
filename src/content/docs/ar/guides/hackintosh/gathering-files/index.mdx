@@ -1,15 +1,48 @@
 ---
-title: البدء
-description: تجميع الملفات المطلوبة لـ Hackintosh EFI.
+title: البداية
+description: دليل ChefKiss Hackintosh.
+prev:
+  link: /ar/guides/
+  label: أدلة
+next:
+  link: /ar/guides/hackintosh/compatibility/
+  label: التوافق
 ---
 
-الخطوة الأولى لتشغيل Hackintosh هي جمع الملفات المطلوبة. هذه الملفات مطلوبة لتشغيل نظام التشغيل macOS وإضافة الدعم لمجموعة متنوعة من الأجهزة إليه.
+import { CardGrid } from '@astrojs/starlight/components';
+import Card from '~/components/Card.astro';
+import Aside from '~/components/Aside.astro';
 
-لا تنس أن الصبر هو المفتاح. فبدون الملفات المناسبة، لن يتم تشغيل نظام التشغيل macOS على الإطلاق، أو سيفتقر إلى الدعم للأجهزة الطرفية لديك، أو سيواجه مشكلات عشوائية بشكل عام.
+‫مرحبا بك في دليل ChefKiss Hackintosh.‬
 
-لقد قمنا بتقسيم عملية جمع الملفات إلى أجزاء متعددة.
+‫سيساعدك هذا الدليل في عملية تثبيت macOS على جهاز الكمبيوتر الخاص بك.‬
 
-- [OpenCore](/ar/guides/hackintosh/gathering-files/opencore/), الذي يقوم بتشغيل macOS فعليًا
-- [المحمل](/ar/guides/hackintosh/gathering-files/installer/), تنزيل ملفات تثبيت نظام التشغيل macOS الرسمية من Apple
-- [ACPI](/ar/guides/hackintosh/gathering-files/acpi/), الإضافات والتصحيحات المطلوبة لـ ACPI
-- [Kexts](/ar/guides/hackintosh/gathering-files/kexts/), تنوع برامج التشغيل المطلوبة
+<Aside type="tip">
+‫Hackintosh هو جهاز كمبيوتر يعمل بنظام macOS على جهاز غير تابع لشركة Apple. مذهل!‬
+</Aside>
+
+## المتطلبات الأساسية
+
+<CardGrid>
+    <Card icon="ph:clock-clockwise-duotone" title="الوقت والصبر">
+‫    إن إنشاء جهاز Hackintosh عملية طويلة نسبيًا. ولا يمكن تخطي أي من الخطوات. لا تبدأ العمل على هذا الجهاز إذا كان لديك أشياء أخرى للقيام بها. اجهزة Hackintosh بشكل عام __ليست__ شيئًا يجب عليك الاعتماد عليه كجهاز عمل.‬
+    </Card>
+    <Card icon="ph:plugs-connected-duotone" title="‫توافق القطع‬">
+   ‫ تعد وحدة المعالجة المركزية (CPU)، ووحدة معالجة الرسومات (GPU)، واللوحة الأم، وبطاقة Ethernet، وبطاقة Wi-Fi، وغيرها من العناصر مهمة لمعرفة ما إذا كان جهازك يمكنه تشغيل نظام التشغيل macOS: على عكس نظامي التشغيل Windows وLinux، فإن نظام التشغيل macOS غير متوافق مع كل أجهزة الكمبيوتر التي تعمل بنظام التشغيل x86؛ لا يزال هناك قدر كبير من الأجهزة غير المدعومة، على الرغم من بذل العديد من الجهود لدعمها بشكل كامل.‬
+    </Card>
+    <Card icon="ph:terminal-window-duotone" title="‫معرفة اساسية بـTerminal او CMD‬">
+‫    ضروري لمتابعة خطوات الدليل. لا أستطيع مساعدتك في كيفية تغيير دليل العمل في cmd.‬
+    </Card>
+    <Card icon="ph:usb-duotone" title="‫جهاز USB كبير بما فيه الكفاية‬">
+   ‫ تحتاج إلى ما لا يقل عن 16 غيغابايت لإنشاء مثبِت macOS (النظام فقط) دون اتصال بالأنترنت على جهاز USB، أو 2 غيغابايت إذا كنت تستخدم طريقة التثبيت عبر الأنترنت(متعدد المنصات).‬
+    </Card>
+    <Card icon="ph:network-duotone" title="بطاقة شبكة متوافقة">
+   ‫ إذا كنت تستخدم التثبيت عبر الإنترنت. كما ذكرنا من قبل، فإن نظام التشغيل macOS غير متوافق مع جميع الأجهزة، لذلك يجب ان تستعمل بطاقة شبكة مدعومة وليس اي بطاقة متوفرة لديك.‬
+    </Card>
+    <Card icon="ph:computer-tower-duotone" title="‫جهاز كمبيوتر يعمل‬">
+‫    أنت بحاجة إلى شيء لتشغيل كافة البرامج النصية والأدوات من أجل صنع جهاز USB يحتوي على جميع الملفات المطلوبة.‬
+    </Card>
+    <Card icon="ph:seal-check-duotone" title="‫استعمال احدث إصدار من الـFrimware(BIOS)‬">
+  ‫  نظام MacOS دقيق للغاية؛ إذا كان جهازك يحتوي على أي سلوك أو خطأ مهم "غير قياسي" أو "غير متوقع"، فلن يعمل.‬
+    </Card>
+</CardGrid>
