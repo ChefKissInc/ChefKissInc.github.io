@@ -20,12 +20,13 @@ import Aside from '~/components/Aside.astro';
 </Aside>
 
 <Aside type="danger">
-‫هناك بعض الأشياء في نظام macOS لا تعمل بشكل صحيح مع وحدة المعالجة المركزية AMD, انظر [أدناه](#عدم-توافقات-وحدة-المعالجة-المركزية-amd).‬
+‫هناك بعض الأشياء في نظام macOS لا تعمل بشكل صحيح مع وحدة المعالجة المركزية AMD, انظر [أدناه](#عدم-توافق-وحدة-المعالجة-المركزية-amd).‬
 </Aside>
 
 ### متطلبات وحدة المعالجة المركزية
 
 #### ‫متطلبات المعمارية‬
+
 - ‫يتم دعم وحدات المعالجة المركزية x86_64/AMD64 (64 بت) منذ نظام التشغيل Mac OS X 10.4.1‬
 
 #### ‫متطلبات SSE‬
@@ -76,14 +77,15 @@ import Aside from '~/components/Aside.astro';
 دعم معالجة الرسوميات معقد.
 
 ### ‫معالجات AMD الرسومية
+
 - ‫وحدات معالجة الرسوميات [GCN](https://en.wikipedia.org/wiki/Graphics_Core_Next) و [RDNA](<https://en.wikipedia.org/wiki/RDNA_(microarchitecture)>) مدعومة في أحدث إصدارات macOS.‬
 - ‫لا يتم دعم وحدات معالجة الرسوميات RDNA 3، كما لا يتم دعم Navi 24 (حتى الآن). Navi 22 مدعوم بواسطة [`NootRX`](/ar/applehax/nootrx/)‬
 - ‫ معالجات الرسومات الداخلية مثل [Raven](https://www.techpowerup.com/gpu-specs/amd-raven.g816) و [Renoir](https://www.techpowerup.com/gpu-specs/amd-renoir.g1058) مدعومة بواسطة [`NootedRed`](/ar/applehax/nootedred/).‬
 - ‫أجيال معالجات الرسومات الداخلية الأخرى (GCN \<5، RDNA) **غير** مدعومة على الإطلاق (حتى الآن).‬
-- ‫  يتم دعم وحدات معالجة الرسومات AMD [Baffin](https://www.techpowerup.com/gpu-specs/amd-baffin.g796) في أحدث إصدار من macOS. ‬
--  يتم دعم وحدات معالجة الرسومات AMD [Ellesmere](https://www.techpowerup.com/gpu-specs/amd-ellesmere.g795) في أحدث إصدار من macOS.
--  يتم دعم وحدات معالجة الرسوميات AMD [Lexa](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) من خلال خداع معرف الجهاز(Device ID Spoof) بمعرف احد معالجات Baffin الرسومية.
--  معالجات الرسوميات من معمارية Polaris 20 غير مدعومة (حتى الان).
+- ‫ يتم دعم وحدات معالجة الرسومات AMD [Baffin](https://www.techpowerup.com/gpu-specs/amd-baffin.g796) في أحدث إصدار من macOS. ‬
+- يتم دعم وحدات معالجة الرسومات AMD [Ellesmere](https://www.techpowerup.com/gpu-specs/amd-ellesmere.g795) في أحدث إصدار من macOS.
+- يتم دعم وحدات معالجة الرسوميات AMD [Lexa](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) من خلال خداع معرف الجهاز(Device ID Spoof) بمعرف احد معالجات Baffin الرسومية.
+- معالجات الرسوميات من معمارية Polaris 20 غير مدعومة (حتى الان).
 
 <Aside type="danger">
 مستخدمو **MSI Navi**: [المثبِت لا يعمل مع 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901), **تم حلها منذ `macOS 11`**.
