@@ -1,0 +1,48 @@
+---
+title: البداية
+description: دليل ChefKiss Hackintosh.
+prev:
+  link: /ar/guides/
+  label: أدلة
+next:
+  link: /ar/guides/hackintosh/compatibility/
+  label: التوافق
+---
+
+import { CardGrid } from '@astrojs/starlight/components';
+import Card from '~/components/Card.astro';
+import Aside from '~/components/Aside.astro';
+
+‫مرحبا بك في دليل ChefKiss Hackintosh.‬
+
+‫سيساعدك هذا الدليل في عملية تثبيت macOS على جهاز الكمبيوتر الخاص بك.‬
+
+<Aside type="tip">
+‫Hackintosh هو جهاز كمبيوتر يعمل بنظام macOS على جهاز غير تابع لشركة Apple. مذهل!‬
+</Aside>
+
+## المتطلبات الأساسية
+
+<CardGrid>
+    <Card icon="ph:clock-clockwise-duotone" title="الوقت والصبر">
+‫    إن إنشاء جهاز Hackintosh عملية طويلة نسبيًا. ولا يمكن تخطي أي من الخطوات. لا تبدأ العمل على هذا الجهاز إذا كان لديك أشياء أخرى للقيام بها. اجهزة Hackintosh بشكل عام __ليست__ شيئًا يجب عليك الاعتماد عليه كجهاز عمل.‬
+    </Card>
+    <Card icon="ph:plugs-connected-duotone" title="‫توافق القطع‬">
+   ‫ تعد وحدة المعالجة المركزية (CPU)، ووحدة معالجة الرسومات (GPU)، واللوحة الأم، وبطاقة Ethernet، وبطاقة Wi-Fi، وغيرها من العناصر مهمة لمعرفة ما إذا كان جهازك يمكنه تشغيل نظام التشغيل macOS: على عكس نظامي التشغيل Windows وLinux، فإن نظام التشغيل macOS غير متوافق مع كل أجهزة الكمبيوتر التي تعمل بنظام التشغيل x86؛ لا يزال هناك قدر كبير من الأجهزة غير المدعومة، على الرغم من بذل العديد من الجهود لدعمها بشكل كامل.‬
+    </Card>
+    <Card icon="ph:terminal-window-duotone" title="‫معرفة اساسية بـTerminal او CMD‬">
+‫    ضروري لمتابعة خطوات الدليل. لا أستطيع مساعدتك في كيفية تغيير دليل العمل في cmd.‬
+    </Card>
+    <Card icon="ph:usb-duotone" title="‫جهاز USB كبير بما فيه الكفاية‬">
+   ‫ تحتاج إلى ما لا يقل عن 16 غيغابايت لإنشاء مثبِت macOS (النظام فقط) دون اتصال بالأنترنت على جهاز USB، أو 2 غيغابايت إذا كنت تستخدم طريقة التثبيت عبر الأنترنت(متعدد المنصات).‬
+    </Card>
+    <Card icon="ph:network-duotone" title="بطاقة شبكة متوافقة">
+   ‫ إذا كنت تستخدم التثبيت عبر الإنترنت. كما ذكرنا من قبل، فإن نظام التشغيل macOS غير متوافق مع جميع الأجهزة، لذلك يجب ان تستعمل بطاقة شبكة مدعومة وليس اي بطاقة متوفرة لديك.‬
+    </Card>
+    <Card icon="ph:computer-tower-duotone" title="‫جهاز كمبيوتر يعمل‬">
+‫    أنت بحاجة إلى شيء لتشغيل كافة البرامج النصية والأدوات من أجل صنع جهاز USB يحتوي على جميع الملفات المطلوبة.‬
+    </Card>
+    <Card icon="ph:seal-check-duotone" title="‫استعمال احدث إصدار من الـFirmware(BIOS)‬">
+  ‫  نظام MacOS دقيق للغاية؛ إذا كان جهازك يحتوي على أي سلوك أو خطأ مهم "غير قياسي" أو "غير متوقع"، فلن يعمل.‬
+    </Card>
+</CardGrid>
