@@ -1,3 +1,4 @@
+// @ts-check
 import { defineConfig } from "astro/config";
 import embeds from "astro-embed/integration";
 import starlight from "@astrojs/starlight";
@@ -108,9 +109,7 @@ export default defineConfig({
           "https://github.com/ChefKissInc/ChefKissInc.github.io/edit/master/",
       },
     }),
-    tailwind({
-      applyBaseStyles: false,
-    }),
+    tailwind({ applyBaseStyles: false }),
     icon(),
   ],
 });
