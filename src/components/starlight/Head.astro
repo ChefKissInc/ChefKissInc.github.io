@@ -1,5 +1,4 @@
 ---
-import type { Props } from "@astrojs/starlight/props";
 import StarlightHead from "@astrojs/starlight/components/Head.astro";
 import VtbotStarlight from "astro-vtbot/components/starlight/Base.astro";
 import PageOffset from "astro-vtbot/components/PageOffset.astro";
@@ -7,7 +6,7 @@ import PageOrder from "astro-vtbot/components/starlight/PageOrder.astro";
 import ProgressBar from "astro-vtbot/components/ProgressBar.astro";
 import AutoNameSelected from "astro-vtbot/components/AutoNameSelected.astro";
 
-let imagePath = `${Astro.props.slug || "index"}.png`;
+let imagePath = `${Astro.locals.starlightRoute.entry.id || "index"}.png`;
 if (Astro.props.isFallback) {
 	imagePath = 'en' + imagePath.slice(imagePath.indexOf('/'));
 }
