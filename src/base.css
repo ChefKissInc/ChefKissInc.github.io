@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 :root {
+  --sl-font: "Geist Sans", sans-serif;
+  --sl-font-mono: "Geist Mono", monospace;
   --sl-nav-height: 3rem;
   --ec-brdRad: 0.5rem;
+  --radius: 0.5rem;
   --sl-color-text-accent: theme("colors.sky.500");
   --sl-color-bg-accent: theme("colors.sky.500");
   --sl-color-text-invert: #000000;
@@ -15,7 +18,7 @@ button[data-open-modal] {
 }
 
 body {
-  @apply subpixel-antialiased !important;
+  @apply subpixel-antialiased leading-[1.5] !important;
 }
 
 body,

@@ -6,7 +6,7 @@ import { useTranslations } from "../../node_modules/@astrojs/starlight/utils/tra
 import { Icon } from "astro-icon/components";
 
 const asideVariants = ["note", "tip", "caution", "danger"] as const;
-const icons = { note: "ph:info-duotone", tip: "ph:lightbulb-duotone", caution: "ph:warning-duotone", danger: "ph:warning-octagon-duotone" } as const;
+const icons = { note: "ph:info-duotone", tip: "ph:lightbulb-filament-duotone", caution: "ph:warning-duotone", danger: "ph:warning-octagon-duotone" } as const;
 
 interface Props {
 	type?: (typeof asideVariants)[number];
@@ -24,8 +24,7 @@ if (!asideVariants.includes(type)) {
 }
 
 if (!title) {
-	const { locale } = slugToLocaleData(urlToSlug(Astro.url));
-	title = useTranslations(locale)(`aside.${type}`);
+	title = Astro.locals.t(`aside.${type}`);
 }
 ---
 
