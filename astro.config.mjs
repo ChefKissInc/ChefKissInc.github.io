@@ -23,7 +23,7 @@ export default defineConfig({
         root: { label: "English", lang: "en" },
         gr: { label: "Ελληνικά" },
         ru: { label: "Русский" },
-        ar: { label: "العربية", direction: "rtl" },
+        ar: { label: "العربية", dir: "rtl" },
         uk: { label: "Українська" },
         it: { label: "Italiano" },
         es: { label: "Español" },
