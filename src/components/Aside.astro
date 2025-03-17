@@ -24,8 +24,7 @@ if (!asideVariants.includes(type)) {
 }
 
 if (!title) {
-	const { locale } = slugToLocaleData(urlToSlug(Astro.url));
-	title = useTranslations(locale)(`aside.${type}`);
+	title = Astro.locals.t(`aside.${type}`);
 }
 ---
 
