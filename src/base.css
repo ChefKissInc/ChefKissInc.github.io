@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root,
+::backdrop {
   --sl-font: "Geist Sans", sans-serif;
   --sl-font-mono: "Geist Mono", monospace;
   --sl-nav-height: 3rem;
@@ -10,7 +11,10 @@
   --radius: 0.5rem;
   --sl-color-text-accent: theme("colors.sky.500");
   --sl-color-bg-accent: theme("colors.sky.500");
-  --sl-color-text-invert: #000000;
+  &[data-theme="dark"] {
+    --sl-color-bg: #000000;
+    --sl-color-text-invert: #000000;
+  }
 }
 
 button[data-open-modal] {
