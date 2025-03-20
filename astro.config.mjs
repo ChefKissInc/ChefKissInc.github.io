@@ -28,6 +28,7 @@ export default defineConfig({
         root: { label: "English", lang: "en" },
       },
       plugins: [
+        viewTransitions(),
         starlightImageZoom(),
         starlightBlog({
           title: "Newsroom",
@@ -46,12 +47,10 @@ export default defineConfig({
           errorOnInconsistentLocale: true,
           exclude: ["(/*)?/newsroom/"], // TODO: Remove this
         }),
-        viewTransitions(),
       ],
       title: "ChefKiss",
       logo: {
         src: "~/assets/CKPenguin.svg",
-        replacesTitle: true,
       },
       tableOfContents: {
         minHeadingLevel: 2,
