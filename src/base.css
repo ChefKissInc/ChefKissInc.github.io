@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root,
+::backdrop {
   --sl-font: "Geist Sans", sans-serif;
   --sl-font-mono: "Geist Mono", monospace;
   --sl-nav-height: 3rem;
@@ -10,7 +11,10 @@
   --radius: 0.5rem;
   --sl-color-text-accent: theme("colors.sky.500");
   --sl-color-bg-accent: theme("colors.sky.500");
-  --sl-color-text-invert: #000000;
+  &[data-theme="dark"] {
+    --sl-color-bg: #000000;
+    --sl-color-text-invert: #000000;
+  }
 }
 
 button[data-open-modal] {
@@ -30,8 +34,9 @@ body,
   @apply border-e-[var(--sl-color-gray-6)] !important;
 }
 
-header.header {
-  @apply backdrop-blur-md dark:bg-neutral-900/90 border-b-[var(--sl-color-gray-6)] !important;
+header.header,
+nav[aria-labelledby="starlight__on-this-page--mobile"] {
+  @apply backdrop-blur-md bg-[#FFFFFF99] dark:bg-[#00000099] border-b-[var(--sl-color-gray-6)] !important;
 }
 
 dialog {

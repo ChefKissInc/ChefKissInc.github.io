@@ -7,10 +7,15 @@ import starlightBlog from "starlight-blog";
 import starlightLinksValidator from "starlight-links-validator";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
+import {
+  viewTransitions,
+  remarkEndOfMarkdown,
+} from "astro-vtbot/starlight-view-transitions";
 
 export default defineConfig({
   site: "https://chefkissinc.github.io",
   trailingSlash: "always",
+  markdown: { remarkPlugins: [remarkEndOfMarkdown] },
   integrations: [
     embeds({
       services: {
@@ -30,6 +35,7 @@ export default defineConfig({
         mk: { label: "Македонски" },
       },
       plugins: [
+        viewTransitions(),
         starlightImageZoom(),
         starlightBlog({
           title: {
@@ -56,7 +62,6 @@ export default defineConfig({
       title: "ChefKiss",
       logo: {
         src: "~/assets/CKPenguin.svg",
-        replacesTitle: true,
       },
       tableOfContents: {
         minHeadingLevel: 2,
