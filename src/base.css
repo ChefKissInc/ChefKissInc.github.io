@@ -36,7 +36,7 @@ body,
 
 header.header,
 nav[aria-labelledby="starlight__on-this-page--mobile"] {
-  @apply backdrop-blur-md dark:bg-[#00000099] border-b-[var(--sl-color-gray-6)] !important;
+  @apply backdrop-blur-md bg-[#FFFFFF99] dark:bg-[#00000099] border-b-[var(--sl-color-gray-6)] !important;
 }
 
 dialog {
