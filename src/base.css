@@ -1,6 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer base, starlight, theme, components, utilities;
+
+@import "@astrojs/starlight-tailwind";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --color-accent-50: var(--color-sky-50);
+  --color-accent-100: var(--color-sky-100);
+  --color-accent-200: var(--color-sky-200);
+  --color-accent-300: var(--color-sky-300);
+  --color-accent-400: var(--color-sky-400);
+  --color-accent-500: var(--color-sky-500);
+  --color-accent-600: var(--color-sky-600);
+  --color-accent-700: var(--color-sky-700);
+  --color-accent-800: var(--color-sky-800);
+  --color-accent-900: var(--color-sky-900);
+  --color-accent-950: var(--color-sky-950);
+  --color-gray-50: var(--color-zinc-50);
+  --color-gray-100: var(--color-zinc-100);
+  --color-gray-200: var(--color-zinc-200);
+  --color-gray-300: var(--color-zinc-300);
+  --color-gray-400: var(--color-zinc-400);
+  --color-gray-500: var(--color-zinc-500);
+  --color-gray-600: var(--color-zinc-600);
+  --color-gray-700: var(--color-zinc-700);
+  --color-gray-800: var(--color-zinc-800);
+  --color-gray-900: var(--color-zinc-900);
+  --color-gray-950: var(--color-zinc-950);
+}
 
 :root,
 ::backdrop {
@@ -18,81 +45,81 @@
 }
 
 button[data-open-modal] {
-  @apply h-8 !important;
+  @apply h-8;
 }
 
 body {
-  @apply subpixel-antialiased leading-[1.5] !important;
+  @apply subpixel-antialiased leading-[1.5];
 }
 
 body,
 .sidebar > .sidebar-pane {
-  @apply dark:bg-[#000000] !important;
+  @apply dark:bg-[#000000];
 }
 
 .sidebar > .sidebar-pane {
-  @apply border-e-[var(--sl-color-gray-6)] !important;
+  @apply border-e-[var(--sl-color-gray-6)];
 }
 
 header.header,
 nav[aria-labelledby="starlight__on-this-page--mobile"] {
-  @apply backdrop-blur-md bg-[#FFFFFF99] dark:bg-[#00000099] border-b-[var(--sl-color-gray-6)] !important;
+  @apply backdrop-blur-md bg-[#FFFFFF99] dark:bg-[#00000099] border-b-[var(--sl-color-gray-6)];
 }
 
 dialog {
-  @apply transition-all opacity-0 translate-y-2 flex pointer-events-none border-solid border rounded-lg border-gray-700 dark:bg-gray-900 !important;
+  @apply transition-all opacity-0 translate-y-2 flex pointer-events-none border-solid border rounded-lg border-gray-700 dark:bg-gray-900;
 }
 
 dialog[open] {
-  @apply opacity-100 translate-y-0 pointer-events-auto !important;
+  @apply opacity-100 translate-y-0 pointer-events-auto;
 }
 
 dialog::backdrop {
-  @apply transition-opacity opacity-0 pointer-events-none !important;
+  @apply transition-opacity opacity-0 pointer-events-none;
 }
 
 dialog[open]::backdrop {
-  @apply opacity-100 pointer-events-auto !important;
+  @apply opacity-100 pointer-events-auto;
 }
 
 aside.starlight-aside {
-  @apply border border-[var(--sl-color-asides-border)] rounded-lg !important;
+  @apply border border-[var(--sl-color-asides-border)] rounded-lg;
 }
 
 starlight-file-tree,
 code,
 .expressive-code .frame:not(.is-terminal) pre {
-  @apply rounded-lg !important;
+  @apply rounded-lg;
 }
 
 .expressive-code .frame.is-terminal .header {
-  @apply rounded-t-lg !important;
+  @apply rounded-t-lg;
 }
 
 .expressive-code .frame.is-terminal pre {
-  @apply rounded-b-lg !important;
+  @apply rounded-b-lg;
 }
 
 .sl-markdown-content:has(.posts) {
-  @apply m-0 !important;
+  @apply m-0;
 }
 
 .posts {
-  @apply gap-2 !important;
+  @apply gap-2;
 }
 
 article.preview {
-  @apply border-solid border rounded-lg border-gray-300 dark:border-gray-800 bg-neutral-100/90 dark:bg-neutral-900/90 p-4 !important;
+  @apply border-solid border rounded-lg border-gray-300 dark:border-gray-800 bg-neutral-100/90 dark:bg-neutral-900/90 p-4;
   box-shadow: var(--sl-shadow-sm) !important;
 }
 
 .link-preview {
   --link-preview-corners: 0.5em;
   --link-preview-padding-inline: 0.75rem;
-  @apply border-solid border border-gray-300 dark:border-gray-800 bg-neutral-100/90 dark:bg-neutral-900/90 !important;
+  @apply border-solid border border-gray-300 dark:border-gray-800 bg-neutral-100/90 dark:bg-neutral-900/90;
   box-shadow: var(--sl-shadow-sm) !important;
 }
 
 .link-preview a {
-  @apply font-bold no-underline !important;
+  @apply font-bold no-underline;
 }
