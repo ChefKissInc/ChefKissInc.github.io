@@ -5,17 +5,20 @@ import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
 import starlightBlog from "starlight-blog";
 import starlightLinksValidator from "starlight-links-validator";
-import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import {
   viewTransitions,
   remarkEndOfMarkdown,
 } from "astro-vtbot/starlight-view-transitions";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://chefkissinc.github.io",
   trailingSlash: "always",
   markdown: { remarkPlugins: [remarkEndOfMarkdown] },
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
     embeds({
       services: {
@@ -73,10 +76,18 @@ export default defineConfig({
         MarkdownContent: "~/components/starlight/MarkdownContent.astro",
         SocialIcons: "~/components/starlight/SocialIcons.astro",
       },
-      social: {
-        github: "https://github.com/ChefKissInc",
-        telegram: "https://t.me/+Bx3MO9Hq8whhNzk9",
-      },
+      social: [
+        {
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/ChefKissInc",
+        },
+        {
+          icon: "telegram",
+          label: "Telegram",
+          href: "https://t.me/+Bx3MO9Hq8whhNzk9",
+        },
+      ],
       sidebar: [
         {
           label: "Installation",
@@ -164,7 +175,6 @@ export default defineConfig({
           "https://github.com/ChefKissInc/ChefKissInc.github.io/edit/master/",
       },
     }),
-    tailwind({ applyBaseStyles: false }),
     icon(),
   ],
 });
