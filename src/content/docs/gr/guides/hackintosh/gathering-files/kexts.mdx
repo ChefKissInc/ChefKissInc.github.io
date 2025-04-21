@@ -1,0 +1,301 @@
+---
+title: Kexts
+description: Η επιλογή των επεκτάσεων πυρήνα macOS για Hackintoshes.
+---
+
+import Aside from '~/components/Aside.astro';
+import Card from '~/components/Card.astro';
+import { CardGrid, LinkButton } from '@astrojs/starlight/components';
+
+Οδηγοί πυρήνα macOS. Το OpenCore μπορεί να εισάγει ή να αποκλείσει προγράμματα οδήγησης. Τα τοποθετείτε στο `EFI/OC/Kexts`, αλλά πρέπει επίσης να καθοριστούν στο `Config.plist`. Θα φροντίσουμε το τελευταίο σε ένα μεταγενέστερο βήμα.
+
+<Aside type="tip" title="Το ήξερες;">
+Το Kext σημαίνει Kernel EXTension (Επέκταση Πυρήνα). Γουάου!
+</Aside>
+
+<Aside type="note">
+Στο macOS, τα kext εμφανίζονται ως ειδικός τύπος αρχείου με ένα λευκό κομμάτι Lego ως εικονίδιο.
+
+Σε άλλα λειτουργικά συστήματα, τα kext εμφανίζονται ως απλοί φάκελοι που τελειώνουν σε `.kext`.
+</Aside>
+
+## Απαραίτητα
+
+<Aside type="danger">
+Δεν μπορείτε να εκκινήσετε καθόλου χωρίς αυτά.
+</Aside>
+
+<CardGrid>
+<Card title="Lilu <code>10.4+</code>">
+Κάνει αυθαίρετο patching kext, βιβλιοθήκης και προγράμματος μέσα στο macOS.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/Lilu">Προβολή</LinkButton>
+</Card>
+<Card title="VirtualSMC <code>10.4+</code>">
+Εξομοιώνει το SMC της Apple.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/VirtualSMC">Προβολή</LinkButton>
+</Card>
+</CardGrid>
+
+## Πρόσθετα VirtualSMC
+
+<CardGrid>
+<Card title="SMCProcessor <code>10.7+</code>">
+Παρακολουθεί τις θερμοκρασίες σε CPU της Intel. Συμπεριλαμβάνεται με το `VirtualSMC`.
+</Card>
+<Card title="SMCProcessorAMD <code>10.13+</code>">
+Παρακολουθεί τις θερμοκρασίες σε CPU της AMD.
+
+<LinkButton icon="external" href="https://github.com/Lorys89/SMCProcessorAMD">Προβολή</LinkButton>
+</Card>
+<Card title="SMCRadeonSensors <code>10.14+</code>">
+Παρακολουθεί τις θερμοκρασίες GPU της AMD. Υποστηρίζει τις ενσωματωμένες κάρτες γραφικών (iGPU) της AMD.
+
+<LinkButton icon="external" href="https://github.com/ChefKissInc/SMCRadeonSensors">Προβολή</LinkButton>
+</Card>
+<Card title="SMCSuperIO <code>10.6</code> <code>64-bit only</code>">
+Παρακολουθεί τις ταχύτητες του ανεμιστήρα. Συμπεριλαμβάνεται με το `VirtualSMC`. **Μην** το χρησιμοποιείτε σε AMD.
+</Card>
+<Card title="SMCBatteryManager <code>10.4</code>">
+Παρακολουθεί την κατάσταση της μπαταρίας του φορητού υπολογιστή. Συμπεριλαμβάνεται με το `VirtualSMC`. **Μην** το χρησιμοποιείτε σε επιτραπέζια συστήματα.
+</Card>
+<Card title="SMCLightSensor <code>10.6</code> <code>64-bit only</code>">
+Προσθέτει υποστήριξη για τον αισθητήρα φωτός περιβάλλοντος ACPI. Συμπεριλαμβάνεται με το `VirtualSMC`. **Μην** το χρησιμοποιείτε σε επιτραπέζια συστήματα.
+</Card>
+<Card title="SMCDellSensors <code>10.7+</code>">
+Παρακολουθεί τις ταχύτητες του ανεμιστήρα σε συστήματα Dell που υποστηρίζουν την System Management Mode (SMM). Συμπεριλαμβάνεται με το `VirtualSMC`.
+</Card>
+</CardGrid>
+
+## Γραφικά
+
+<Aside type="danger">
+Μπορείτε να χρησιμοποιήσετε μόνο ένα από τα παρακάτω kext. Συγκρούονται μεταξύ τους.
+</Aside>
+
+<CardGrid>
+<Card title="NootRX <code>11.0+</code>">
+Παρέχει διορθώσεις για κάρτες AMD Navi 2x, προσθέτει υποστήριξη για κάρτες Navi 22.
+
+<LinkButton icon="external" href="https://github.com/ChefKissInc/NootRX">Προβολή</LinkButton>
+</Card>
+<Card title="NootedRed <code>10.15+</code>">
+Παρέχει γραφική επιτάχυνση για τις ενσωματωμένες κάρτες γραφικών AMD Vega.
+
+<LinkButton icon="external" href="https://github.com/ChefKissInc/NootedRed">Προβολή</LinkButton>
+</Card>
+<Card title="WhateverGreen <code>10.6+</code> <code>64-bit only</code>">
+Παρέχει διορθώσεις για Intel iGPU και για κάρτες γραφικών AMD και NVIDIA dGPU για να επιτρέψει την επιτάχυνση γραφικών, την επιδιόρθωση του framebuffer, τον έλεγχο του οπίσθιου φωτισμού κ.λπ.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/WhateverGreen">Προβολή</LinkButton>
+</Card>
+</CardGrid>
+
+## Ήχος
+
+<CardGrid>
+<Card title="AppleALC <code>10.4+</code>">
+
+Επιδιορθώνει την στοίβα ήχου της Apple (`AppleHDA`/`AppleGFXHDA`) για να επιτρέψει μη υποστηριζόμενους κωδικοποιητές ήχου και ήχο HDMI.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/AppleALC">Προβολή</LinkButton>
+</Card>
+</CardGrid>
+
+## Ethernet
+
+<CardGrid>
+<Card title="LucyRTL8125Ethernet <code>10.14+</code>">
+Πρόγραμμα οδήγησης RTL8125 (2.5GBe Realtek), μεταφερμένο από Linux.
+
+<LinkButton icon="external" href="https://github.com/Mieze/LucyRTL8125Ethernet">Προβολή</LinkButton>
+</Card>
+<Card title="RealtekRTL8111 <code>10.14+</code>">
+Πρόγραμμα οδήγησης RTL8111 (1GBe Realtek), μεταφερμένο από Linux.
+
+<LinkButton icon="external" href="https://github.com/Mieze/RTL8111_driver_for_OS_X">Προβολή</LinkButton>
+</Card>
+<Card title="RealtekRTL8100 <code>10.14+</code>">
+Πρόγραμμα οδήγησης RTL8100 (10/100MBe Realtek), μεταφερμένο από Linux.
+
+<LinkButton icon="external" href="https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/">Προβολή</LinkButton>
+</Card>
+<Card title="AppleIGC <code>10.15+</code>">
+Πρόγραμμα οδήγησης Ethernet I225-V/I226-V, μεταφερμένο από Linux.
+
+<LinkButton icon="external" href="https://github.com/SongXiaoXi/AppleIGC">Προβολή</LinkButton>
+</Card>
+<Card title="AppleIGB <code>10.9+</code>">
+Διακλάδωση του `IntelMausi` για κάρτες δικτύου Intel I210 και I211.
+
+<LinkButton icon="external" href="https://www.macos86.it/topic/6029-appleigb-and-intelmausi-integration/">Προβολή</LinkButton>
+</Card>
+<Card title="IntelMausi <code>10.9+</code> <code>10.6-10.8 with IntelSnowMausi</code>">
+Πρόγραμμα οδήγησης για τις περισσότερες κάρτες δικτύου Intel.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/IntelMausi">Προβολή</LinkButton>
+</Card>
+<Card title="AtherosE2200Ethernet <code>10.12+</code>">
+Πρόγραμμα οδήγησης για τις περισσότερες κάρτες δικτύου Atheros.
+
+<LinkButton icon="external" href="https://github.com/Mieze/AtherosE2200Ethernet">Προβολή</LinkButton>
+</Card>
+</CardGrid>
+
+
+<Aside type="caution">
+Οι κάρτες Aquantia σε AMD χρειάζονται [τις διορθώσεις του CaseySJ](https://github.com/CaseySJ/Aquantia-macOS-Patches/blob/main/CaseySJ-Aquantia-Patch-Sets-1-and-2.plist).
+</Aside>
+
+## Wi-Fi/Bluetooth
+
+<CardGrid>
+<Card title="Itlwm <code>10.13+</code>">
+Υποστηρίζει τις περισσότερες κάρτες Wi-Fi Intel. Το `AirportItlwm` χρησιμοποιεί τη στοίβα Wi-Fi της macOS και το `Itlwm` χρησιμοποιεί το [`Heliport`](https://github.com/OpenIntelWireless/HeliPort) για σύνδεση σε δίκτυα.
+
+<LinkButton icon="external" href="https://github.com/OpenIntelWireless/itlwm">Προβολή</LinkButton>
+</Card>
+<Card title="IntelBluetoothFirmware">
+Υποστηρίζει τις περισσότερες κάρτες Wi-Fi Intel. Στο macOS 11 και χαμηλότερα, πρέπει να χρησιμοποιήσετε και τα 3 παρεχόμενα kexts.
+
+<Aside type="caution">
+Στο macOS 12+, πρέπει να χρησιμοποιήσετε `IntelBluetoothFirmware` και `IntelBTPatcher` από τα προαναφερθέντα, και `BlueToolFixup` από [`BrcmPatchRAM`](https://github.com/acidanthera/BrcmPatchRAM).
+</Aside>
+
+<LinkButton icon="external" href="https://github.com/OpenIntelWireless/IntelBluetoothFirmware">Προβολή</LinkButton>
+</Card>
+<Card title="AirportBrcmFixup">
+Επιδιορθώνει τα kexts AirPort για να επιτρέψει σε μη-εγγενείς κάρτες Broadcom να χρησιμοποιήσουν την ενσωματωμένη στοίβα Wi-Fi.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/AirportBrcmFixup">Προβολή</LinkButton>
+</Card>
+<Card title="BrcmPatchRAM">
+Επιδιορθώνει την στοίβα Bluetooth για να επιτρέψει σε μη-εγγενείς κάρτες Broadcom (και όλες τις άλλες στο macOS 12+ με `BlueToolFixup`) να χρησιμοποιήσουν την ενσωματωμένη στοίβα Bluetooth.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/BrcmPatchRAM">Προβολή</LinkButton>
+</Card>
+</CardGrid>
+
+<Aside type="tip">
+Εάν η κάρτα Wi-Fi δεν υποστηρίζεται και δεν έχετε Καλώδιο Δικτύου, μπορείτε να χρησιμοποιήσετε το [`HoRNDIS`](/Extras/Kexts/HoRNDIS.zip) για να ενεργοποιήσετε την σύνδεση USB μέσω Android. Η σύνδεση USB μέσω iPhone δεν λειτουργεί στα `recoveryOS`.
+</Aside>
+
+## USB
+
+<CardGrid>
+<Card title="XLNCUSBFix <code>10.13+</code>">
+Διόρθωση USB **_μόνο_** για επεξεργαστές AMD FX.
+
+<LinkButton icon="external" href="/Extras/Kexts/XLNCUSBFix.zip">Προβολή</LinkButton>
+</Card>
+<Card title="GenericUSBXHCISB (USB fix hack)">
+Μια τροποποιημένη έκδοση του `GenericUSBXHCI`, αποκλειστικά για την αντιμετώπιση ενός προβλήματος USB που εμφανίζεται κοντά στο "PCI Configuration End" όταν χρησιμοποιείτε φορητό υπολογιστή AMD. Μην το χρησιμοποιείτε αν δεν έχετε αυτό το πρόβλημα, δείτε το README για περισσότερες πληροφορίες.
+
+<LinkButton icon="external" href="https://github.com/RattletraPM/GUX-RyzenXHCIFix">Προβολή</LinkButton>
+</Card>
+<Card title="USBToolBox">
+Εργαλείο χαρτογράφησης USB. Λειτουργεί καλύτερα στα Windows.
+
+<Aside type="caution">
+Ενεργοποιήστε την επιλογή "Use Native Classes" στις ρυθμίσεις και μην χρησιμοποιείτε το `USBToolBox` kext.
+Θα σας ζητήσει το επιλεγμένο SMBIOS κατά την κατασκευή, οπότε αποθηκεύστε αυτό ως το τελευταίο βήμα.
+</Aside>
+
+<LinkButton icon="external" href="https://github.com/USBToolBox/tool">Προβολή</LinkButton>
+</Card>
+<Card title="USBMap">
+Εργαλείο χαρτογράφησης USB. Λειτουργεί μόνο σε macOS.
+
+<LinkButton icon="external" href="https://github.com/CorpNewt/USBMap">Προβολή</LinkButton>
+</Card>
+</CardGrid>
+
+## Συσκευές εισόδου
+
+<CardGrid>
+<Card title="VoodooPS2 <code>10.11+</code>">
+Οδηγός για περιφερειακά PS/2. Χρησιμοποιείται για πληκτρολόγια φορητών υπολογιστών ή ποντίκια/πληκτρολόγια PS/2 σε επιτραπέζιους υπολογιστές.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/VoodooPS2">Προβολή</LinkButton>
+</Card>
+<Card title="VoodooI2C <code>10.13+</code>">
+Οδηγός για συσκευές εισόδου I2C.
+
+<details>
+<summary>Δορυφόροι</summary>
+
+<Aside type="danger">
+Δεν μπορείτε να καταλάβετε τον τύπο της συσκευής μόνο από την επωνυμία ή το όνομα εμφάνισης.
+</Aside>
+<Aside type="danger">
+Θα πρέπει να χρησιμοποιείτε μόνο έναν δορυφόρο, μην τους βάζετε όλους μαζί· μπορεί να συγκρουστούν.
+</Aside>
+
+| Τύπος συσκευής            | Δορυφόρος                                                                          |
+| ------------------------- | ---------------------------------------------------------------------------------- |
+| HID                       | `VoodooI2CHID`                                                                     |
+| ELAN                      | `VoodooI2CELAN`                                                                    |
+| FTE                       | `VoodooI2CFTE`                                                                     |
+| Πρωτόκολλο Πολυαφής Atmel | `VoodooI2CAtmelMXT`                                                                |
+| Synaptics                 | [`VoodooRMI`](https://github.com/VoodooSMBus/VoodooRMI) (υποστηρίζει επίσης SMBus) |
+| Alps                      | [`AlpsHID`](https://github.com/blankmac/AlpsHID)                                   |
+
+<Aside type="tip">
+Το HID είναι ένας πολύ κοινός τύπος συσκευής. Αν έχετε φορητό υπολογιστή AMD, είναι πολύ πιθανό ότι το touchpad σας είναι συνδεδεμένο μέσω αυτού. Παρόλα αυτά, ελέγξτε διπλά.
+</Aside>
+</details>
+
+<LinkButton icon="external" href="https://github.com/VoodooI2C/VoodooI2C">Προβολή</LinkButton>
+</Card>
+<Card title="VoodooSMBus <code>10.14+</code>">
+Για συσκευές εισόδου που είναι συνδεδεμένες μέσω του ελεγκτή SMBus (I2C-i801) και επίσης για ορισμένες ιδιόμορφες συσκευές εισόδου ELAN SMBus.
+
+<LinkButton icon="external" href="https://github.com/VoodooSMBus/VoodooSMBus">Προβολή</LinkButton>
+</Card>
+</CardGrid>
+
+## Συσκευές αποθηκευτικού χώρου
+
+<CardGrid>
+<Card title="NVMeFix <code>10.14+</code>">
+Διορθώνει την στοίβα NVMe (IONVMeFamily) για να υποστηρίζει την Αυτόνομη Μετάβαση Κατάστασης Ισχύος (APST), και να διορθώνει πανικούς χρονικού ορίου σε ορισμένους ελεγκτές NVMe.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/NVMeFix">Προβολή</LinkButton>
+</Card>
+<Card title="EmeraldSDHC <code>10.13+</code>">
+Οδηγός για συσκευές αποθήκευσης eMMC.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/EmeraldSDHC">Προβολή</LinkButton>
+</Card>
+</CardGrid>
+
+## Πρόσθετα/Διάφορα
+
+<CardGrid>
+<Card title="AppleMCEReporterDisabler <code>12.3+</code>">
+Απενεργοποιεί το `AppleIntelMCEReporter` που προκαλεί πανικούς σε συστήματα AMD και ακόμη και σε ορισμένα συστήματα Intel.
+
+<LinkButton icon="external" href="/Extras/Kexts/AppleMCEReporterDisabler.zip">Προβολή</LinkButton>
+</Card>
+<Card title="ForgedInvariant <code>10.6+</code>">
+Συγχρονίζει τον Μετρητή Χρονικής Σήμανσης (TSC). Απαραίτητο για φορητούς υπολογιστές, ίσως και για επιτραπέζιους υπολογιστές APU.
+
+<LinkButton icon="external" href="https://github.com/ChefKissInc/ForgedInvariant">Προβολή</LinkButton>
+</Card>
+<Card title="RestrictEvents <code>10.13+</code>">
+Διορθώνει το όνομα της CPU στο `Πληροφορίες για αυτό το Mac` και τις προειδοποιήσεις μνήμης και PCI στο SMBIOS `MacPro7,1`. Επίσης, επιτρέπει την αναγκαστική χρήση VMM για την επιδιόρθωση ενημερώσεων OTA σε SMBIOS T2 σε macOS Sonoma+, μεταξύ άλλων χαρακτηριστικών.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/RestrictEvents">Προβολή</LinkButton>
+</Card>
+<Card title="ECEnabler <code>10.7+</code>">
+Επιτρέπει στο macOS να διαβάζει πεδία EC μεγαλύτερα από 8 bit, αφαιρώντας την ανάγκη να τα διαχωρίζετε χειροκίνητα. Μην το χρησιμοποιείτε σε επιτραπέζιους υπολογιστές. Απαραίτητο για την σωστή λειτουργία της κατάστασης μπαταρίας σε φορητούς υπολογιστές.
+
+<LinkButton icon="external" href="https://github.com/1Revenger1/ECEnabler">Προβολή</LinkButton>
+</Card>
+<Card title="BrightnessKeys <code>10.11+</code>">
+Παρέχει υποστήριξη για ειδοποιήσεις αλλαγής φωτεινότητας ACPI (που συνήθως προέρχονται από τα πλήκτρα λειτουργίας (FN) του πληκτρολογίου σας).
+
+<LinkButton icon="external" href="https://github.com/acidanthera/BrightnessKeys">Προβολή</LinkButton>
+</Card>
+</CardGrid>
