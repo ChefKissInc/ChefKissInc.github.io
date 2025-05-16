@@ -31,8 +31,6 @@
 
 :root,
 ::backdrop {
-  --sl-font: "Geist Sans", sans-serif;
-  --sl-font-mono: "Geist Mono", monospace;
   --sl-nav-height: 3rem;
   --ec-brdRad: 0.5rem;
   --radius: 0.5rem;

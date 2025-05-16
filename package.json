@@ -14,11 +14,9 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/starlight": "^0.34.3",
     "@astrojs/starlight-tailwind": "^4.0.1",
-    "@fontsource/geist-mono": "^5.2.6",
-    "@fontsource/geist-sans": "^5.2.5",
     "@iconify-json/ph": "^1.2.2",
-    "@tailwindcss/vite": "^4.1.6",
-    "astro": "^5.7.12",
+    "@tailwindcss/vite": "^4.1.7",
+    "astro": "^5.7.13",
     "astro-embed": "^0.9.0",
     "astro-icon": "^1.1.5",
     "astro-og-canvas": "^0.7.0",
@@ -28,7 +26,7 @@
     "starlight-blog": "^0.23.2",
     "starlight-image-zoom": "^0.12.0",
     "starlight-links-validator": "^0.16.0",
-    "tailwindcss": "^4.1.6",
+    "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3"
   },
   "pnpm": {
