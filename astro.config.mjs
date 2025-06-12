@@ -44,6 +44,10 @@ export default defineConfig({
               url: "https://github.com/VisualEhrmanntraut",
             },
           },
+          metrics: {
+            readingTime: true,
+            words: "total",
+          },
         }),
         starlightLinksValidator({
           errorOnFallbackPages: false,
