@@ -34,7 +34,6 @@ export default defineConfig({
         ar: { label: "العربية", dir: "rtl" },
         uk: { label: "Українська" },
         it: { label: "Italiano" },
-        es: { label: "Español" },
         mk: { label: "Македонски" },
       },
       plugins: [
