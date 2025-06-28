@@ -1,0 +1,21 @@
+---
+title: AppleHax
+description: .مشاريعنا المتعلقة بآبل
+template: splash
+hero:
+  tagline: .مشاريعنا المتعلقة بـآبل
+next: false
+prev:
+  link: /ar/
+  label: القائمة الرئيسية
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="QEMU Apple Silicon" description=".QEMU محاكي شرائح آبل سليكون مبني على" href="/ar/applehax/qemu-as/" />
+  <LinkCard title="NootedRed" description="ڤيجا ‫الرسومية.‬ AMD اضافة دعم ‫معالجات‬" href="/ar/applehax/nootedred/" />
+  <LinkCard title="NootRX" description="‫الرسومية الغير مدعومة.‬ AMD RDNA2 اضافة دعم ‫معالجات‬" href="/ar/applehax/nootrx/" />
+  <LinkCard title="SMCRadeonSensors" description="‫اضافه لـVirtualSMC لقراءة درجات حرارة معالجات AMD الرسومية.‬" href="/ar/applehax/smcrs/" />
+  <LinkCard title="ForgedInvariant" description="‫اضافة مزامنة TSC لمعالجات AMD و Intel.‬" href="/ar/applehax/forgedinvariant/" />
+</CardGrid>
