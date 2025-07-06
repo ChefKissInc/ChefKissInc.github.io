@@ -34,7 +34,6 @@ export default defineConfig({
         ar: { label: "العربية", dir: "rtl" },
         uk: { label: "Українська" },
         it: { label: "Italiano" },
-        mk: { label: "Македонски" },
       },
       plugins: [
         viewTransitions(),
@@ -96,7 +95,6 @@ export default defineConfig({
           label: "Installation",
           translations: {
             gr: "Εγκατάσταση",
-            mk: "Инсталација",
             ar: "التثبيت",
           },
           items: [
@@ -106,7 +104,6 @@ export default defineConfig({
               label: "Gathering Files",
               translations: {
                 gr: "Συγκέντρωση αρχείων",
-                mk: "Собирање на Фајлови",
                 ar: "جمع الملفات",
               },
               items: [
@@ -116,7 +113,6 @@ export default defineConfig({
                   label: "Installer",
                   translations: {
                     gr: "Εγκαταστάτης",
-                    mk: "Инсталер",
                     ar: "المثبت",
                   },
                   items: [
@@ -132,7 +128,6 @@ export default defineConfig({
               label: "Configuration",
               translations: {
                 gr: "Διαμόρφωση παραμέτρων",
-                mk: "Конфигурација",
                 ar: "التكوين",
               },
               badge: {
@@ -145,13 +140,11 @@ export default defineConfig({
                     text: {
                       en: "Temporary",
                       gr: "Προσωρινό",
-                      mk: "Привремено",
                       ar: "مؤقت",
                     },
                   },
                   translations: {
                     gr: "Οδηγός Dortania",
-                    mk: "Водство Dortania",
                     ar: "دليل Dortania",
                   },
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
@@ -164,7 +157,6 @@ export default defineConfig({
           label: "Troubleshooting",
           translations: {
             gr: "Αντιμετώπηση προβλημάτων",
-            mk: "Поправање на проблем",
             ar: "اكتشاف الأخطاء وإصلاحها",
           },
           badge: { text: { en: "TODO", gr: "Υπό κατασκευή" } },
