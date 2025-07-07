@@ -1,3 +1,4 @@
+// @ts-check
 import { defineConfig } from "astro/config";
 import embeds from "astro-embed/integration";
 import starlight from "@astrojs/starlight";
