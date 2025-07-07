@@ -30,8 +30,8 @@ export default defineConfig({
       locales: {
         root: { label: "English", lang: "en" },
         gr: { label: "Ελληνικά" },
-        ru: { label: "Русский" },
         ar: { label: "العربية", dir: "rtl" },
+        ru: { label: "Русский" },
         uk: { label: "Українська" },
         it: { label: "Italiano" },
       },
@@ -43,6 +43,7 @@ export default defineConfig({
             en: "Newsroom",
             gr: "Αίθουσα τύπου",
             ar: "غرفة الأخبار",
+            ru: "Новости",
             it: "Redazione",
           },
           prefix: "newsroom",
@@ -97,6 +98,7 @@ export default defineConfig({
           translations: {
             gr: "Εγκατάσταση",
             ar: "التثبيت",
+            ru: "Установка",
             it: "Installazione",
           },
           items: [
@@ -107,6 +109,7 @@ export default defineConfig({
               translations: {
                 gr: "Συγκέντρωση αρχείων",
                 ar: "جمع الملفات",
+                ru: "Скачивание файлов",
                 it: "Ottenere i file",
               },
               items: [
@@ -117,6 +120,7 @@ export default defineConfig({
                   translations: {
                     gr: "Εγκαταστάτης",
                     ar: "المثبت",
+                    ru: "Установщик",
                     it: "Programma di installazione",
                   },
                   items: [
@@ -133,12 +137,14 @@ export default defineConfig({
               translations: {
                 gr: "Διαμόρφωση παραμέτρων",
                 ar: "التكوين",
+                ru: "Конфигурация",
                 it: "Configurazione",
               },
               badge: {
                 text: {
                   en: "TODO",
                   gr: "Υπό κατασκευή",
+                  ru: "В будущем",
                   it: "Prossimamente",
                 },
               },
@@ -150,12 +156,14 @@ export default defineConfig({
                       en: "Temporary",
                       gr: "Προσωρινό",
                       ar: "مؤقت",
+                      ru: "Временно",
                       it: "Provvisoria",
                     },
                   },
                   translations: {
                     gr: "Οδηγός Dortania",
                     ar: "دليل Dortania",
+                    ru: "Гайд Dortania",
                     it: "Guida Dortania",
                   },
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
@@ -169,12 +177,14 @@ export default defineConfig({
           translations: {
             gr: "Αντιμετώπηση προβλημάτων",
             ar: "اكتشاف الأخطاء وإصلاحها",
+            ru: "Отладка и исправление ошибок",
             it: "Risoluzione dei problemi",
           },
           badge: {
             text: {
               en: "TODO",
               gr: "Υπό κατασκευή",
+              ru: "В будущем",
               it: "Prossimamente",
             },
           },

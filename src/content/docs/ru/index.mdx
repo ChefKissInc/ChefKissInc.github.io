@@ -1,0 +1,24 @@
+---
+title: ChefKiss
+description: Расширение возможностей людей с помощью качественного программного обеспечения.
+template: splash
+hero:
+  tagline: Расширение возможностей людей с помощью качественного программного обеспечения.
+  image:
+    alt: Королевский пингвин в поварском колпаке и смокинге.
+    file: ~/assets/CKPenguin.svg
+next: false
+prev: false
+banner:
+  content: |
+    Добро пожаловать на новый сайт ChefKiss, <a href="/ru/newsroom/website-rewritten/">подробнее</a>.
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="Руководства" description="Руководства по Hackintosh и др." href="/ru/guides/" />
+  <LinkCard title="AppleHax" description="Наши проекты, связанные с Apple." href="/ru/applehax/" />
+  <LinkCard title="Инструменты" description="Наши инструменты." href="/ru/tooling/" />
+  <LinkCard title="Новости" description="Объявления, обновления и многое другое." href="/ru/newsroom/" />
+</CardGrid>

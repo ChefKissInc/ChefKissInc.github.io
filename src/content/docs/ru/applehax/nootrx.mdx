@@ -1,0 +1,103 @@
+---
+title: NootRX
+description: Расширение ядра для графических процессоров AMD rDNA 2.
+template: splash
+hero:
+  tagline: Расширение ядра для графических процессоров AMD rDNA 2.
+  actions:
+    - text: GitHub
+      link: https://github.com/ChefKissInc/NootRX
+      icon: github
+      variant: primary
+    - text: Ночная сборка
+      link: https://nightly.link/ChefKissInc/NootRX/workflows/main/master/Artifacts.zip
+      icon: external
+      variant: secondary
+next: false
+prev:
+  link: /ru/applehax/
+  label: AppleHax
+---
+
+import Aside from '~/components/Aside.astro';
+
+## Совместимость с GPU
+
+- `Navi 21` на `macOS 11` и новее.
+- `Navi 22` и `Navi 23` на `macOS 12` и новее.
+- Поддержка `Navi 24` появится в ближайшее время.
+
+<details>
+<summary>Как определить вашу видеокарту</summary>
+
+| Маркировка                     | Тип карты |
+| ---------------------------- | --------- |
+| AMD Radeon Pro V620          | `Navi 21` |
+| AMD Radeon Pro W6800         | `Navi 21` |
+| AMD Radeon Pro W6800X        | `Navi 21` |
+| AMD Radeon Pro W6800X Duo    | `Navi 21` |
+| AMD Radeon Pro W6900X        | `Navi 21` |
+| AMD Radeon RX 6800           | `Navi 21` |
+| AMD Radeon RX 6800 XT        | `Navi 21` |
+| AMD Radeon RX 6900 XT        | `Navi 21` |
+| AMD Radeon RX 6900 XTX       | `Navi 21` |
+| AMD Radeon RX 6950 XT        | `Navi 21` |
+| AMD Radeon RX 6700           | `Navi 22` |
+| AMD Radeon RX 6700 XT        | `Navi 22` |
+| AMD Radeon RX 6700M          | `Navi 22` |
+| AMD Radeon RX 6750 GRE 10 GB | `Navi 22` |
+| AMD Radeon RX 6750 GRE 12 GB | `Navi 22` |
+| AMD Radeon RX 6750 XT        | `Navi 22` |
+| AMD Radeon RX 6800M          | `Navi 22` |
+| AMD Radeon RX 6850M XT       | `Navi 22` |
+| AMD Radeon Pro W6600         | `Navi 23` |
+| AMD Radeon Pro W6600M        | `Navi 23` |
+| AMD Radeon Pro W6600X        | `Navi 23` |
+| AMD Radeon RX 6600           | `Navi 23` |
+| AMD Radeon RX 6600 XT        | `Navi 23` |
+| AMD Radeon RX 6600M          | `Navi 23` |
+| AMD Radeon RX 6600S          | `Navi 23` |
+| AMD Radeon RX 6650 XT        | `Navi 23` |
+| AMD Radeon RX 6650M          | `Navi 23` |
+| AMD Radeon RX 6650M XT       | `Navi 23` |
+| AMD Radeon RX 6700S          | `Navi 23` |
+| AMD Radeon RX 6800S          | `Navi 23` |
+| AMD Radeon Pro W6300         | `Navi 24` |
+| AMD Radeon Pro W6300M        | `Navi 24` |
+| AMD Radeon Pro W6400         | `Navi 24` |
+| AMD Radeon Pro W6500M        | `Navi 24` |
+| AMD Radeon RX 6300           | `Navi 24` |
+| AMD Radeon RX 6300M          | `Navi 24` |
+| AMD Radeon RX 6400           | `Navi 24` |
+| AMD Radeon RX 6450M          | `Navi 24` |
+| AMD Radeon RX 6500 XT        | `Navi 24` |
+| AMD Radeon RX 6500M          | `Navi 24` |
+| AMD Radeon RX 6550M          | `Navi 24` |
+| AMD Radeon RX 6550S          | `Navi 24` |
+
+</details>
+
+## Предварительные требования
+
+- Настроенный согласно нашему руководству EFI OpenCore.
+- Удалите `WhateverGreen.kext` или `NootedRed.kext`, если они у вас есть.
+  - Это расширение конфликтует с ними.
+- Обновите macOS (незначительные обновления, необязательно переходить, например, с `macOS 11` на `macOS 12`).
+
+## Часто задаваемые вопросы
+
+<Aside type="danger">
+Этот список не является исчерпывающим, для получения дополнительной информации следует проверить раздел [вопросы](https://github.com/ChefKissInc/NootRX/issues), а также, возможно, обсуждения.
+</Aside>
+
+### Я вижу зеленые и розовые артефакты, когда DRM-контент воспроизводится в фоновом режиме браузером с программным DRM на Navi 22
+
+Пока нет решения.
+
+### Некоторые 3D-программы или игры показывают зеленый экран или зеленые артефакты на Navi 22
+
+Пока нет решения. Некоторые проблемы могут быть смягчены путем понижения версии до Monterey.
+
+### Контент FairPlay 1.x/4.x либо показывает черный экран, либо зависает на Navi 22
+
+Пока нет решения.

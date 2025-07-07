@@ -1,0 +1,101 @@
+---
+title: Совместимость
+description: Совместимость системы Hackintosh.
+---
+
+import Aside from '~/components/Aside.astro';
+
+Поддержка оборудования macOS ограничена тем, что поддерживает Apple, и патчами, созданными сообществом.
+
+## Поддержка CPU
+
+`AMD Bulldozer (15h)` и более новые процессоры поддерживаются с патчами [AMD Vanilla](https://github.com/AMD-OSX/AMD_Vanilla).
+
+<Aside type="caution">
+Патчи поддерживают только `macOS 10.13` и новее, для более старых версий требуется кастомное ядро, которое не поддерживается этим руководством.
+</Aside>
+
+<Aside type="tip">
+Мобильные процессоры AMD такие же, как и настольные процессоры AMD.
+</Aside>
+
+<Aside type="danger">
+Некоторые функции macOS работают неправильно с процессором AMD, см. [ниже](#несовместимости-cpu-amd).
+</Aside>
+
+### Требования к CPU
+
+#### Требования к архитектуре
+
+- Поддерживаются процессоры x86_64/AMD64 (64-разрядные) начиная с Mac OS X 10.4.1
+
+#### Требования к SSE
+
+- `SSE3` требуется для всех версий macOS для Intel
+- `SSSE3` требуется для всех 64-разрядных версий macOS
+- `SSE4` требуется для `macOS 10.12` до, но не включая, `macOS 10.14`
+- `SSE4.2` требуется для `macOS 10.14` и более новых драйверов AMD GPU. По возможности избегайте процессоров только с `SSE4.1`. Может работать с некоторыми хаками; см. [Сбор файлов > Kexts](/ru/guides/hackintosh/gathering-files/kexts/)
+
+### Несовместимости CPU AMD
+
+К сожалению, некоторые функции macOS работают некорректно на системах AMD.
+
+#### Виртуальные машины, использующие AppleHV
+
+Известные проблемы
+
+- VirtualBox новее 6
+- VMWare новее 10
+- Parallels новее 13.1
+- Docker
+- Android Studio
+- QEMU's hvf accelerator backend
+
+<Aside type="danger">
+Устаревшее программное обеспечение для виртуализации представляет собой большую угрозу безопасности.
+</Aside>
+
+#### Проблемы совместимости с приложениями, использующими Intel MKL
+
+Приложения, использующие Intel MKL, потребуют патч от такого инструмента, как [`AMDHelper`](https://github.com/alvindimas05/AMDHelper).
+
+По-видимому, Intel саботирует процессоры AMD, делая MKL неработоспособным на них.
+
+Известные приложения, использующие Intel MKL
+
+- Krisp
+- Logic Pro Waves Plug-In
+- Программное обеспечение Adobe
+- Discord
+
+#### 32-разрядные приложения
+
+Патчи `AMD Vanilla` не поддерживают 32-разрядные приложения, даже в `WINE`/`CrossOver`. Однако, каким-то образом это работает на Threadripper (TRX40).
+
+## Поддержка GPU
+
+Поддержка GPU сложна.
+
+### GPU AMD
+
+- Поддерживаются GPU [GCN](https://en.wikipedia.org/wiki/Graphics_Core_Next) и [RDNA](<https://en.wikipedia.org/wiki/RDNA_(microarchitecture)>) в последних версиях macOS.
+- GPU RDNA 3 не поддерживаются, Navi 24 также не поддерживается (пока). Navi 22 поддерживается [`NootRX`](/ru/applehax/nootrx/)
+- [Raven](https://www.techpowerup.com/gpu-specs/amd-raven.g816) и [Renoir](https://www.techpowerup.com/gpu-specs/amd-renoir.g1058) AMD iGPU поддерживаются через [`NootedRed`](/ru/applehax/nootedred/).
+- Другие поколения iGPU (GCN \<5, RDNA) **не** поддерживаются вообще (пока).
+- [Baffin](https://www.techpowerup.com/gpu-specs/amd-baffin.g796) AMD dGPU поддерживаются в последней версии macOS.
+- [Ellesmere](https://www.techpowerup.com/gpu-specs/amd-ellesmere.g795) AMD dGPU поддерживаются в последней версии macOS.
+- [Lexa](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) AMD dGPU поддерживаются через подмену идентификатора устройства на соответствующий вариант Baffin.
+- Polaris 20 AMD dGPU не поддерживаются (пока).
+
+<Aside type="danger">
+Пользователи **MSI Navi**: [Установщик не работает с 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901), **исправлено начиная с `macOS 11`**.
+</Aside>
+
+### GPU NVIDIA
+
+- GPU Maxwell ([9XX](https://en.wikipedia.org/wiki/GeForce_900_series)) и Pascal ([10XX](https://en.wikipedia.org/wiki/GeForce_10_series)) **ограничены** **`macOS 10.13`**.
+- GPU Turing ([20XX](https://en.wikipedia.org/wiki/GeForce_20_series), [16XX](https://en.wikipedia.org/wiki/GeForce_16_series)) **не** поддерживаются ни в одной версии macOS.
+- GPU Ampere ([30XX](https://en.wikipedia.org/wiki/GeForce_30_series)) **не** поддерживаются ни в одной версии macOS.
+- GPU Kepler ([6XX](https://en.wikipedia.org/wiki/GeForce_600_series), [7XX](https://en.wikipedia.org/wiki/GeForce_700_series)) поддерживаются до **`macOS 11`**.
+
+Теперь, когда это позади, давайте начнём со [сбора необходимых файлов](/ru/guides/hackintosh/gathering-files/).
