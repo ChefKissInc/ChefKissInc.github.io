@@ -4,6 +4,8 @@ description: ‫اختيار ملحقات نواة(Kernel Extension/Kext) macOS 
 ---
 
 import Aside from '~/components/Aside.astro';
+import Card from '~/components/Card.astro';
+import { CardGrid, LinkButton } from '@astrojs/starlight/components';
 
 ‫برامج تشغيل نواة macOS. يمكن لـ OpenCore حقن(Inject) أو حظر برامج التشغيل‫(Drivers)‬. يمكنك وضعها في `EFI/OC/Kexts`، ولكن يجب أيضًا تحديدها في `Config.plist`. سنعتني بالأمر الأخير في خطوة لاحقة.‬
 
@@ -23,43 +25,48 @@ import Aside from '~/components/Aside.astro';
 ‫لا يمكنك ‫تشغيل النظام‬ على الإطلاق بدون هذه.‬
 </Aside>
 
-- [`Lilu`](https://github.com/acidanthera/Lilu) (10.4+)
+<CardGrid>
+<Card title="<code>10.4+</code> Lilu">
+‫يقوم بإجراء تصحيح تعسفي لـkext والمكتبة والبرامج داخل نظام التشغيل macOS.‬
 
-  ‫يقوم بإجراء تصحيح تعسفي لـkext والمكتبة والبرامج داخل نظام التشغيل macOS.‬
+<LinkButton icon="external" href="https://github.com/acidanthera/Lilu">عرض</LinkButton>  
+</Card>
+<Card title="<code>10.4+</code> VirtualSMC">
+‫ يحاكي SMC من Apple.‬
 
-- [`VirtualSMC`](https://github.com/acidanthera/VirtualSMC) (10.4+)
-
- ‫ يحاكي SMC من Apple.‬
+<LinkButton icon="external" href="https://github.com/acidanthera/VirtualSMC">عرض</LinkButton>
+</Card>
+</CardGrid>
 
 ## ‫المكونات الإضافية لـ VirtualSMC‬
 
-- `SMCProcessor` (10.7+)
+<CardGrid>
+<Card title="<code>10.7+</code> SMCProcessor">
+‫يراقب درجات حرارة وحدة المعالجة المركزية على أجهزة Intel. متضمن مع VirtualSMC.‬
+</Card>  
+<Card title="<code>10.13+</code> SMCProcessorAMD">
+‫يراقب درجات حرارة وحدة المعالجة المركزية على أجهزة AMD.‬
 
-  ‫يراقب درجات حرارة وحدة المعالجة المركزية على أجهزة Intel. متضمن مع VirtualSMC.‬
+<LinkButton icon="external" href="https://github.com/Lorys89/SMCProcessorAMD">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.15+</code> SMCRadeonSensors">
+‫يراقب درجات حرارة وحدة معالجة الرسومات AMD. يدعم وحدات معالجة الرسومات المدمجة AMD.‬
 
-- [`SMCProcessorAMD`](https://github.com/Lorys89/SMCProcessorAMD) (10.13+)
-
-  ‫يراقب درجات حرارة وحدة المعالجة المركزية على أجهزة AMD.‬
-
-- [`SMCRadeonSensors`](https://github.com/ChefKissInc/SMCRadeonSensors) (10.15+)
-
-  ‫يراقب درجات حرارة وحدة معالجة الرسومات AMD. يدعم وحدات معالجة الرسومات المدمجة AMD.‬
-
-- `SMCSuperIO` (‫10.6, 64 بت فقط‬)
-
-  ‫يراقب سرعات المروحة. متضمن مع VirtualSMC. **لا** تستخدمه على AMD.‬
-
-- `SMCBatteryManager` (10.4)
-
-  ‫مراقبة حالة بطارية الكمبيوتر المحمول. متضمن مع VirtualSMC. **لا** تستخدمه على أجهزة سطح المكتب.‬
-
-- `SMCLightSensor` (‫10.6, 64 بت فقط‬)
-
-  ‫يضيف دعمًا لمستشعر الإضاءة المحيطة ACPI. متضمن مع VirtualSMC. **لا** تستخدمه على أجهزة سطح المكتب.‬
-
-- `SMCDellSensors` (10.7+)
-
-  ‫يراقب سرعات المروحة في أنظمة Dell التي تدعم وضع إدارة النظام (SMM). متضمن مع VirtualSMC.‬
+<LinkButton icon="external" href="https://github.com/ChefKissInc/SMCRadeonSensors">عرض</LinkButton>  
+</Card>
+<Card title="<code>10.6, 64 بت فقط</code> SMCSuperIO">
+‫يراقب سرعات المروحة. متضمن مع VirtualSMC. **لا** تستخدمه على AMD.‬
+</Card>
+<Card title="<code>10.4</code> SMCBatteryManager">
+‫مراقبة حالة بطارية الكمبيوتر المحمول. متضمن مع VirtualSMC. **لا** تستخدمه على أجهزة سطح المكتب.‬
+</Card>
+<Card title="<code>10.6, 64 بت فقط</code> SMCLightSensor">
+‫يضيف دعمًا لمستشعر الإضاءة المحيطة ACPI. متضمن مع VirtualSMC. **لا** تستخدمه على أجهزة سطح المكتب.‬
+</Card>
+<Card title="<code>10.7+</code> SMCDellSensors">
+‫يراقب سرعات المروحة في أنظمة Dell التي تدعم وضع إدارة النظام (SMM). متضمن مع VirtualSMC.‬
+</Card>
+</CardGrid>
 
 ## ‫الرسومات‬
 
@@ -67,53 +74,73 @@ import Aside from '~/components/Aside.astro';
 ‫يمكنك استخدام واحد فقط من الـkext أدناه. يتعارضون مع بعضهم البعض.‬
 </Aside>
 
-- [`NootRX`](https://github.com/ChefKissInc/NootRX) (11.0+)
+<CardGrid>
+<Card title="<code>11.0+</code> NootRX">
+‫يوفر تصحيحات لبطاقات AMD Navi 2x، ويضيف دعمًا لبطاقات Navi 22.‬
 
-  ‫يوفر تصحيحات لبطاقات AMD Navi 2x، ويضيف دعمًا لبطاقات Navi 22.‬
+<LinkButton icon="external" href="https://github.com/ChefKissInc/NootRX">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.15+</code> NootedRed">
+‫يوفر تسريعًا رسوميًا لوحدات معالجة الرسومات المدمجة AMD Vega.‬
 
-- [`NootedRed`](https://github.com/ChefKissInc/NootedRed) (10.15+)
+<LinkButton icon="external" href="https://github.com/ChefKissInc/NootedRed">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.6+, 64 بت فقط</code> WhateverGreen">
+‫يوفر تصحيحات لوحدات معالجة الرسومات الداخلية من Intel و AMD وبطاقات معالجة الرسومات من NVIDIA للسماح بتسريع الرسوميات وتصحيح المخزن المؤقت للإطارات والتحكم في الإضاءة الخلفية وما إلى ذلك.‬
 
-  ‫يوفر تسريعًا رسوميًا لوحدات معالجة الرسومات المدمجة AMD Vega.‬
-
-- [`WhateverGreen`](https://github.com/acidanthera/WhateverGreen) (‫10.6+, 64 بت فقط‬)
-
-  ‫يوفر تصحيحات لوحدات معالجة الرسومات الداخلية من Intel و AMD وبطاقات معالجة الرسومات من NVIDIA للسماح بتسريع الرسوميات وتصحيح المخزن المؤقت للإطارات والتحكم في الإضاءة الخلفية وما إلى ذلك.‬
+<LinkButton icon="external" href="https://github.com/acidanthera/WhateverGreen">عرض</LinkButton>  
+</Card>
+</CardGrid>
 
 ## ‫الصوت‬
 
-- [`AppleALC`](https://github.com/acidanthera/AppleALC) (10.4+)
+<CardGrid>
+<Card title="<code>10.4+</code> AppleALC">
+‫تصحيح حزمة الصوت الخاصة بشركة Apple (`AppleHDA`/`AppleGFXHDA`) للسماح بترميزات الصوت غير المدعومة وصوت HDMI.‬
 
-  ‫تصحيح حزمة الصوت الخاصة بشركة Apple (`AppleHDA`/`AppleGFXHDA`) للسماح بترميزات الصوت غير المدعومة وصوت HDMI.‬
+<LinkButton icon="external" href="https://github.com/acidanthera/AppleALC">عرض</LinkButton>  
+</Card>  
+</CardGrid>
 
 ## ‫إيثرنت‬
 
-- [`LucyRTL8125Ethernet`](https://github.com/Mieze/LucyRTL8125Ethernet) (10.14+)
+<CardGrid>
+<Card title="<code>10.14+</code> LucyRTL8125Ethernet">
+‫برنامج تشغيل RTL8125 (2.5GBe Realtek)، تم نقله من Linux.‬
 
-  ‫برنامج تشغيل RTL8125 (2.5GBe Realtek)، تم نقله من Linux.‬
+<LinkButton icon="external" href="https://github.com/Mieze/LucyRTL8125Ethernet">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.14+</code> RealtekRTL8111">
+‫برنامج تشغيل RTL8111 (1GBe Realtek)، تم نقله من Linux.‬
 
-- [`RealtekRTL8111`](https://github.com/Mieze/RTL8111_driver_for_OS_X) (10.14+)
+<LinkButton icon="external" href="https://github.com/Mieze/RTL8111_driver_for_OS_X">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.14+</code> RealtekRTL8100">
+‫برنامج تشغيل RTL8100 (10/100MBe Realtek)، تم نقله من Linux.‬
 
-  ‫برنامج تشغيل RTL8111 (1GBe Realtek)، تم نقله من Linux.‬
+<LinkButton icon="external" href="https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.15+</code> AppleIGC">
+‫برنامج تشغيل إيثرنت I225-V/I226-V، تم نقله من Linux.‬
 
-- [`RealtekRTL8100`](https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/) (10.14+)
+<LinkButton icon="external" href="https://github.com/SongXiaoXi/AppleIGC">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.9+</code> AppleIGB">
+‫نسخة (Fork) من `IntelMausi` لـ Intel I210 و I211 إيثرنت.‬
 
-  ‫برنامج تشغيل RTL8100 (10/100MBe Realtek)، تم نقله من Linux.‬
+<LinkButton icon="external" href="https://www.macos86.it/topic/6029-appleigb-and-intelmausi-integration/">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.9+, 10.6-10.8 مع `IntelSnowMausi`</code> IntelMausi">
+‫برنامج تشغيل لمعظم بطاقات Intel إيثرنت.‬
 
-- [`AppleIGC`](https://github.com/SongXiaoXi/AppleIGC) (10.15+)
+<LinkButton icon="external" href="https://github.com/acidanthera/IntelMausi">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.12+</code> AtherosE2200Ethernet">
+‫برنامج تشغيل لمعظم بطاقات Atheros إيثرنت.‬
 
-  ‫برنامج تشغيل إيثرنت I225-V/I226-V، تم نقله من Linux.‬
-
-- [`AppleIGB`](https://www.macos86.it/topic/6029-appleigb-and-intelmausi-integration/) (10.9+)
-
-  ‫نسخة (Fork) من `IntelMausi` لـ Intel I210 و I211 إيثرنت.‬
-
-- [`IntelMausi`](https://github.com/acidanthera/IntelMausi) (10.9+, 10.6-10.8 مع `IntelSnowMausi`)
-
-  ‫برنامج تشغيل لمعظم بطاقات Intel إيثرنت.‬
-
-- [`AtherosE2200Ethernet`](https://github.com/Mieze/AtherosE2200Ethernet) (10.12+)
-
-  ‫برنامج تشغيل لمعظم بطاقات Atheros إيثرنت.‬
+<LinkButton icon="external" href="https://github.com/Mieze/AtherosE2200Ethernet">عرض</LinkButton>  
+</Card>  
+</CardGrid>
 
 <Aside type="caution">
 ‫تحتاج بطاقات Aquantia على AMD إلى [تصحيحات CaseySJ](https://github.com/CaseySJ/Aquantia-macOS-Patches/blob/main/CaseySJ-Aquantia-Patch-Sets-1-and-2.plist).‬
@@ -121,25 +148,32 @@ import Aside from '~/components/Aside.astro';
 
 ## واي فاي/بلوتوث
 
-- [`Itlwm`](https://github.com/OpenIntelWireless/itlwm) (10.13+)
+<CardGrid>
+<Card title="<code>10.13+</code> Itlwm">
+‫يدعم معظم بطاقات Intel Wi-Fi. يستخدم `AirportItlwm` مجموعة Wi-Fi الخاصة بنظام macOS، و `Itlwm` يستخدم [`Heliport`](https://github.com/OpenIntelWireless/HeliPort) للاتصال بالشبكات.‬
 
-  ‫يدعم معظم بطاقات Intel Wi-Fi. يستخدم `AirportItlwm` مجموعة Wi-Fi الخاصة بنظام macOS، و `Itlwm` يستخدم [`Heliport`](https://github.com/OpenIntelWireless/HeliPort) للاتصال بالشبكات.‬
+<LinkButton icon="external" href="https://github.com/OpenIntelWireless/itlwm">عرض</LinkButton>  
+</Card>  
+<Card title="IntelBluetoothFirmware">
+‫يدعم معظم بطاقات Wi-Fi من Intel. على نظام التشغيل macOS 11 والإصدارات الأقدم، تحتاج إلى استخدام جميع kexts الثلاثة المضمنة.‬
 
-- [`IntelBluetoothFirmware`](https://github.com/OpenIntelWireless/IntelBluetoothFirmware)
+<Aside type="note">
+‫في نظام macOS 12+، تحتاج إلى استخدام `IntelBluetoothFirmware` و`IntelBTPatcher` من المذكور أعلاه، و`BlueToolFixup` من [`BrcmPatchRAM`](https://github.com/acidanthera/BrcmPatchRAM).‬
+</Aside>
 
-  ‫يدعم معظم بطاقات Wi-Fi من Intel. على نظام التشغيل macOS 11 والإصدارات الأقدم، تحتاج إلى استخدام جميع kexts الثلاثة المضمنة.‬
+<LinkButton icon="external" href="https://github.com/OpenIntelWireless/IntelBluetoothFirmware">عرض</LinkButton>  
+</Card>  
+<Card title="AirportBrcmFixup">
+‫يقوم بتصحيح kexts AirPort للسماح لبطاقات Broadcom غير المدعومة باستخدام مكدس Wi-Fi الأصلي.‬
 
-  <Aside type="note">
-  ‫في نظام macOS 12+، تحتاج إلى استخدام `IntelBluetoothFirmware` و`IntelBTPatcher` من المذكور أعلاه، و`BlueToolFixup` من [`BrcmPatchRAM`](https://github.com/acidanthera/BrcmPatchRAM).‬
-  </Aside>
+<LinkButton icon="external" href="https://github.com/acidanthera/AirportBrcmFixup">عرض</LinkButton>  
+</Card>  
+<Card title="BrcmPatchRAM">
+‫تصحيح حزمة البلوتوث للسماح لبطاقات Broadcom الغير مدعومة (وكل الأجهزة الأخرى في macOS 12+ مع `BlueToolFixup`) باستخدام حزمة البلوتوث الأصلية.‬
 
-- [`AirportBrcmFixup`](https://github.com/acidanthera/AirportBrcmFixup)
-
-  ‫يقوم بتصحيح kexts AirPort للسماح لبطاقات Broadcom غير المدعومة باستخدام مكدس Wi-Fi الأصلي.‬
-
-- [`BrcmPatchRAM`](https://github.com/acidanthera/BrcmPatchRAM)
-
-  ‫تصحيح حزمة البلوتوث للسماح لبطاقات Broadcom الغير مدعومة (وكل الأجهزة الأخرى في macOS 12+ مع `BlueToolFixup`) باستخدام حزمة البلوتوث الأصلية.‬
+<LinkButton icon="external" href="https://github.com/acidanthera/BrcmPatchRAM">عرض</LinkButton>  
+</Card>
+</CardGrid>
 
 <Aside type="tip">
 ‫إذا كانت بطاقة Wi-Fi الخاصة بك غير مدعومة ولا يوجد لديك Ethernet، فيمكنك استخدام [`HoRNDIS`](/Extras/Kexts/HoRNDIS.zip) لتمكين ربط USB في Android. لا يعمل ربط USB في iPhone في `recoveryOS`.‬
@@ -147,93 +181,119 @@ import Aside from '~/components/Aside.astro';
 
 ## USB
 
-- [`XLNCUSBFix`](/Extras/Kexts/XLNCUSBFix.zip) (10.13+)
+<CardGrid>
+<Card title="<code>10.13+</code> XLNCUSBFix">
+‫إصلاح USB **_فقط_** لوحدات المعالجة المركزية AMD FX.‬
 
-  ‫إصلاح USB **_فقط_** لوحدات المعالجة المركزية AMD FX.‬
+<LinkButton icon="external" href="/Extras/Kexts/XLNCUSBFix.zip">عرض</LinkButton>  
+</Card>  
+<Card title="GenericUSBXHCI (اختراق اصلاح USB)">
+‫نسخة معدلة من `GenericUSBXHCI`، حصريًا للعمل حول USB المعلق أو بالقرب من "PCI Configuration End" عند استخدام كمبيوتر محمول AMD. لا تستخدمه إذا لم تكن تعاني من هذه المشكلة، راجع ملف README الخاص به لمزيد من المعلومات.‬
 
-- [`GenericUSBXHCI (‫اختراق اصلاح USB‬)`](https://github.com/RattletraPM/GUX-RyzenXHCIFix)
+<LinkButton icon="external" href="https://github.com/RattletraPM/GUX-RyzenXHCIFix">عرض</LinkButton>  
+</Card>  
+<Card title="USBToolBox">
+‫أداة تعيين USB. تعمل بشكل أفضل على نظام التشغيل Windows.‬
 
-  ‫نسخة معدلة من `GenericUSBXHCI`، حصريًا للعمل حول USB المعلق أو بالقرب من "PCI Configuration End" عند استخدام كمبيوتر محمول AMD. لا تستخدمه إذا لم تكن تعاني من هذه المشكلة، راجع ملف README الخاص به لمزيد من المعلومات.‬
+<Aside type="note">
+‫قم بتمكين "Use Native Classes" في الإعدادات ولا تستخدم kext `USBToolBox`.‬
+‫سيُطلب منك SMBIOS الذي اخترته عند الإنشاء، لذا احفظه كخطوة أخيرة.‬
+</Aside>
 
-- [`USBToolBox`](https://github.com/USBToolBox/tool)
+<LinkButton icon="external" href="https://github.com/USBToolBox/tool">عرض</LinkButton>  
+</Card>  
+<Card title="USBMap">
+‫أداة تعيين USB. تعمل فقط على نظام التشغيل macOS.‬
 
-  ‫أداة تعيين USB. تعمل بشكل أفضل على نظام التشغيل Windows.‬
-
-  <Aside type="note">
-  ‫قم بتمكين "Use Native Classes" في الإعدادات ولا تستخدم kext `USBToolBox`.‬
-  ‫سيُطلب منك SMBIOS الذي اخترته عند الإنشاء، لذا احفظه كخطوة أخيرة.‬
-  </Aside>
-
-- [`USBMap`](https://github.com/CorpNewt/USBMap)
-
-  ‫أداة تعيين USB. تعمل فقط على نظام التشغيل macOS.‬
+<LinkButton icon="external" href="https://github.com/CorpNewt/USBMap">عرض</LinkButton>  
+</Card>
+</CardGrid>
 
 ## Input
 
-- [`VoodooPS2`](https://github.com/acidanthera/VoodooPS2) (10.11+)
+<CardGrid>
+<Card title="<code>10.11+</code> VoodooPS2">
+‫برنامج تشغيل للأجهزة الطرفية PS/2. يُستخدم في لوحات مفاتيح أجهزة الكمبيوتر المحمولة أو فئران/لوحات مفاتيح PS/2 على أجهزة الكمبيوتر المكتبية.‬
 
-  ‫برنامج تشغيل للأجهزة الطرفية PS/2. يُستخدم في لوحات مفاتيح أجهزة الكمبيوتر المحمولة أو فئران/لوحات مفاتيح PS/2 على أجهزة الكمبيوتر المكتبية.‬
+<LinkButton icon="external" href="https://github.com/acidanthera/VoodooPS2">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.13+</code> VoodooI2C">
+‫برنامج تشغيل لأجهزة الإدخال I2C. البرنامج المرتبط هو إصدار ما قبل الإصدار مع دعم إضافي لوحدات التحكم AMD I2C.‬
 
-- [`VoodooI2C`](https://github.com/VoodooI2C/VoodooI2C) (10.13+)
+<details>
+<summary>Satellites</summary>
 
-  ‫برنامج تشغيل لأجهزة الإدخال I2C. البرنامج المرتبط هو إصدار ما قبل الإصدار مع دعم إضافي لوحدات التحكم AMD I2C.‬
+<Aside type="danger">
+‫لا يمكنك معرفة نوع الجهاز من خلال العلامة التجارية أو اسم العرض فقط.‬
+</Aside>
+<Aside type="danger">
+‫يجب عليك استخدام satellite واحد فقط، ولا تضعهم جميعًا معًا؛ فقد يتعارضون.‬
+</Aside>
 
-  <details>
-  <summary>Satellites</summary>
+| نوع الجهاز                | Satellite                                                                    |
+| ------------------------- | ---------------------------------------------------------------------------- |
+| HID                       | `VoodooI2CHID`                                                               |
+| ELAN                      | `VoodooI2CELAN`                                                              |
+| FTE                       | `VoodooI2CFTE`                                                               |
+| Atmel Multitouch Protocol | `VoodooI2CAtmelMXT`                                                          |
+| Synaptics                 | [`VoodooRMI`](https://github.com/VoodooSMBus/VoodooRMI) (‫يدعم أيضاً SMBus‬) |
+| Alps                      | [`AlpsHID`](https://github.com/blankmac/AlpsHID)                             |
 
-  <Aside type="danger">
-  ‫لا يمكنك معرفة نوع الجهاز من خلال العلامة التجارية أو اسم العرض فقط.‬
-  </Aside>
-  <Aside type="danger">
-  ‫يجب عليك استخدام satellite واحد فقط، ولا تضعهم جميعًا معًا؛ فقد يتعارضون.‬
-  </Aside>
+<Aside type="tip">
+‫يعد HID نوعًا شائعًا جدًا من الأجهزة. إذا كنت تستخدم كمبيوتر محمولًا من طراز AMD، فمن المحتمل جدًا أن تكون لوحة اللمس الخاصة بك متصلة به. ومع ذلك، تأكد من ذلك.‬
+</Aside>
+</details>
 
-  | نوع الجهاز               | Satellite                                                                     |
-  | ------------------------- | ----------------------------------------------------------------------------- |
-  | HID                       | `VoodooI2CHID`                                                                |
-  | ELAN                      | `VoodooI2CELAN`                                                               |
-  | FTE                       | `VoodooI2CFTE`                                                                |
-  | Atmel Multitouch Protocol | `VoodooI2CAtmelMXT`                                                           |
-  | Synaptics                 | [`VoodooRMI`](https://github.com/VoodooSMBus/VoodooRMI) (‫يدعم أيضاً SMBus‬) |
-  | Alps                      | [`AlpsHID`](https://github.com/blankmac/AlpsHID)                              |
+<LinkButton icon="external" href="https://github.com/VoodooI2C/VoodooI2C">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.14+</code> VoodooSMBus">
+‫لأجهزة الإدخال التي يتم توصيلها عبر وحدة التحكم SMBus (I2C-i801) وأيضًا بعض أجهزة الإدخال ELAN SMBus الغريبة.‬
 
-  <Aside type="tip">
-  ‫يعد HID نوعًا شائعًا جدًا من الأجهزة. إذا كنت تستخدم كمبيوتر محمولًا من طراز AMD، فمن المحتمل جدًا أن تكون لوحة اللمس الخاصة بك متصلة به. ومع ذلك، تأكد من ذلك.‬
-  </Aside>
-  </details>
-
-- [`VoodooSMBus`](https://github.com/VoodooSMBus/VoodooSMBus) (10.14+)
-
-  ‫لأجهزة الإدخال التي يتم توصيلها عبر وحدة التحكم SMBus (I2C-i801) وأيضًا بعض أجهزة الإدخال ELAN SMBus الغريبة.‬
+<LinkButton icon="external" href="https://github.com/VoodooSMBus/VoodooSMBus">عرض</LinkButton>  
+</Card>
+</CardGrid>
 
 ## التخزين
 
-- [`NVMeFix`](https://github.com/acidanthera/NVMeFix) (10.14+)
+<CardGrid>
+<Card title="<code>10.14+</code> NVMeFix">
+‫تصحيح مجموعة NVMe (IONVMeFamily) لدعم انتقال حالة الطاقة المستقلة (APST)، ولإصلاح حالات الذعر(Kernel Panics) التي تحدث بسبب انتهاء مهلة تشغيل النواة في بعض وحدات تحكم NVMe.‬
 
-  ‫تصحيح مجموعة NVMe (IONVMeFamily) لدعم انتقال حالة الطاقة المستقلة (APST)، ولإصلاح حالات الذعر(Kernel Panics) التي تحدث بسبب انتهاء مهلة تشغيل النواة في بعض وحدات تحكم NVMe.‬
+<LinkButton icon="external" href="https://github.com/acidanthera/NVMeFix">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.13+</code> EmeraldSDHC">
+‫برنامج تشغيل لأجهزة تخزين eMMC.‬
 
-- [`EmeraldSDHC`](https://github.com/acidanthera/EmeraldSDHC) (10.13+)
-
-  ‫برنامج تشغيل لأجهزة تخزين eMMC.‬
+<LinkButton icon="external" href="https://github.com/acidanthera/EmeraldSDHC">عرض</LinkButton>  
+</Card>
+</CardGrid>
 
 ## إضافات/متنوعة
 
-- [`AppleMCEReporterDisabler`](/Extras/Kexts/AppleMCEReporterDisabler.zip) (12.3+)
+<CardGrid>
+<Card title="<code>12.3+</code> AppleMCEReporterDisabler">
+‫يقوم بتعطيل `AppleIntelMCEReporter` الذي يسبب الذعر(Kernel Panics) في أنظمة AMD وحتى بعض أنظمة Intel.‬
 
-  ‫يقوم بتعطيل `AppleIntelMCEReporter` الذي يسبب الذعر(Kernel Panics) في أنظمة AMD وحتى بعض أنظمة Intel.‬
+<LinkButton icon="external" href="/Extras/Kexts/AppleMCEReporterDisabler.zip">عرض</LinkButton>
+</Card>  
+<Card title="<code>10.6+</code> ForgedInvariant">
+‫يقوم بمزامنة عداد الطابع الزمني (TSC). ضرورية لأجهزة الكمبيوتر المحمولة، وربما أيضًا وحدات APU لسطح المكتب.‬
 
-- [`ForgedInvariant`](https://github.com/ChefKissInc/ForgedInvariant) (10.6+)
+<LinkButton icon="external" href="https://github.com/ChefKissInc/ForgedInvariant">عرض</LinkButton>
+</Card>  
+<Card title="<code>10.13+</code> RestrictEvents">
+‫إصلاح اسم وحدة المعالجة المركزية في "About This Mac"، وتحذيرات الذاكرة وPCI على MacPro7,1 SMBIOS. كما يسمح بإجبار VMM على إصلاح تحديثات OTA على T2 SMBIOSes على macOS Sonoma+، من بين ميزات أخرى.‬
 
-  ‫يقوم بمزامنة عداد الطابع الزمني (TSC). ضرورية لأجهزة الكمبيوتر المحمولة، وربما أيضًا وحدات APU لسطح المكتب.‬
+<LinkButton icon="external" href="https://github.com/acidanthera/RestrictEvents">عرض</LinkButton>
+</Card>  
+<Card title="<code>10.7+</code> ECEnabler">
+‫يسمح لنظام التشغيل macOS بقراءة حقول EC التي يزيد طولها عن 8 بتات، مما يزيل الحاجة إلى تقسيمها يدويًا. **لا** تستخدمه على أجهزة سطح المكتب. ضروري لحالة بطارية الكمبيوتر المحمول للعمل بشكل صحيح.‬
 
-- [`RestrictEvents`](https://github.com/acidanthera/RestrictEvents) (10.13+)
+<LinkButton icon="external" href="https://github.com/1Revenger1/ECEnabler">عرض</LinkButton>  
+</Card>  
+<Card title="<code>10.11+</code> BrightnessKeys">
+‫يوفر الدعم لإشعارات تغيير سطوع ACPI (والتي تأتي عادةً من مفاتيح الوظائف (FN) بلوحة المفاتيح).‬
 
-  ‫إصلاح اسم وحدة المعالجة المركزية في "About This Mac"، وتحذيرات الذاكرة وPCI على MacPro7,1 SMBIOS. كما يسمح بإجبار VMM على إصلاح تحديثات OTA على T2 SMBIOSes على macOS Sonoma+، من بين ميزات أخرى.‬
-
-- [`ECEnabler`](https://github.com/1Revenger1/ECEnabler) (10.7+)
-
-  ‫يسمح لنظام التشغيل macOS بقراءة حقول EC التي يزيد طولها عن 8 بتات، مما يزيل الحاجة إلى تقسيمها يدويًا. **لا** تستخدمه على أجهزة سطح المكتب. ضروري لحالة بطارية الكمبيوتر المحمول للعمل بشكل صحيح.‬
-
-- [`BrightnessKeys`](https://github.com/acidanthera/BrightnessKeys) (10.11+)
-
-  ‫يوفر الدعم لإشعارات تغيير سطوع ACPI (والتي تأتي عادةً من مفاتيح الوظائف (FN) بلوحة المفاتيح).‬
+<LinkButton icon="external" href="https://github.com/acidanthera/BrightnessKeys">عرض</LinkButton>  
+</Card>
+</CardGrid>
