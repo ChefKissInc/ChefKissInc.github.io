@@ -43,6 +43,7 @@ export default defineConfig({
             en: "Newsroom",
             gr: "Αίθουσα τύπου",
             ar: "غرفة الأخبار",
+            it: "Redazione",
           },
           prefix: "newsroom",
           authors: {
@@ -96,6 +97,7 @@ export default defineConfig({
           translations: {
             gr: "Εγκατάσταση",
             ar: "التثبيت",
+            it: "Installazione",
           },
           items: [
             "guides/hackintosh",
@@ -105,6 +107,7 @@ export default defineConfig({
               translations: {
                 gr: "Συγκέντρωση αρχείων",
                 ar: "جمع الملفات",
+                it: "Ottenere i file",
               },
               items: [
                 "guides/hackintosh/gathering-files",
@@ -114,6 +117,7 @@ export default defineConfig({
                   translations: {
                     gr: "Εγκαταστάτης",
                     ar: "المثبت",
+                    it: "Programma di installazione",
                   },
                   items: [
                     "guides/hackintosh/gathering-files/installer",
@@ -129,9 +133,14 @@ export default defineConfig({
               translations: {
                 gr: "Διαμόρφωση παραμέτρων",
                 ar: "التكوين",
+                it: "Configurazione",
               },
               badge: {
-                text: { en: "TODO", gr: "Υπό κατασκευή" },
+                text: {
+                  en: "TODO",
+                  gr: "Υπό κατασκευή",
+                  it: "Prossimamente",
+                },
               },
               items: [
                 {
@@ -141,11 +150,13 @@ export default defineConfig({
                       en: "Temporary",
                       gr: "Προσωρινό",
                       ar: "مؤقت",
+                      it: "Provvisoria",
                     },
                   },
                   translations: {
                     gr: "Οδηγός Dortania",
                     ar: "دليل Dortania",
+                    it: "Guida Dortania",
                   },
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
                 },
@@ -158,8 +169,15 @@ export default defineConfig({
           translations: {
             gr: "Αντιμετώπηση προβλημάτων",
             ar: "اكتشاف الأخطاء وإصلاحها",
+            it: "Risoluzione dei problemi",
           },
-          badge: { text: { en: "TODO", gr: "Υπό κατασκευή" } },
+          badge: {
+            text: {
+              en: "TODO",
+              gr: "Υπό κατασκευή",
+              it: "Prossimamente",
+            },
+          },
           collapsed: true,
           items: [],
         },

@@ -1,0 +1,101 @@
+---
+title: Compatibilità
+description: Compatibilità per sistemi Hackintosh.
+---
+
+import Aside from '~/components/Aside.astro';
+
+Il supporto hardware di macOS è limitato a ciò che Apple supporta, con l'aggiunta delle patch create dalla community.
+
+## Supporto CPU
+
+I processori `AMD Bulldozer (15h)` e successivi sono supportati con le patch [AMD Vanilla](https://github.com/AMD-OSX/AMD_Vanilla).
+
+<Aside type="caution">
+Le patch supportano `macOS 10.13` e successivi, le versioni precedenti richiedono un kernel personalizzato, che non è supportato da questa guida.
+</Aside>
+
+<Aside type="tip">
+I processori AMD per laptop sono uguali ai processori AMD per desktop.
+</Aside>
+
+<Aside type="danger">
+Certe funzionalità di macOS non funzionano correttamente con una CPU AMD, vedere [sotto](#problemi-di-compatibilità-con-le-cpu-amd).
+</Aside>
+
+### Requisiti CPU
+
+#### Requisiti architettura
+
+- I processori x86_64/AMD64 (a 64 bit) sono supportati a partire da Mac OS X Tiger 10.4.1
+
+#### Requisiti SSE
+
+- `SSE3` è richiesto per tutte le versioni Intel di macOS
+- `SSSE3` è richiesto per tutte le versioni di macOS a 64 bit
+- `SSE4` è richiesto nelle versioni da `macOS 10.12` fino a `macOS 10.14` escluso
+- `SSE4.2` è richiesto per `macOS 10.14+` e per i driver delle GPU AMD più recenti. Se possibile, evitare CPU che supportano solo `SSE4.1`. Potrebbe funzionare con qualche hack, vedere [Gathering Files > Kexts](/it/guides/hackintosh/gathering-files/kexts/)
+
+### Problemi di compatibilità con le CPU AMD
+
+Purtroppo, alcune cose non funzionano correttamente su macOS con un processore AMD.
+
+#### Programmi per macchine virtuali che usano AppleHV
+
+App note per non funzionare
+
+- VirtualBox più recente di 6
+- VMWare più recente di 10
+- Parallels più recente di 13.1
+- Docker
+- Android Studio
+- Backend acceleratore hvf di QEMU
+
+<Aside type="danger">
+Software di virtualizzazione datati possono rappresentare una grave minaccia per la sicurezza.
+</Aside>
+
+#### Problemi di compatibilità con applicazioni che usano Intel MKL
+
+Le applicazioni che usano Intel MKL richiedono una patch con uno strumento come [`AMDHelper`](https://github.com/alvindimas05/AMDHelper).
+
+Sembra che Intel voglia sabotare le CPU AMD non facendo funzionare MKL su di esse.
+
+Programmi noti che utilizzano Intel MKL
+
+- Krisp
+- Logic Pro Waves Plug-In
+- Adobe software
+- Discord
+
+#### Programmi a 32 bit
+
+Le patch `AMD Vanilla` non supportano i programmi a 32 bit, neanche in `WINE`/`CrossOver`. Tuttavia, in qualche modo funzionano su Threadripper (TRX40).
+
+## Supporto GPU
+
+Il supporto GPU è complesso.
+
+### GPU AMD
+
+- Le GPU [GCN](https://en.wikipedia.org/wiki/Graphics_Core_Next) e [RDNA](<https://en.wikipedia.org/wiki/RDNA_(microarchitecture)>) sono supportate nelle versioni più recenti di macOS.
+- Le GPU RDNA 3 non sono supportate, neanche quelle basate su Navi 24 lo sono (per ora). Navi 22 è supportata da [`NootRX`](/it/applehax/nootrx/)
+- Le GPU integrate AMD [Raven](https://www.techpowerup.com/gpu-specs/amd-raven.g816) e [Renoir](https://www.techpowerup.com/gpu-specs/amd-renoir.g1058) sono supportate da [`NootedRed`](/it/applehax/nootedred/).
+- Altre generazioni di GPU integrate (GCN \<5, RDNA) **non** sono supportate completamente (per ora).
+- Le GPU AMD [Baffin](https://www.techpowerup.com/gpu-specs/amd-baffin.g796) sono supportate nella versione più recente di macOS.
+- Le GPU AMD [Ellesmere](https://www.techpowerup.com/gpu-specs/amd-ellesmere.g795) sono supportate nella versione più recente di macOS.
+- Le GPU AMD [Lexa](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) sono supportate nella versione più recente di macOS mediante spoof dell'ID periferica a quello della rispettiva variante Baffin.
+- Le GPU AMD Polaris 20 non sono supportate (per ora).
+
+<Aside type="danger">
+Utenti GPU **Navi MSI**: [Installer not working with 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901), **risolto a partire da `macOS 11`**.
+</Aside>
+
+### GPU NVIDIA
+
+- Le GPU Maxwell ([9XX](https://en.wikipedia.org/wiki/GeForce_900_series)) e Pascal ([10XX](https://en.wikipedia.org/wiki/GeForce_10_series)) sono **limitate** a **`macOS 10.13`**.
+- Le GPU Turing ([20XX](https://en.wikipedia.org/wiki/GeForce_20_series), [16XX](https://en.wikipedia.org/wiki/GeForce_16_series)) **non** sono supportate in nessuna versione di macOS.
+- Le GPU Ampere ([30XX](https://en.wikipedia.org/wiki/GeForce_30_series)) **non** sono supportate in nessuna versione di macOS.
+- Le GPU Kepler ([6XX](https://en.wikipedia.org/wiki/GeForce_600_series), [7XX](https://en.wikipedia.org/wiki/GeForce_700_series)) sono supportate fino a **`macOS 11`**.
+
+Dopo questo, iniziamo [recuperando i file necessari](/it/guides/hackintosh/gathering-files/).

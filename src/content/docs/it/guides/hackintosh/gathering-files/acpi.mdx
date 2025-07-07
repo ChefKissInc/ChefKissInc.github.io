@@ -1,0 +1,191 @@
+---
+title: ACPI
+description: SSDT da aggiungere alla EFI del tuo Hackintosh.
+---
+
+import Aside from '~/components/Aside.astro';
+
+<Aside type="tip">
+`Advanced Configuration and Power Interface` (ACPI) è uno standard aperto che i sistemi operativi possono usare per rilevare e configurare le componenti hardware del computer, eseguire attività di gestione alimentazione (ad es. spegnere un controller USB), configurazione automatica (ad es. Plug and Play, sostituzione a caldo) e monitoraggio di stato.
+
+I produttori possono fare verifiche del sistema operativo, di solito per disattivare periferiche e altre funzionalità su sistemi operativi che non decidono di supportare.
+
+La tabella ACPI principale è il `DSDT` (Differentiated System Description Table), che definisce la maggior parte delle periferiche. Poi abbiamo gli `SSDT` (Secondary System Description Tables), che aggiungono proprietà aggiuntive (ad es. il metodo `_PRW` (Power Resources for Wake), periferiche aggiuntive, la disattivazione di periferiche in base a delle condizioni, ecc.
+
+La maggior parte dei firmware hanno le periferiche definite nel `DSDT` e usano alcuni `SSDT` per regolare valori in base all'hardware installato e/o alle impostazioni del BIOS. Se vuoi scoprire di più su ACPI, puoi leggere il documento `ACPI Specification` elencato in [UEFI Forum specifications](https://uefi.org/specifications).
+
+</Aside>
+
+## Scaricare SSDTTime
+
+<Aside type="note" title="Lo sapevi?">
+Precedentemente, questi SSDT dovevano essere scritti manualmente, ma ora esistono strumenti automatizzati per questo processo. [`SSDTTime`](https://github.com/corpnewt/SSDTTime) verrà usato in questa guida.
+</Aside>
+
+Dato che `SSDTTime` non ha alcuna release ed è un progetto Python, scarica il codice sorgente cliccando su `Code` e successivamente `Download ZIP`.
+
+![SSDTTime download page](~/assets/SSDTTimeDownload.png)
+
+## Eseguire SSDTTime
+
+Dopo aver estratto l'archivio, gli utenti Windows dovranno eseguire `SSDTTime.bat`.
+
+Gli utenti Linux dovranno aprire un terminale nella cartella `SSDTTime`/`SSDTTime-master` appena estratta, per poi eseguire `python3 SSDTTime.py`. **Assicurati di avere Python 3 installato.**
+
+Gli utenti macOS dovranno eseguire `SSDTTime.command`.
+
+Dopo aver eseguito lo strumento, esso scaricherà automaticamente `iASL`, che (de)compila le tabelle ACPI. Successivamente ti dovrebbe essere presentata la seguente schermata.
+
+![SSDTTime console](~/assets/SSDTTimeConsole.png)
+
+### Specificare l'ACPI del sistema di destinazione
+
+Seleziona l'opzione `P` sul sistema di destinazione per recuperare le tabelle ACPI necessarie per le operazioni di `SSDTTime`.
+
+Se non stai eseguendo `SSDTTime` dal sistema di destinazione, seleziona invece `D` per scegliere la cartella con le tabelle ACPI recuperate dal sistema di destinazione.
+
+Il software dovrebbe ora mostrare le tabelle ACPI in alto come nella schermata sottostante.
+
+![SSDTTime](~/assets/SSDTTimeConsole_ACPILoaded.png)
+
+### Generare gli SSDT
+
+<Aside type="note">
+La maggior parte di queste patch dovrebbe essere applicata solo su macOS e non dovrebbe interferire su altri sistemi operativi.
+</Aside>
+
+<details>
+<summary>Informazioni sulle opzioni</summary>
+
+Al momento della scrittura, ci sono 12 opzioni disponibili
+
+- `FixHPET`
+
+  Corregge i conflitti `IRQ` (Interrupt Request) nelle tabelle ACPI. Questi conflitti possono inibire il funzionamento di hardware quale l'audio.
+
+  <Aside type="danger">
+  Non usare questa opzione per sistemi AMD, in quanto potrebbe portare più danni che benefici (trackpad non funzionante, ecc).
+  </Aside>
+
+- `FakeEC`
+
+  Crea un dispositivo Embedded Controller falso per permettere a macOS di funzionare correttamente **e** disattiva l'EC originale.
+
+- `FakeEC Laptop`
+
+  Crea un dispositivo Embedded Controller falso per permettere a macOS di funzionare correttamente, ma **non** disattiva l'EC originale, perché i portatili lo richiedono per lo stato della batteria, per i tasti funzione, ecc.
+
+- `USBX`
+
+  Crea un dispositivo USBX che contiene proprietà di alimentazione USB necessarie per un funzionamento corretto. Anche questo richiede un dispositivo EC valido.
+
+- `PluginType`
+
+  Imposta la proprietà `plugin-type` a `1` sul primo core della CPU, attivando `X86PlatformPlugin`, che permette la gestione dell'alimentazione per CPU e GPU (il supporto può variare).
+  Inoltre, ridefinisce i processori con oggetti `Processor` invece di oggetti `Device` se necessario, dato che macOS non supporta lo standard più recente.
+
+- `PMC`
+
+  Definisce il dispositivo `PMCR` su sistemi che non lo hanno per permettere il supporto nativo all'`NVRAM`.
+
+- `RTCAWAC`
+
+  Disabilita il nuovo `AWAC` (Alarm Wake ACPI Clock), attivando invece l'`RTC` (Real-Time Clock).
+
+- `USB Reset`
+
+  Disattiva i dispositivi `RHUB` nell'ACPI per tutti i controller USB per permettere a macOS di enumerare correttamente le porte USB su sistemi con un'ACPI difettoso.
+
+- `PCI Bridge`
+
+  Definisce i bridge PCI per un percorso periferica specificato, in quanto alcuni dispositivi non hanno i bridge PCI definiti, il che non permetterà a OpenCore di caricare proprietà inserite nella chiave `DeviceProperties` all'interno della configurazione.
+
+- `PNLF`
+
+  Crea un dispositivo `PNLF` falso con un `_UID` selezionabile dall'utente (che in poche parole è il profilo che usa) per permettere il controllo nativo della luminosità sui portatili.
+
+  <Aside type="danger">
+  A prima vista, può sembrare che questo supporti i portatili AMD, ma non è lo stesso di quello nella pagina di [NootedRed](/it/applehax/nootedred/).
+  Usare l'SSDT all'interno della suddetta pagina.
+  </Aside>
+
+- `XOSI`
+
+  Falsifica il sistema operativo a Windows, permettendo alle periferiche consentite solo su sistemi non-macOS di essere attive su macOS.
+
+- `Fix DMAR`
+
+  Rimuove regioni di memoria riservata dalla tabella `DMAR`. È necessario per far funzionare certe periferiche come controller Ethernet basati su Intel I225 su sistemi Intel.
+
+  <Aside type="danger">
+  Se stai già usando macOS 12.2.1 o una versione più datata e un controller Ethernet basato su Intel I225, dovrai rimuovere `e1000=0` o `dk.e1000=0` dalle tue boot args dopo aver fatto questo.
+  </Aside>
+
+</details>
+
+**_Tutti_** i sistemi devono utilizzare i seguenti
+
+- `USBX`,
+
+  Scegli l'opzione **default** (tasto `B`).
+
+- `RTCAWAC`,
+
+  Se il software dice che non ne hai bisogno, salta questo SSDT.
+
+- `PluginType`,
+- e `USB Reset`.
+
+I **_desktop_**  AMD devono **anche** utilizzare i seguenti
+
+- `FakeEC`.
+
+I **_laptop_** AMD devono **anche** utilizzare i seguenti
+
+- `FakeEC Laptop`,
+- `XOSI`,
+
+  Scegli l'opzione **default** (tasto `A`)
+
+- e ogni SSDT relativo alla retroilluminazione necessario, nella pagina di [NootedRed](/it/applehax/nootedred/).
+
+<details>
+<summary>Esempio di procedura</summary>
+Basata su una scheda madre ASRock B550m Phantom.
+
+![SSDTTime FakeEC Result](~/assets/SSDTTime_FakeEC_Result.png)
+![SSDTTime USBX Prompt](~/assets/SSDTTime_USBX_Prompt.png)
+![SSDTTime USBX Result](~/assets/SSDTTime_USBX_Result.png)
+![SSDTTime PluginType Result](~/assets/SSDTTime_PluginType_Result.png)
+![SSDTTime RTCAWAC Result](~/assets/SSDTTime_RTCAWAC_Result.png)
+![SSDTTime USB Reset Result](~/assets/SSDTTime_USBReset_Result.png)
+![SSDTTime XOSI Prompt](~/assets/SSDTTime_XOSI_Prompt.png)
+![SSDTTime XOSI Result](~/assets/SSDTTime_XOSI_Result.png)
+
+</details>
+
+## Copiare i file AML dalla cartella Results
+
+Dopo che hai finito, la cartella `Results` si presenterà simile alla sottostante.
+
+![SSDTTime Results](~/assets/SSDTTimeResults.png)
+
+Ora, copia tutti i file che iniziano con `SSDT` e finiscono in `.aml` dalla radice della cartella `Results` nella cartella `Drive/EFI/OC/ACPI`.
+
+### Unire le patch OC con PatchMerge
+
+Infine, unisci `patches_OC.plist` usando lo script `PatchMerge` incluso con `SSDTTime`. Eseguilo allo stesso modo di `SSDTTime`.
+
+![PatchMerge](~/assets/PatchMerge.png)
+
+Premi `1` per selezionare `Config.plist` creato in uno dei passaggi precedenti, poi trascina e rilascia il tuo `Config.plist` sulla finestra, e premi INVIO.
+
+![PatchMerge after selecting the `Config.plist`](~/assets/PatchMerge_AfterSelect.png)
+
+Successivamente, premi `2` per avviare la procedura di unione.
+
+![PatchMerge after running the merge process](~/assets/PatchMerge_Result.png)
+
+Il `Config.plist` modificato con le patch aggiunte comparirà nella cartella `Results`.
+
+Controlla che sia corretto, poi sostituisci il `Config.plist` originale con quello appena generato.

@@ -1,0 +1,48 @@
+---
+title: Inizio
+description: La guida all'Hackintosh di ChefKiss.
+prev:
+  link: /it/guides/
+  label: Guide
+next:
+  link: /it/guides/hackintosh/compatibility/
+  label: Compatibilità
+---
+
+import { CardGrid } from '@astrojs/starlight/components';
+import Card from '~/components/Card.astro';
+import Aside from '~/components/Aside.astro';
+
+Benvenuti alla guida per Hackintosh di ChefKiss.
+
+Questa guida ti accompagnerà durante il processo di installazione di macOS sul tuo PC.
+
+<Aside type="tip">
+Un Hackintosh è un computer che esegue macOS su hardware non prodotto da Apple. Evvai!
+</Aside>
+
+## Prerequisiti
+
+<CardGrid>
+    <Card icon="ph:clock-clockwise-duotone" title="Tempo e pazienza">
+    La creazione di un Hackintosh è un processo relativamente lungo. Nessun passaggio può essere saltato. Non iniziare a lavorarci se hai altro da fare. Un Hackintosh __non__ è una macchina a cui dovresti affidarti per lavoro.
+    </Card>
+    <Card icon="ph:plugs-connected-duotone" title="Un sistema compatibile">
+    I tuoi componenti quali CPU, GPU, scheda madre, scheda Ethernet, scheda Wi-Fi e altri sono importanti nel determinare se il tuo PC può eseguire macOS: a differenza di Windows e Linux, macOS non è compatibile con tutti i PC x86; c'è sempre una rilevante quantità di hardware non supportato, nonostante l'impegno.
+    </Card>
+    <Card icon="ph:terminal-window-duotone" title="Conoscenza basilare della riga di comando">
+    Essenziale per seguire i passaggi della guida. Non potremo aiutarti dicendoti come cambiare la cartella selezionata in un terminale.
+    </Card>
+    <Card icon="ph:usb-duotone" title="Un'unità USB abbastanza capiente">
+    Hai bisogno di un minimo di 16GiB di spazio per creare un'unità di ripristino offline (solo macOS), e 2GiB se stai creando un'unità di ripristino online (tutte le piattaforme).
+    </Card>
+    <Card icon="ph:network-duotone" title="Una scheda di rete compatibile">
+    Se stai usando una recovery online. Come già detto, macOS non è compatibile con tutto l'hardware, quindi non puoi avere una qualunque scheda di rete.
+    </Card>
+    <Card icon="ph:computer-tower-duotone" title="Un computer funzionante">
+    Hai bisogno di qualcosa per eseguire tutti gli script e strumenti per creare la chiavetta USB con tutti i file richiesti.
+    </Card>
+    <Card icon="ph:seal-check-duotone" title="Un firmware aggiornato">
+    macOS è molto sensibile; se il tuo hardware ha qualunque rilevante comportamento "anormale" o "inaspettato", non funzionerà.
+    </Card>
+</CardGrid>

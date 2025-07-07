@@ -1,0 +1,300 @@
+---
+title: Kext
+description: La varietà di estensioni kernel di macOS per Hackintosh.
+---
+
+import Aside from '~/components/Aside.astro';
+import Card from '~/components/Card.astro';
+import { CardGrid, LinkButton } from '@astrojs/starlight/components';
+
+Driver per il kernel di macOS. OpenCore può caricare o bloccare driver. Li metti dentro `EFI/OC/Kexts`, ma devono anche essere specificati nel `Config.plist`. Ci occuperemo di questo in un passaggio successivo.
+
+<Aside type="tip" title="Lo sapevi?">
+Kext sta per Kernel EXTension. Evvai!
+</Aside>
+
+<Aside type="note">
+Su macOS, i kext compaiono come un tipo speciale di file, con un mattoncino lego di colore bianco come icona.
+
+Su altri sistemi operativi, i kext compaiono come normali cartelle che finiscono in `.kext`.
+</Aside>
+
+## Fondamentali
+
+<Aside type="danger">
+Non puoi avviare completamente senza questi.
+</Aside>
+
+<CardGrid>
+<Card title="Lilu <code>10.4+</code>">
+Esegue patching arbitrario di kext, librerie e programmi all'interno di macOS.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/Lilu">View</LinkButton>
+</Card>
+<Card title="VirtualSMC <code>10.4+</code>">
+Emula il chip SMC di Apple.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/VirtualSMC">View</LinkButton>
+</Card>
+</CardGrid>
+
+## Plugin di VirtualSMC
+
+<CardGrid>
+<Card title="SMCProcessor <code>10.7+</code>">
+Monitora le temperature delle CPU Intel. Incluso con `VirtualSMC`.
+</Card>
+<Card title="SMCProcessorAMD <code>10.13+</code>">
+Monitora le temperature delle CPU AMD.
+
+<LinkButton icon="external" href="https://github.com/Lorys89/SMCProcessorAMD">View</LinkButton>
+</Card>
+<Card title="SMCRadeonSensors <code>10.14+</code>">
+Monitora le temperature delle GPU AMD. Supporta le iGPU AMD.
+
+<LinkButton icon="external" href="https://github.com/ChefKissInc/SMCRadeonSensors">View</LinkButton>
+</Card>
+<Card title="SMCSuperIO <code>10.6</code> <code>Solo a 64 bit</code>">
+Monitora la velocità delle ventole. Incluso con `VirtualSMC`. **Non** usare su AMD.
+</Card>
+<Card title="SMCBatteryManager <code>10.4</code>">
+Monitora lo stato della batteria dei portatili. Incluso con `VirtualSMC`. **Non** usare su computer desktop.
+</Card>
+<Card title="SMCLightSensor <code>10.6</code> <code>Solo a 64 bit</code>">
+Aggiunge il supporto per i sensori di luminosità ambientale ACPI. Incluso con `VirtualSMC`. **Non** usare su computer desktop.
+</Card>
+<Card title="SMCDellSensors <code>10.7+</code>">
+Monitora la velocità delle ventole sui sistemi Dell che supportano System Management Mode (SMM). Incluso con `VirtualSMC`.
+</Card>
+</CardGrid>
+
+## Grafica
+
+<Aside type="danger">
+Dovresti usare solo uno dei seguenti kext. Essi configgono l'un l'altro.
+</Aside>
+
+<CardGrid>
+<Card title="NootRX <code>11.0+</code>">
+Fornisce patch per GPU AMD Navi 2x, aggiunge supporto alle GPU Navi 22.
+
+<LinkButton icon="external" href="https://github.com/ChefKissInc/NootRX">View</LinkButton>
+</Card>
+<Card title="NootedRed <code>10.15+</code>">
+Fornisce accelerazione grafica per iGPU AMD Vega.
+
+<LinkButton icon="external" href="https://github.com/ChefKissInc/NootedRed">View</LinkButton>
+</Card>
+<Card title="WhateverGreen <code>10.6+</code> <code>Solo a 64 bit</code>">
+Fornisce patch per le iGPU Intel e per le dGPU AMD e NVIDIA per consentire l'accelerazione grafica, le patch del framebuffer, il controllo della luminosità, ecc.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/WhateverGreen">View</LinkButton>
+</Card>
+</CardGrid>
+
+## Audio
+
+<CardGrid>
+<Card title="AppleALC <code>10.4+</code>">
+
+Applica patch allo stack audio di Apple (`AppleHDA`/`AppleGFXHDA`) per permettere a codec audio non supportati e all'audio HDMI di funzionare.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/AppleALC">View</LinkButton>
+</Card>
+</CardGrid>
+
+## Ethernet
+
+<CardGrid>
+<Card title="LucyRTL8125Ethernet <code>10.14+</code>">
+Driver per RTL8125 (Realtek 2.5GBe), adattato da Linux.
+
+<LinkButton icon="external" href="https://github.com/Mieze/LucyRTL8125Ethernet">View</LinkButton>
+</Card>
+<Card title="RealtekRTL8111 <code>10.14+</code>">
+Driver per RTL8111 (Realtek 1GBe), adattato da Linux.
+
+<LinkButton icon="external" href="https://github.com/Mieze/RTL8111_driver_for_OS_X">View</LinkButton>
+</Card>
+<Card title="RealtekRTL8100 <code>10.14+</code>">
+Driver per RTL8100 (Realtek 10/100MBe), adattato da Linux.
+
+<LinkButton icon="external" href="https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/">View</LinkButton>
+</Card>
+<Card title="AppleIGC <code>10.15+</code>">
+Driver Ethernet per I225-V/I226-V, adattato da Linux.
+
+<LinkButton icon="external" href="https://github.com/SongXiaoXi/AppleIGC">View</LinkButton>
+</Card>
+<Card title="AppleIGB <code>10.9+</code>">
+Versione di `IntelMausi` per controller Ethernet Intel I210 e I211.
+
+<LinkButton icon="external" href="https://www.macos86.it/topic/6029-appleigb-and-intelmausi-integration/">View</LinkButton>
+</Card>
+<Card title="IntelMausi <code>10.9+</code> <code>10.6-10.8 with IntelSnowMausi</code>">
+Driver per la maggior parte delle schede Ethernet Intel.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/IntelMausi">View</LinkButton>
+</Card>
+<Card title="AtherosE2200Ethernet <code>10.12+</code>">
+Driver per la maggior parte delle schede Ethernet Atheros.
+
+<LinkButton icon="external" href="https://github.com/Mieze/AtherosE2200Ethernet">View</LinkButton>
+</Card>
+</CardGrid>
+
+<Aside type="caution">
+Le schede Ethernet Aquantia su AMD hanno bisogno delle [patch di CaseySJ](https://github.com/CaseySJ/Aquantia-macOS-Patches/blob/main/CaseySJ-Aquantia-Patch-Sets-1-and-2.plist).
+</Aside>
+
+## Wi-Fi/Bluetooth
+
+<CardGrid>
+<Card title="Itlwm <code>10.13+</code>">
+Supporta la maggior parte delle schede Wi-Fi Intel. `AirportItlwm` usa lo stack Wi-Fi di macOS, e `Itlwm` usa [`Heliport`](https://github.com/OpenIntelWireless/HeliPort) per connettersi alle reti.
+
+<LinkButton icon="external" href="https://github.com/OpenIntelWireless/itlwm">View</LinkButton>
+</Card>
+<Card title="IntelBluetoothFirmware">
+Supporta la maggior parte delle schede Wi-Fi Intel. Su macOS 11 e più datati dovrai usare tutti e 3 i kext inclusi.
+
+<Aside type="caution">
+Su macOS 12+ devi usare `IntelBluetoothFirmware` e `IntelBTPatcher` del suddetto kext, e `BlueToolFixup` del kext [`BrcmPatchRAM`](https://github.com/acidanthera/BrcmPatchRAM).
+</Aside>
+
+<LinkButton icon="external" href="https://github.com/OpenIntelWireless/IntelBluetoothFirmware">View</LinkButton>
+</Card>
+<Card title="AirportBrcmFixup">
+Applica patch ai kext AirPort per permettere alle schede Broadcom non native di usare lo stack Wi-Fi nativo.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/AirportBrcmFixup">View</LinkButton>
+</Card>
+<Card title="BrcmPatchRAM">
+Applica patch allo stack Bluetooth per permettere alle schede Broadcom non native (e a tutte le altre su macOS 12 e successivi con `BlueToolFixup`) di usare lo stack Bluetooth nativo.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/BrcmPatchRAM">View</LinkButton>
+</Card>
+</CardGrid>
+
+<Aside type="tip">
+Se la tua scheda Wi-Fi non è supportata e non hai una scheda Ethernet, puoi usare [`HoRNDIS`](/Extras/Kexts/HoRNDIS.zip) per consentire il tethering USB da Android. Il tethering USB da iPhone non funziona su `recoveryOS`.
+</Aside>
+
+## USB
+
+<CardGrid>
+<Card title="XLNCUSBFix <code>10.13+</code>">
+Correzione USB **_solo_** per processori AMD FX.
+
+<LinkButton icon="external" href="/Extras/Kexts/XLNCUSBFix.zip">View</LinkButton>
+</Card>
+<Card title="GenericUSBXHCISB (USB fix hack)">
+Una versione modificata di `GenericUSBXHCI`, solo per aggirare un blocco USB su o vicino a "PCI Configuration End" su un portatile AMD. Non usarlo se non hai questo problema, vedi il relativo README per maggiori informazioni.
+
+<LinkButton icon="external" href="https://github.com/RattletraPM/GUX-RyzenXHCIFix">View</LinkButton>
+</Card>
+<Card title="USBToolBox">
+Strumento per la mappatura delle porte USB. Funziona meglio su Windows.
+
+<Aside type="caution">
+Attiva "Use Native Classes" nelle impostazioni e non usare il kext `USBToolBox`.
+Durante la compilazione ti chiederà l'SMBIOS che hai scelto, quindi fallo come ultimo passaggio.
+</Aside>
+
+<LinkButton icon="external" href="https://github.com/USBToolBox/tool">View</LinkButton>
+</Card>
+<Card title="USBMap">
+Strumento per la mappatura delle porte USB. Funziona solo su macOS.
+
+<LinkButton icon="external" href="https://github.com/CorpNewt/USBMap">View</LinkButton>
+</Card>
+</CardGrid>
+
+## Input
+
+<CardGrid>
+<Card title="VoodooPS2 <code>10.11+</code>">
+Driver per periferiche PS/2. Usato per le tastiere dei portatili o per mouse e tastiere PS/2 su computer desktop.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/VoodooPS2">View</LinkButton>
+</Card>
+<Card title="VoodooI2C <code>10.13+</code>">
+Driver per dispositivi di input I2C.
+
+<details>
+<summary>Satellites</summary>
+
+<Aside type="danger">
+Non puoi capire il tipo di dispositivo solo dal nome commerciale o dal nome visualizzato.
+</Aside>
+<Aside type="danger">
+Dovresti usare solo un satellite, non metterli tutti insieme; potrebbero fare conflitto.
+</Aside>
+
+| Tipo di dispositivo       | Satellite                                                                     |
+| ------------------------- | ----------------------------------------------------------------------------- |
+| HID                       | `VoodooI2CHID`                                                                |
+| ELAN                      | `VoodooI2CELAN`                                                               |
+| FTE                       | `VoodooI2CFTE`                                                                |
+| Atmel Multitouch Protocol | `VoodooI2CAtmelMXT`                                                           |
+| Synaptics                 | [`VoodooRMI`](https://github.com/VoodooSMBus/VoodooRMI) (supporta anche SMBus) |
+| Alps                      | [`AlpsHID`](https://github.com/blankmac/AlpsHID)                              |
+
+<Aside type="tip">
+HID è un tipo di dispositivo molto comune. Se stai usando un portatile AMD, è molto probabile che il tuo trackpad sia collegato attraverso di esso. Controlla attentamente in ogni caso.
+</Aside>
+</details>
+
+<LinkButton icon="external" href="https://github.com/VoodooI2C/VoodooI2C">View</LinkButton>
+</Card>
+<Card title="VoodooSMBus <code>10.14+</code>">
+Per dispositivi di input collegati tramite il controller SMBus (I2C-i801) e anche alcuni particolari dispositivi di input SMBus ELAN.
+
+<LinkButton icon="external" href="https://github.com/VoodooSMBus/VoodooSMBus">View</LinkButton>
+</Card>
+</CardGrid>
+
+## Archiviazione
+
+<CardGrid>
+<Card title="NVMeFix <code>10.14+</code>">
+Applica patch allo stack NVMe (IONVMeFamily) per permettere il supporto di Autonomous Power State Transition (APST), e per risolvere kernel panic dovuti a timeout su alcuni controller NVMe.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/NVMeFix">View</LinkButton>
+</Card>
+<Card title="EmeraldSDHC <code>10.13+</code>">
+Driver per dispositivi di archiviazione eMMC.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/EmeraldSDHC">View</LinkButton>
+</Card>
+</CardGrid>
+
+## Aggiuntivi/Vari
+
+<CardGrid>
+<Card title="AppleMCEReporterDisabler <code>12.3+</code>">
+Disattiva `AppleIntelMCEReporter` che causa kernel panic su sistemi AMD e anche su alcuni sistemi Intel.
+
+<LinkButton icon="external" href="/Extras/Kexts/AppleMCEReporterDisabler.zip">View</LinkButton>
+</Card>
+<Card title="ForgedInvariant <code>10.6+</code>">
+Sincronizza il TimeStamp Counter (TSC). Necessario per i portatili, forse anche per APU desktop.
+
+<LinkButton icon="external" href="https://github.com/ChefKissInc/ForgedInvariant">View</LinkButton>
+</Card>
+<Card title="RestrictEvents <code>10.13+</code>">
+Corregge il nome del processore in `Informazioni su questo Mac`, e le avvertenze relative a memoria e PCI sull'SMBIOS `MacPro7,1`. Consente anche la forzatura di VMM per correggere gli aggiornamenti OTA sugli SMBIOS che utilizzano il T2 su macOS Sonoma e successivi, insieme ad altre funzionalità.
+
+<LinkButton icon="external" href="https://github.com/acidanthera/RestrictEvents">View</LinkButton>
+</Card>
+<Card title="ECEnabler <code>10.7+</code>">
+Consente a macOS di leggere campi EC più lunghi di 8 bit, eliminando la necessità di dividerli manualmente. **Non** usare su computer desktop. Necessario per un rilevamento corretto dello stato della batteria dei portatili.
+
+<LinkButton icon="external" href="https://github.com/1Revenger1/ECEnabler">View</LinkButton>
+</Card>
+<Card title="BrightnessKeys <code>10.11+</code>">
+Fornisce supporto per gli avvisi ACPI di modifica della luminosità (che di solito provengono dai tasti funzione (FN) della tua tastiera).
+
+<LinkButton icon="external" href="https://github.com/acidanthera/BrightnessKeys">View</LinkButton>
+</Card>
+</CardGrid>

@@ -1,0 +1,5 @@
+{
+  "starlightBlog.metrics.readingTime.minutes": " - {{count}} minuti di lettura",
+  "starlightBlog.metrics.words_one": " - {{count}} parola",
+  "starlightBlog.metrics.words_other": " - {{count}} parole"
+}
