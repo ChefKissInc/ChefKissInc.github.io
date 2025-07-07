@@ -1,0 +1,81 @@
+---
+title: Annuncio di Arctictosh
+date: 2024-09-28
+author: visual
+tags: [ChefKiss, macOS, Arctictosh, Aggiornamento]
+excerpt: È ora di ripensare l'esperienza Hackintosh.
+description: È ora di ripensare l'esperienza Hackintosh.
+---
+
+Credo che sia l'ora di ripensare l'esperienza Hackintosh.
+
+Perché stiamo andando tutti incontro a questa seccatura di seguire lunghe e noiose guide, configurare e risolvere i problemi di configurazioni, SSDT, kext, ecc?
+
+Solo per sentirci come se avessimo compiuto qualcosa? O perché ci hanno semplicemente detto che le cose debbano stare così?
+
+Voglio cambiare questo. Voglio cambiarlo in modo che tu possa avere lo stesso sentimento magico di un vero Mac, dove avvii macOS e semplicemente funziona.
+
+Questo è perché andrò a sospendere il lavoro sugli altri progetti Hackintosh, concentrandomi su questa nuova svolta per gli Hackintosh.
+
+Chiamerò questa nuova esperienza Arctictosh.
+
+## Descrizione del progetto
+
+Una vera esperienza simile a un Mac sui PC standard. Semplicemente scaricando il progetto, il programma di installazione dalla Apple, buttale su una chiavetta USB, e funziona. Un'esperienza realmente vicina ai veri Mac. Il SO non richiederà modifiche e non ci sarà lavoro manuale richiesto da parte dell'utente.
+
+Tutto sarà scritto nel linguaggio di programmazione Rust, anche i kext, usando collegamenti potenti e ultraveloci alle API del kernel di Apple. E anche il bootloader sarà ben fatto, stabile, moderno e ultraveloce.
+
+With powerful patching capabilities:
+
+- Carica kext durante qualunque fase di caricamento: boot (prelinkedkernel & co.), avvio (/S/L/E) e ausiliaria (/L/E). Non sarà più necessario disabilitare il SIP per aggiungere kext che non possono essere caricati presto!
+- Carica le personalità da kext che eseguono patch.
+- Una cartella di file globale per l'accesso da parte del firmware senza archiviare tutti i blob per tutte le possibili combinazioni di hardware supportati da un kext.
+- Patcha il kernel e ogni kext usando API moderne e sicure. Ci sono controlli di integrità ovunque, non ci saranno rotture silenziose.
+- Carica e patcha qualunque cosa nello spazio utente senza avvisi. Inserisci o patcha codice arbitrario per estendere le funzionalità di macOS. Le patch non verranno applicate con il metodo trova/sostituisci come fanno adesso i plugin di Lilu, il che causa problemi ad es. con gli aggiornamenti.
+
+## Panoramica del software incluso
+
+### `Iceberg`
+
+Il bootloader di Arctictosh. Questo bootloader caricherà macOS da solo senza affidarsi a boot.efi. In parole povere sarà una sostituzione di boot.efi ma per i PC standard x86.
+
+Le modifiche richieste all'ACPI verranno eseguite automaticamente su rilevamento interno. La stessa cosa si applica alle patch del kernel. Sarà previsto il supporto per le vecchie versioni di macOS su sistemi AMD, potenzialmente rimpiazzando l'affidamento al TSC con metodi di monitoraggio del tempo più stabili come ACPI Timer, APIC Timer, ecc.
+
+La configurazione dei file usati dal bootloader (es. kexts) sarà effettuata automaticamente dal bootloader o con un'applicazione GUI/TUI apposita. Iceberg includerà richieste su modifiche effettuate ai file per prevenire attacchi malevoli, permettendoti di rifiutare l'avvio di una EFI modificata inavvertitamente/esternamente.
+
+### `PenguinWizardry`
+
+Il kext di Arctictosh che applica le patch a macOS. Le sue funzionalità sono già state menzionate nel post principale.
+
+### `PenguinAirlines`
+
+Driver ufficiali/non ufficiali per chip Wi-Fi non supportati nativamente.
+
+Nomi dei kext individuali:
+
+- `RealtekAir` (per chip Realtek PCI e USB).
+- `IntelWings` (per chip Intel PCI).
+- `AtherosJet` (per chip Atheros 10k (Qualcomm Atheros e simili), in futuro forse anche 9k)
+- `MediatekTransports` (per chip Mediatek PCI).
+
+(non c'è uno specifico ordine di implementazione)
+
+### `SnowyVega`
+
+prec. NootedRed.
+
+### `RedPlatformSupport`
+
+Implementazione di IOPlatformPlugin, SMC temperature, wattage reading, etc. per piattaforme AMD. Corretta gestione dell'alimentazione su sistemi AMD che eseguono macOS.
+
+### `ForgedSMC`
+
+Un'emulazione veloce e stabile del chip SMC necessaria per eseguire macOS, con migliori API e più funzionalità che mai, ad es. ridenominazione adattiva della chiave SMC in base all'SMBIOS selezionato.
+
+...e molti altri, costruiti con amore e dedizione!
+
+---
+
+Alcune di queste funzionalità verranno anche adattate in futuro a macOS e iOS per ARM, in modo da essere usate nel mio software per l'emulazione di Apple Silicon, ad esempio!
+
+**Non c'è nessuna data di consegna prevista, semplicemente abbi pazienza per ora. Prepara una cioccolata calda, siediti, rilassati e aspetta!**

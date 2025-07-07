@@ -1,0 +1,24 @@
+---
+title: ChefKiss
+description: تمكين الناس من خلال برامج جيدة الصنع‫.‬
+template: splash
+hero:
+  tagline: تمكين الناس من خلال برامج جيدة الصنع‫.‬
+  image:
+    alt: بطريق يرتدي قبعة الشيف يقوم بلفتة قبلة الشيف.
+    file: ~/assets/CKPenguin.svg
+next: false
+prev: false
+banner:
+  content: |
+    ‪ ‬‫ مرحباً بكم في تجربة موقع ChefKiss الجديدة, ‬‪ <a href="/ar/newsroom/website-rewritten/">إقرأ المزيد</a>‬
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="أدلة" description="‫دليل Hackintosh والمزيد.‬" href="/ar/guides/" />
+  <LinkCard title="AppleHax" description="مشاريعنا المتعلقة ‫بآبل.‬" href="/ar/applehax/" />
+  <LinkCard title="الأدوات" description="‫أدوات بواسطة ChefKiss.‬" href="/ar/tooling/" />
+  <LinkCard title="غرفة الأخبار" description="‫إعلانات, تحديثات والمزيد.‬" href="/ar/newsroom/" />
+</CardGrid>

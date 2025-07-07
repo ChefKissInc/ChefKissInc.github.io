@@ -1,0 +1,21 @@
+---
+title: AppleHax
+description: I nostri progetti relativi ad Apple.
+template: splash
+hero:
+  tagline: I nostri progetti relativi a Apple.
+next: false
+prev:
+  link: /it/
+  label: Home
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="QEMU Apple Silicon" description="Emulazione di Apple Silicon basata su QEMU." href="/it/applehax/qemu-as/" />
+  <LinkCard title="NootedRed" description="Il kext per il supporto delle GPU integrate AMD Vega." href="/it/applehax/nootedred/" />
+  <LinkCard title="NootRX" description="Il kext per le GPU dedicate AMD rDNA 2 non supportate." href="/it/applehax/nootrx/" />
+  <LinkCard title="SMCRadeonSensors" description="Il plugin di VirtualSMC per la lettura delle temperature delle GPU AMD." href="/it/applehax/smcrs/" />
+  <LinkCard title="ForgedInvariant" description="Il kext per la sincronizzazione del TSC per CPU Intel e AMD." href="/it/applehax/forgedinvariant/" />
+</CardGrid>

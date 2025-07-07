@@ -1,0 +1,67 @@
+---
+title: OpenCore
+description: Come scaricare il bootloader per Hackintosh.
+---
+
+import Aside from '~/components/Aside.astro';
+
+import { FileTree } from '@astrojs/starlight/components';
+
+OpenCore è, in poche parole, un programma che viene eseguito dal firmware (BIOS o UEFI) per avviare macOS.
+
+Ha la capacità di applicare patch, aggiungere driver, e/o falsificare le informazioni delle periferiche anticipatamente.
+
+## Scaricare OpenCore
+
+Iniziamo visitando la relativa repository su GitHub, situata [qui](https://github.com/Acidanthera/OpenCorePkg).
+
+<Aside type="tip">
+Una repository Git, in poche parole, è un archivio di codice, che ne contiene diverse revisioni. Git non è necessariamente GitHub. GitHub è solo un'interfaccia grafica più estesa per esso. Se vuoi ottenere maggiori informazioni su Git, cercalo su Internet in quanto è uno strumento molto usato nello sviluppo di software.
+</Aside>
+
+![OpenCorePkg repository homepage](~/assets/OpenCorePkg.png)
+
+Vai alla sezione release. Ovviamente si tratta delle versioni pubbliche del progetto. Qui possiamo trovare i diversi file di ogni versione e possibilmente il changelog. Ciò che interessa a noi sono solo i file compilati associati con l'ultima versione del momento.
+
+<Aside type="tip">
+Un artefatto di compilazione è il prodotto finale del codice dopo la compilazione, un processo che consiste nella "conversione" di codice leggibile dall'uomo in un linguaggio intelligibile dai computer, chiamato linguaggio macchina.
+</Aside>
+
+![OpenCorePkg repository homepage with release section highlighted](~/assets/OpenCorePkgReleaseSection.png)
+
+L'ultima versione è sempre situata in cima. I file associati con questa versione risiedono alla base della "scheda" della versione. Puoi trovare entrambe le build RELEASE e DEBUG.
+
+<Aside type="tip">
+Una build ottimizzata, o build release, è un tipo di compilazione dove il codice è ottimizzato nel processo di compilazione, velocizzando l'esecuzione e rimuovendo informazioni di debug. Al contrario, una build di debug non ottimizzata contiene più informazioni di debug e file di registro, ma è significativamente più lenta di una build ottimizzata. Usa le build di debug solo in fase di risoluzione dei problemi.
+</Aside>
+
+![OpenCorePkg release page](~/assets/OpenCorePkgReleasePage.png)
+
+Al momento useremo la build di debug, così potremo analizzare eventuali problemi che potrebbero emergere nelle fasi successive della procedura. Clicca (sulla build di debug) per avviare il download.
+
+## Organizzare i file e preparare la EFI
+
+Appena il download termina, estrai i contenuti dell'archivio in una cartella organizzata, così potrai tener conto di tutto.
+
+I contenuti della cartella `Drive` verranno copiati successivamente nella tua USB. Copia la cartella `EFI` da `OpenCorePkg/X64/EFI`. È OpenCore stesso.
+
+In seguito, copia `Sample.plist` dentro `EFI/OC` con il nome di `Config.plist`. Questo file sarà la tua configurazione di OpenCore che verrà modificata per il nostro sistema più avanti nella procedura.
+
+Ora dovresti avere un layout simile al seguente
+
+<FileTree>
+- OCStuff
+  - OpenCorePkg
+    - …
+  - Drive
+    - EFI
+      - OC
+        - OpenCore.efi
+        - **Config.plist**
+        - …
+      - …
+    - …
+  - …
+</FileTree>
+
+Tenendo queste cose a mente, congratulazioni! Ora sai cos'è OpenCore, come navigare sull'interfaccia utente di GitHub per scaricare la build di un progetto dalla pagina delle release, e come tenere organizzata la tua avventura Hackintosh.

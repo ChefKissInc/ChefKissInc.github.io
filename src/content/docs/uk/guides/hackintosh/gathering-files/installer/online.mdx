@@ -1,0 +1,76 @@
+---
+title: Онлайн
+description: Завантажте офіційне мінімальне середовище recoveryOS.
+next:
+  link: /uk/guides/hackintosh/gathering-files/acpi/
+  label: ACPI
+---
+
+import Aside from '~/components/Aside.astro';
+
+<Aside type="caution">
+Цей розділ вимагає встановлення [Python](https://www.python.org/downloads/).
+</Aside>
+
+<Aside type="caution">
+Користувачам Windows потрібно додати Python до PATH, а також вимкнути обмеження довжини PATH.  Встановіть прапорець `Add python.exe to PATH` внизу інсталятора, а в кінці інсталяції натисніть на `Disable path length limit` (потрібні права адміністратора)
+</Aside>
+
+Ми будемо використовувати утиліту `macrecovery.py`, що входить до складу OpenCore.
+
+## Визначення команди для виконання
+
+Наведена нижче таблиця базується на файлі `recovery_urls.txt` з `macrecovery`.
+
+| Версія macOS             | Команда                                                                        |
+| ------------------------- | ------------------------------------------------------------------------------ |
+| OS X Lion (10.7)          | `python3 macrecovery.py -b Mac-2E6FAB96566FE58C -m 00000000000F25Y00 download` |
+| OS X Mountain Lion (10.8) | `python3 macrecovery.py -b Mac-7DF2A3B5E5D671ED -m 00000000000F65100 download` |
+| OS X Mavericks (10.9)     | `python3 macrecovery.py -b Mac-F60DEB81FF30ACF6 -m 00000000000FNN100 download` |
+| OS X Yosemite (10.10)     | `python3 macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000GDVW00 download` |
+| OS X El Capitan (10.11)   | `python3 macrecovery.py -b Mac-FFE5EF870D7BA81A -m 00000000000GQRX00 download` |
+| macOS Sierra (10.12)      | `python3 macrecovery.py -b Mac-77F17D7DA9285301 -m 00000000000J0DX00 download` |
+| macOS High Sierra (10.13) | `python3 macrecovery.py -b Mac-7BA5B2D9E42DDD94 -m 00000000000J80300 download` |
+| macOS Mojave (10.14)      | `python3 macrecovery.py -b Mac-7BA5B2DFE22DDD8C -m 00000000000KXPG00 download` |
+| macOS Catalina (10.15)    | `python3 macrecovery.py -b Mac-CFF7D910A743CAAF -m 00000000000PHCD00 download` |
+| macOS Big Sur (11)        | `python3 macrecovery.py -b Mac-2BD1B31983FE1663 -m 00000000000000000 download` |
+| macOS Monterey (12)       | `python3 macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download` |
+| macOS Ventura (13)        | `python3 macrecovery.py -b Mac-B4831CEBD52A0C4C -m 00000000000000000 download` |
+| macOS Sonoma (14)         | `python3 macrecovery.py -b Mac-226CB3C6A851A671 -m 00000000000000000 download` |
+| macOS Sequoia (15)        | `python3 macrecovery.py -b Mac-937A206F2EE63C01 -m 00000000000000000 download` |
+
+## Виконання команди
+
+Відкрийте термінал (`cmd` у Windows) та змініть каталог на `OpenCorePkg/Utilities/macrecovery`.
+
+```bash
+cd ~/Downloads/OCStuff
+cd OpenCorePkg/Utilities/macrecovery
+```
+
+Тепер запустіть команду, що відповідає версії macOS, яку ви хочете встановити.
+
+Скопіюйте та вставте команду в термінал, який ви відкрили раніше.
+
+Наприклад, якщо ви хочете завантажити `macOS Ventura (13)`.
+
+```bash
+cd ~/Downloads/OCStuff
+cd OpenCorePkg/Utilities/macrecovery
+python3 macrecovery.py -b Mac-B4831CEBD52A0C4C -m 00000000000000000 download
+```
+
+<Aside type="caution">
+Користувачам Windows може знадобитися використовувати `py -3` або `python` замість `python3`.
+</Aside>
+
+## Перевірка файлів
+
+Після завершення роботи скрипта з'явиться нова папка під назвою `com.apple.recovery.boot` у поточному каталозі терміналу (у цьому випадку, папка `macrecovery`).
+
+Усередині неї має бути або:
+
+- `BaseSystem.dmg` та `BaseSystem.chunklist`, або
+- `RecoveryImage.dmg` та `RecoveryImage.chunklist`.
+
+Якщо обидва файли в будь-якій з груп присутні, все добре; скопіюйте папку `com.apple.recovery.boot` до папки `Drive` або подібної.

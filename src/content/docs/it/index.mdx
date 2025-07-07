@@ -1,0 +1,24 @@
+---
+title: ChefKiss
+description: Potenziamo le persone con software ben fatto.
+template: splash
+hero:
+  tagline: Potenziamo le persone con software ben fatto.
+  image:
+    alt: Un pinguino re che indossa un cappello da cuoco e uno smoking.
+    file: ~/assets/CKPenguin.svg
+next: false
+prev: false
+banner:
+  content: |
+    Benvenuti alla nuova esperienza del sito web ChefKiss, <a href="/it/newsroom/website-rewritten/">scopri di più</a>.
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="Guide" description="Guide relative a Hackintosh, ecc." href="/it/guides/" />
+  <LinkCard title="AppleHax" description="I nostri progetti relativi ad Apple." href="/it/applehax/" />
+  <LinkCard title="Strumenti" description="I nostri strumenti." href="/it/tooling/" />
+  <LinkCard title="Notizie" description="Annunci, aggiornamenti e altro." href="/it/newsroom/" />
+</CardGrid>

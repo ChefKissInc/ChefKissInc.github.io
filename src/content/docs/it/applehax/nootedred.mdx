@@ -1,0 +1,108 @@
+---
+title: NootedRed
+template: splash
+description: L'estensione kernel per iGPU AMD.
+hero:
+  tagline: L'estensione kernel per iGPU AMD.
+  actions:
+    - text: GitHub
+      link: https://github.com/ChefKissInc/NootedRed
+      icon: github
+      variant: primary
+    - text: Versione nightly
+      link: https://nightly.link/ChefKissInc/NootedRed/workflows/main/master/Artifacts.zip
+      icon: external
+      variant: secondary
+next: false
+prev:
+  link: /it/applehax/
+  label: AppleHax
+---
+
+import Aside from '~/components/Aside.astro';
+
+## iGPU supportate
+
+Tutta la famiglia Vega Raven ASIC (`Ryzen 1xxx (Athlon Silver/Gold)` fino a `5xxx`, e serie `7x30`).
+
+## Compatibilità macOS
+
+NootedRed è compatibile con `macOS 10.15` fino a `macOS 26`.
+
+Non è possibile andare prima di `macOS 10.15` dato che la logica per le GPU integrate e il codice `rDNA` (usati per `DCN` e `VCN`) sono stati introdotti in quella versione.
+
+## Prerequisiti
+
+- Una EFI OpenCore configurata seguendo la nostra guida.
+- Il tuo PC non deve avere una GPU dedicata AMD `GCN 5` o `rDNA`.
+  - Queste possono essere disabilitate utilizzando la boot arg `-wegnoegpu` o la proprietà periferica `disable-gpu`.
+- Aumentare le dimensioni della VRAM.
+  - Minimo `512MiB`, `1GiB+` per un funzionamento corretto.
+- Disattivare Avvio Legacy, conosciuto anche come CSM.
+  - Altrimenti incontrerai kernel panic con errori come `Failed to get VBIOS from VRAM`.
+- Rimuovi `WhateverGreen.kext` o `NootRX.kext`.
+  - Questo kext fa conflitto con essi.
+- Usa un SMBIOS tra i seguenti: `MacBookPro16,3`, `iMac20,1` or `iMacPro1,1`.
+  - `MacPro7,1` potrebbe provocare una schermata nera.
+- Esegui gli aggiornamenti di macOS (quelli minori, non è necessario andare, ad esempio, da `macOS 11` a `macOS 12`).
+
+## Retroilluminazione
+
+Di solito funziona solo sui portatili.
+
+- [`SSDT-PNLF.aml`](/Extras/SSDTs/SSDT-PNLF.aml)
+- [`SSDT-ALS0.aml`](/Extras/SSDTs/SSDT-ALS0.aml) se non hai nessun sensore di luce ambientale
+- [`SMCLightSensor.kext`](https://github.com/Acidanthera/VirtualSMC)
+- [`BrightnessKeys.kext`](https://github.com/Acidanthera/BrightnessKeys) per il controllo della luminosità da tastiera (alcuni produttori potrebbero richiedere kext SMC personalizzati)
+
+## Domande frequenti
+
+<Aside type="danger">
+Questa lista non è esaustiva, per maggiori informazioni dovresti controllare i [problemi](https://github.com/ChefKissInc/NootedRed/issues), eventualmente anche le discussioni.
+</Aside>
+
+### Cosa è successo alla cronologia dei commit? Prima non c'erano tipo mille commit, effettuati nell'arco di tanti anni?
+
+Una "controversia" con due ex membri del team. Non contribuivano molto al progetto e fu deciso che non avrebbero dovuto guadagnare pubblicità grazie a esso.
+
+### Resto bloccato su una schermata nera o il PC si riavvia dopo la schermata nera su Catalina
+
+Aggiorna il kext. Se ancora vedi una schermata nera proprio prima dell'Assistente Installazione, riavvia forzatamente e dovrebbe correggersi.
+
+### Il controllo della luminosità non funziona correttamente
+
+Su chip basati su Raven (serie 1xxx-3xxx) dopo la nuova logica per la retroilluminazione fu introdotto un bug che non ha alcuna correzione al momento. Sii semplicemente paziente, questo è un progetto fatto per hobby.
+
+### L'uscita audio relativa al mio monitor esterno viene visualizzata, ma da essa non esce nessun suono
+
+Problema noto. Ancora non conosciamo il problema; funziona sulla maggior parte dei sistemi. Dovrai avere pazienza per ora (di nuovo).
+
+### Il mio display con HDR si avvia su una schermata nera con retroilluminazione lampeggiante
+
+Disattiva l'HDR dal BIOS, con un tool quale `Smokeless-UMAF` o collegandoti al computer da una postazione remota e facendolo dalle impostazioni di macOS.
+
+### Non è possibile regolare la luminosità del mio schermo OLED
+
+Aggiorna il kext, per supportare questo è stato aggiunto del codice. Se ancora non funziona, per favore contattaci su Telegram.
+
+### Non posso regolare la luminosità su Catalina
+
+Aggiorna il kext; la logica per il controllo della luminosità è stata aggiunta per Catalina.
+
+### Chrome, altri browser basati su Chromium e programmi come Sublime Text causano artefatti grafici insieme ad altri problemi
+
+Problema noto, causa sconosciuta.
+
+Per quanto riguarda i browser, puoi disattivare `GPU Rasterisation` da `chrome://flags` per aggirare il problema o semplicemente usare Safari.
+
+Qualunque altra cosa richiederà probabilmente la disattivazione dell'accelerazione GPU/Hardware.
+
+Se non puoi neanche aprire il browser (basato su Chromium) a causa del problema, puoi aprirlo con un comando del terminale simile al seguente
+
+```sh
+open -a Google\ Chrome --args --disable-gpu
+```
+
+### Crash e blocchi costanti su macOS Sonoma
+
+La causa della disfunzionalità grafica resta sconosciuta. Il commit più recente dovrebbe avere minimi problemi se hai un'immagine statica come sfondo e non hai una Memoji come avatar dell'account.

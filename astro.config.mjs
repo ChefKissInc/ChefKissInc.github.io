@@ -29,12 +29,24 @@ export default defineConfig({
       defaultLocale: "root",
       locales: {
         root: { label: "English", lang: "en" },
+        gr: { label: "Ελληνικά" },
+        ar: { label: "العربية", dir: "rtl" },
+        ru: { label: "Русский" },
+        uk: { label: "Українська" },
+        it: { label: "Italiano" },
       },
       plugins: [
         viewTransitions(),
         starlightImageZoom(),
         starlightBlog({
-          title: "Newsroom",
+          title: {
+            en: "Newsroom",
+            gr: "Αίθουσα τύπου",
+            ar: "غرفة الأخبار",
+            ru: "Новости",
+            uk: "Новини",
+            it: "Redazione",
+          },
           prefix: "newsroom",
           authors: {
             visual: {
@@ -84,16 +96,37 @@ export default defineConfig({
       sidebar: [
         {
           label: "Installation",
+          translations: {
+            gr: "Εγκατάσταση",
+            ar: "التثبيت",
+            ru: "Установка",
+            uk: "Встановлення",
+            it: "Installazione",
+          },
           items: [
             "guides/hackintosh",
             "guides/hackintosh/compatibility",
             {
               label: "Gathering Files",
+              translations: {
+                gr: "Συγκέντρωση αρχείων",
+                ar: "جمع الملفات",
+                ru: "Скачивание файлов",
+                uk: "Завантаження файлів",
+                it: "Ottenere i file",
+              },
               items: [
                 "guides/hackintosh/gathering-files",
                 "guides/hackintosh/gathering-files/opencore",
                 {
                   label: "Installer",
+                  translations: {
+                    gr: "Εγκαταστάτης",
+                    ar: "المثبت",
+                    ru: "Установщик",
+                    uk: "Встановлювач",
+                    it: "Programma di installazione",
+                  },
                   items: [
                     "guides/hackintosh/gathering-files/installer",
                     "guides/hackintosh/gathering-files/installer/online",
@@ -105,11 +138,42 @@ export default defineConfig({
             },
             {
               label: "Configuration",
-              badge: "TODO",
+              translations: {
+                gr: "Διαμόρφωση παραμέτρων",
+                ar: "التكوين",
+                ru: "Конфигурация",
+                uk: "Конфігурація",
+                it: "Configurazione",
+              },
+              badge: {
+                text: {
+                  en: "TODO",
+                  gr: "Υπό κατασκευή",
+                  ru: "В будущем",
+                  uk: "У майбутньому",
+                  it: "Prossimamente",
+                },
+              },
               items: [
                 {
                   label: "Dortania guide",
-                  badge: "Temporary",
+                  badge: {
+                    text: {
+                      en: "Temporary",
+                      gr: "Προσωρινό",
+                      ar: "مؤقت",
+                      ru: "Временно",
+                      uk: "тимчасовий",
+                      it: "Provvisoria",
+                    },
+                  },
+                  translations: {
+                    gr: "Οδηγός Dortania",
+                    ar: "دليل Dortania",
+                    ru: "Гайд Dortania",
+                    uk: "Гайд Dortania",
+                    it: "Guida Dortania",
+                  },
                   link: "https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html",
                 },
               ],
@@ -118,7 +182,22 @@ export default defineConfig({
         },
         {
           label: "Troubleshooting",
-          badge: "TODO",
+          translations: {
+            gr: "Αντιμετώπηση προβλημάτων",
+            ar: "اكتشاف الأخطاء وإصلاحها",
+            ru: "Отладка и исправление ошибок",
+            uk: "Відладка та виправлення помилок",
+            it: "Risoluzione dei problemi",
+          },
+          badge: {
+            text: {
+              en: "TODO",
+              gr: "Υπό κατασκευή",
+              ru: "В будущем",
+              uk: "У майбутньому",
+              it: "Prossimamente",
+            },
+          },
           collapsed: true,
           items: [],
         },
