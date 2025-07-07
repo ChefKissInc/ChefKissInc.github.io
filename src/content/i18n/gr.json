@@ -46,6 +46,7 @@
   "starlightBlog.metrics.words_other": " - {{count}} λέξεις",
   "starlightBlog.pagination.prev": "Νεότερες αναρτήσεις",
   "starlightBlog.pagination.next": "Παλαιότερες αναρτήσεις",
+  "starlightBlog.post.date": "{{date, datetime(dateStyle: medium)}}",
   "starlightBlog.post.lastUpdate": " - Τελευταία ενημέρωση: <time datetime=\"{{isoDate}}\">{{date, datetime(dateStyle: medium)}}</time>",
   "starlightBlog.post.draft": "Προσχέδιο",
   "starlightBlog.post.featured": "Προβεβλημένη",
