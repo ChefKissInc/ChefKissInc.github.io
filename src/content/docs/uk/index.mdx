@@ -1,0 +1,24 @@
+---
+title: ChefKiss
+description: Надаємо людям можливості за допомогою якісного програмного забезпечення.
+template: splash
+hero:
+  tagline: Надаємо людям можливості за допомогою якісного програмного забезпечення.
+  image:
+    alt: Королівський пінгвін у кухарському ковпаку та смокінгу.
+    file: ~/assets/CKPenguin.svg
+next: false
+prev: false
+banner:
+  content: |
+    Ласкаво просимо на оновлений веб-сайт ChefKiss, <a href="/uk/newsroom/website-rewritten/">детальніше</a>.
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="Посібники" description="Посібники з Hackintosh тощо." href="/uk/guides/" />
+  <LinkCard title="AppleHax" description="Наші проекти, пов'язані з Apple." href="/uk/applehax/" />
+  <LinkCard title="Інструменти" description="Наші інструменти." href="/uk/tooling/" />
+  <LinkCard title="Новини" description="Оголошення, оновлення та багато іншого." href="/uk/newsroom/" />
+</CardGrid>
