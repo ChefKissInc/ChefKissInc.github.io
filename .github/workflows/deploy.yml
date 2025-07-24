@@ -46,8 +46,6 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        env:
-          NODE_OPTIONS: "--max-old-space-size=4096"
       - name: Static HTML export with Astro
         run: pnpm run build
       - name: Upload artifact
