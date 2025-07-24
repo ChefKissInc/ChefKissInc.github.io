@@ -84,6 +84,7 @@ aside.starlight-aside {
   @apply border border-[var(--sl-color-asides-border)] rounded-lg;
 }
 
+.card,
 starlight-file-tree,
 code,
 .expressive-code .frame:not(.is-terminal) pre {
