@@ -44,17 +44,10 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            dist
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
       - name: Static HTML export with Astro
         run: pnpm run build
       - name: Upload artifact
