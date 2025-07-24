@@ -54,7 +54,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuxt-build-
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          export NODE_OPTIONS="--max_old_space_size=4096"
+          pnpm install
       - name: Static HTML export with Astro
         run: pnpm run build
       - name: Upload artifact
