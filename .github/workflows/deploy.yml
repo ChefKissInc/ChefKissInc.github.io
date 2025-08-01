@@ -16,19 +16,19 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4.2.2
       - name: Install, build, and upload your site output
         uses: withastro/action@v4.0.0
         with:
-          node-version: 24
+          node-version: 24.5.0
           package-manager: pnpm@latest
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
