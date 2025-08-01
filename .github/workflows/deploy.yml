@@ -23,7 +23,7 @@ jobs:
       - name: Install, build, and upload your site output
         uses: withastro/action@v4.0.0
         with:
-          node-version: 24.3.0
+          node-version: 24
           package-manager: pnpm@latest
 
   deploy:
