@@ -13,7 +13,6 @@ import Aside from '~/components/Aside.astro';
 Основной таблицей ACPI является `DSDT` (Differentiated System Description Table), определяющая большинство устройств. Затем есть `SSDT` (Secondary System Description Tables), добавляющие дополнительные свойства (например, метод `_PRW` (Power Resources for Wake)), дополнительные устройства, отключающие некоторые устройства на основе условия и т.д.
 
 Большинство прошивок определяют устройства в `DSDT` и используют некоторые `SSDT` для корректировки значений в зависимости от установленного оборудования и/или настроек BIOS. Если вас интересует ACPI, вы можете прочитать спецификацию ACPI, указанную в [спецификациях форума UEFI](https://uefi.org/specifications).
-
 </Aside>
 
 ## Загрузка SSDTTime
