@@ -1,0 +1,16 @@
+---
+import FeelbackTaggedMessage from "astro-feelback/components/FeelbackTaggedMessage.astro";
+import "astro-feelback/styles/feelback.css";
+
+const CONTENT_SET_ID = "ee441389-b4e1-40c6-8d94-5140dbf1941a";
+---
+
+<FeelbackTaggedMessage
+    contentSetId={CONTENT_SET_ID}
+    preset="evaluation"
+    title="Was this page useful?"
+    layout="reveal-message"
+    style={["bordered", "align-center"]}
+    showCount
+    withEmail
+/>

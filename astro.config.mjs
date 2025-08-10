@@ -80,6 +80,7 @@ export default defineConfig({
         Head: "~/components/starlight/Head.astro",
         MarkdownContent: "~/components/starlight/MarkdownContent.astro",
         SocialIcons: "~/components/starlight/SocialIcons.astro",
+        Pagination: "~/components/starlight/Pagination.astro",
       },
       social: [
         {
